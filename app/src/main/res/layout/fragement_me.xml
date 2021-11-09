@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:background="#e7eded"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="我的信息"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/fragement_me_bg1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_height="100dp">
+            <cn.ovzv.idioms.help.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/fragement_me_cat" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="30dp">
+                    <TextView
+                        android:layout_width="180dp"
+                        android:layout_height="30dp"
+                        android:text="吴彦祖"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="20sp">
+                    </TextView>
+                    <ImageView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/fragement_me_right">
+                    </ImageView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/fragement_me_phone">
+                    </ImageView>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:text="1982508***0">
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnCount="4"
+                android:rowCount="2">
+
+                <ImageView
+                    android:id="@+id/circleImageView1"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_message" />
+
+                <ImageView
+                    android:id="@+id/circleImageView2"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_subscribe" />
+
+                <ImageView
+                    android:id="@+id/circleImageView3"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="2"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_collection" />
+
+                <ImageView
+                    android:id="@+id/circleImageView4"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="3"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_footprint" />
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="消息中心"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:typeface="serif"
+                    android:textStyle="bold"
+                    android:layout_column="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_row="1" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="我的订阅"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:typeface="serif"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_column="1"
+                    android:layout_row="1" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="我的收藏"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:typeface="serif"
+                    android:layout_column="2"
+                    android:layout_row="1" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="学习足迹"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:typeface="serif"
+                    android:layout_column="3"
+                    android:layout_row="1" />
+            </GridLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fragement_me_bg2">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="常用工具">
+
+            </TextView>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:columnCount="4"
+                android:rowCount="2">
+                <ImageView
+                    android:id="@+id/circleImageView5"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_about" />
+
+                <ImageView
+                    android:id="@+id/circleImageView6"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_card" />
+
+                <ImageView
+                    android:id="@+id/circleImageView7"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="2"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_feedback" />
+
+                <ImageView
+                    android:id="@+id/circleImageView8"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_column="3"
+                    android:layout_row="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/fragement_me_png_setting" />
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="关于我们"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:typeface="serif"
+                    android:layout_column="0"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_row="1" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="我的卡券"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:typeface="serif"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_column="1"
+                    android:layout_row="1" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="反馈意见"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:typeface="serif"
+                    android:layout_column="2"
+                    android:layout_row="1" />
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="系统设置"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:typeface="serif"
+                    android:layout_column="3"
+                    android:layout_row="1" />
+            </GridLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

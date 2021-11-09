@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7eded"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="10dp"
+        android:background="@drawable/fragement_me_card_bgup">
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/fragement_me_card_bgdowm">
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:typeface="serif"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:text="限相关课程"
+                android:background="@drawable/fragement_me_card_bg_1">
+
+            </TextView>
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="仅限购买《唐诗三百首》部分课程">
+
+            </TextView>
+
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:textColor="#000000"
+            android:typeface="serif"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="2021.01.10 - 2021.01.30">
+
+        </TextView>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:src="@drawable/fragement_me_card_monery">
+
+            </ImageView>
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:textColor="#00BFFF"
+                android:text="￥ 50.00"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:textStyle="bold">
+
+            </TextView>
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="#ffffff"
+                android:typeface="serif"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:text="未使用"
+                android:background="@drawable/fragement_me_card_bg_1">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

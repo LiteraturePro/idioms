@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7eded"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/fragement_me_subscribe_bg_1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="15dp"
+                    android:textSize="10sp"
+                    android:gravity=""
+                    android:text="订单号：2021101209876">
+                </TextView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:text="已付款"
+                android:background="@drawable/fragement_me_subscribe_bg_2">
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:text="成语故事解读【漫画连载-更新至第5期】">
+
+            </TextView>
+            <TextView
+                android:layout_width="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_height="match_parent"
+                android:text="￥169.00"
+                android:textSize="10sp"
+                android:gravity="center"
+                android:textColor="#000000">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:textSize="8sp"
+                android:gravity=""
+                android:text="下单时间：2021-11-25 17:22:14"
+                android:layout_height="match_parent">
+
+            </TextView>
+            <TextView
+                android:layout_width="65dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="match_parent"
+                android:textSize="8sp"
+                android:gravity="center"
+                android:text="共1件商品，合计">
+
+            </TextView>
+            <TextView
+                android:layout_width="60dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#FF0000"
+                android:text="￥169.00"
+                android:layout_height="match_parent">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

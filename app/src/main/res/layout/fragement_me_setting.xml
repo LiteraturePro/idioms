@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#e7eded"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/include"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        layout="@layout/fragement_me_topbar"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.codbking.view.ItemView
+                android:layout_width="match_parent"
+                android:layout_height="40.0dip"
+                app:ItemView_type="activity"
+                app:ItemView_text="账号与安全" />
+            <com.codbking.view.ItemView
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                app:ItemView_type="activity"
+                app:ItemView_text="测试" />
+            <com.codbking.view.ItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ItemView_type="activity"
+                app:ItemView_text="测试" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

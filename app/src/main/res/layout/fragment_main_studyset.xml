@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".navigation.main.Main_studyset">
+    <include
+        android:id="@+id/include"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        layout="@layout/fragment_me_topbar"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/fragment_main_progressbar_ct">
+            </ImageView>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="中华成语词典"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:layout_height="match_parent"
+                android:text="《中华成语词典》共收录成语30178条，除常用成语外，还酌收部分正向成语发展的词组和常用熟语。"
+                android:textSize="10sp"
+                android:textStyle="bold">
+
+            </TextView>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="15dp"
+                android:layout_height="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="40dp"
+                    android:text="每日新词 80"
+                    android:textSize="10sp"
+                    android:textStyle="bold">
+
+                </TextView>
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_height="match_parent"
+                    android:text="每日复习 80"
+                    android:textSize="10sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

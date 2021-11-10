@@ -3,12 +3,682 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e7eded"
     tools:context=".navigation.Main">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="main" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
+
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/fragement_main_bg1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="动画专场">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:text="中国古诗词文化"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#ffffff"
+                            android:typeface="serif"
+                            android:textStyle="bold">
+                        </TextView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="￥9.9 立即抢购"
+                            android:gravity="center"
+                            android:textSize="15sp"
+                            android:textColor="#ffffff"
+                            android:typeface="serif"
+                            android:textStyle="bold">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/fragement_me_cat">
+                        </ImageView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/fragement_main_bg2"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/fragment_main_search">
+
+                        </ImageView>
+                        <EditText
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </EditText>
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/fragment_main_code"
+                            android:layout_height="match_parent">
+
+                        </ImageView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fragement_main_bg3"
+                android:layout_height="210dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/fragement_main_bg5"
+                    android:layout_height="90dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_marginTop="5dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="中华成语词典 (30179个)"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="#000000">
+                            </TextView>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_height="match_parent">
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="查看词表"
+                                android:textSize="8sp">
+
+                            </Button>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp">
+                        <TextView
+                            android:layout_marginStart="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="学习设置"
+                            android:textSize="12sp"
+                            android:textColor="#000000">
+
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp">
+                        <TextView
+                            android:layout_marginStart="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="已完成 12.5%"
+                            android:textSize="10sp"
+                            android:textColor="#000000">
+
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_height="15dp">
+                        <ProgressBar
+                            android:id="@+id/progress_bar_healthy"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center"
+                            android:max="100"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/fragment_main_progressbar_bg"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="已完成离线"
+                            android:textSize="10sp">
+
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="60dp"
+                            android:layout_marginStart="40dp"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:textSize="10sp"
+                                android:textColor="#000000"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:text="新词">
+
+                            </TextView>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="10sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="20">
+
+                            </TextView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:textStyle="bold"
+                                android:textSize="10sp"
+                                android:textColor="#000000"
+                                android:gravity="center"
+                                android:text="复习">
+
+                            </TextView>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="10sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="20">
+
+                            </TextView>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="60dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:textSize="10sp"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:text="未学">
+
+                            </TextView>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="10sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="2000">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="100dp"
+                        android:text="开始学习"
+                        android:layout_height="40dp">
+
+                    </Button>
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/fragement_main_bg4"
+                android:layout_height="80dp">
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="15dp"
+                        android:text="成语接龙"
+                        android:gravity="left"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:textStyle="bold">
+
+                    </TextView>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="多种游戏模式，让成语记忆更牢固"
+                        android:gravity="left"
+                        android:textSize="12sp">
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:layout_marginTop="12dp"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:textSize="12sp"
+                        android:text="开始游戏">
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/fragement_main_bg4"
+                android:layout_height="80dp">
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="15dp"
+                        android:text="文字猜谜语"
+                        android:gravity="left"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:textStyle="bold">
+
+                    </TextView>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="根据文字提示，猜出相关成语"
+                        android:gravity="left"
+                        android:textSize="12sp">
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:layout_marginTop="12dp"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:textSize="12sp"
+                        android:text="开始游戏">
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/fragement_main_bg4"
+                android:layout_height="80dp">
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="15dp"
+                        android:text="看图猜成语"
+                        android:gravity="left"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:textStyle="bold">
+
+                    </TextView>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="根据图片提示，猜出相关成语"
+                        android:gravity="left"
+                        android:textSize="12sp">
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:layout_marginTop="12dp"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:textSize="12sp"
+                        android:text="开始游戏">
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/fragement_main_bg4"
+                android:layout_height="80dp">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="15dp"
+                    android:text="成语对联"
+                    android:gravity="left"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold">
+
+                </TextView>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="成语对联是指含有寓意吉祥的成语的对联，代表着主人家的文化内涵，心理层次，能量气场和富贵如意。"
+                    android:gravity="left"
+                    android:textSize="10sp">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/fragement_main_bg4"
+                android:layout_height="80dp">
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="15dp"
+                    android:text="有趣的成语"
+                    android:gravity="left"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold">
+
+                </TextView>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="其中包含有成语之最、数词成语，动物成语、5到8字成语"
+                    android:gravity="left"
+                    android:textSize="10sp">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/fragement_main_bg4"
+                android:layout_height="130dp">
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="match_parent"
+                        android:text="全国教育工作会议召开，传递这些重要信息！"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:textStyle="bold">
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_height="50dp"
+                            android:text="1月7日至8日，2021年全国教育工作会议在京召开。会议强调，要..."
+                            android:textSize="12sp">
+
+                        </TextView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="15dp"
+                            android:text="2021-10-11"
+                            android:textSize="10sp">
+
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:src="@drawable/fragement_me_cat">
+
+                        </ImageView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/fragement_main_bg4"
+                android:layout_height="130dp">
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="match_parent"
+                        android:text="分享奉贤教育经验，共同推进上海基础教育"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:textStyle="bold">
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_height="50dp"
+                            android:text="由上海市教育委员会、中央电化教育馆指导，上海市教育学会、上..."
+                            android:textSize="12sp">
+
+                        </TextView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="15dp"
+                            android:text="2021-10-11"
+                            android:textSize="10sp">
+
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:src="@drawable/fragement_me_cat">
+
+                        </ImageView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

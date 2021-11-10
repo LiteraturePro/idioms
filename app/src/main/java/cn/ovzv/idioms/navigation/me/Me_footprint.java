@@ -16,7 +16,7 @@ public class Me_footprint extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragement_me_footprint);
+        setContentView(R.layout.fragment_me_footprint);
 
 
         initView();

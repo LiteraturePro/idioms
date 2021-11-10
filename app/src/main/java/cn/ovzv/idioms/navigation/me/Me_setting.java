@@ -16,7 +16,7 @@ public class Me_setting extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragement_me_setting);
+        setContentView(R.layout.fragment_me_setting);
 
 
         initView();

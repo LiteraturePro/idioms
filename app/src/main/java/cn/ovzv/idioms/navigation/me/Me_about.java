@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import cn.ovzv.idioms.R;
 import mehdi.sakout.aboutpage.AboutPage;
@@ -23,7 +22,7 @@ public class Me_about extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragement_me_about);
+        setContentView(R.layout.fragment_me_about);
 
 
         initView();

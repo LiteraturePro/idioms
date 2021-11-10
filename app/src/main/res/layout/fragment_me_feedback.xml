@@ -6,7 +6,7 @@
     android:background="#e7eded">
     <include
         android:id="@+id/include"
-        layout="@layout/fragement_me_topbar"
+        layout="@layout/fragment_me_topbar"
         android:layout_height="50dp"
         android:layout_width="match_parent" />
     <LinearLayout

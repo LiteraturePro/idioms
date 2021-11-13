@@ -10,6 +10,10 @@
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_main_bg3.xml" value="0.23333333333333334" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_main_bg4.xml" value="0.23333333333333334" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_main_bg5.xml" value="0.23333333333333334" />
+        <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_main_study_bg1.xml" value="0.23333333333333334" />
+        <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_main_study_bg2.xml" value="0.23333333333333334" />
+        <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_main_study_bg3.xml" value="0.23333333333333334" />
+        <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_main_study_bg3_down.xml" value="0.23333333333333334" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_me_bg1.xml" value="0.33063063063063064" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_me_bg2.xml" value="0.33063063063063064" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragement_me_card_bg1.xml" value="0.33063063063063064" />
@@ -53,6 +57,10 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragement_mt_card_style.xml" value="0.31666666666666665" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_course.xml" value="0.19895833333333332" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main.xml" value="0.264" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_game1.xml" value="0.2028985507246377" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_game2.xml" value="0.2028985507246377" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_game3.xml" value="0.2028985507246377" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_study.xml" value="0.20190713101160862" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_studyset.xml" value="0.264" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_studyset_dialog_wheelview.xml" value="0.21936936936936938" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_words.xml" value="0.264" />

@@ -19,6 +19,18 @@
         android:theme="@style/Theme.Idioms"
         tools:replace="android:theme">
         <activity
+            android:name=".navigation.main.Main_game3"
+            android:exported="false" />
+        <activity
+            android:name=".navigation.main.Main_game2"
+            android:exported="false" />
+        <activity
+            android:name=".navigation.main.Main_game1"
+            android:exported="false" />
+        <activity
+            android:name=".navigation.main.Main_study"
+            android:exported="false" />
+        <activity
             android:name=".navigation.main.Main_words"
             android:exported="false" />
         <activity

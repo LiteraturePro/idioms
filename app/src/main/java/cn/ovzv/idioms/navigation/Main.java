@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import cn.ovzv.idioms.R;
+import cn.ovzv.idioms.navigation.main.Main_game1;
+import cn.ovzv.idioms.navigation.main.Main_game2;
+import cn.ovzv.idioms.navigation.main.Main_game3;
+import cn.ovzv.idioms.navigation.main.Main_study;
 import cn.ovzv.idioms.navigation.main.Main_studyset;
 import cn.ovzv.idioms.navigation.main.Main_words;
 
@@ -23,7 +27,7 @@ import cn.ovzv.idioms.navigation.main.Main_words;
 public class Main extends Fragment {
 
     private TextView Studyset;
-    private Button words;
+    private Button Words,Study,Game1,Game2,Game3;
 
 
 
@@ -90,11 +94,47 @@ public class Main extends Fragment {
             }
         });
         // 查看词表
-        words = (Button) getActivity().findViewById(R.id.words);
-        words.setOnClickListener(new View.OnClickListener() {
+        Words = (Button) getActivity().findViewById(R.id.words);
+        Words.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),Main_words.class);
+                startActivity(intent);
+            }
+        });
+        // 开始学习
+        Study = (Button) getActivity().findViewById(R.id.study);
+        Study.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_study.class);
+                startActivity(intent);
+            }
+        });
+        // 成语接龙
+        Game1 = (Button) getActivity().findViewById(R.id.game1);
+        Game1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_game1.class);
+                startActivity(intent);
+            }
+        });
+        // 看文字猜成语
+        Game2 = (Button) getActivity().findViewById(R.id.game2);
+        Game2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), Main_game2.class);
+                startActivity(intent);
+            }
+        });
+        // 看图猜成语
+        Game3 = (Button) getActivity().findViewById(R.id.game3);
+        Game3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_game3.class);
                 startActivity(intent);
             }
         });

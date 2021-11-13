@@ -11,4 +11,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="game1_ex">1、玩家根据文字信息提示，在上面的输入框中输入自己认为的答案，系统会自动判断用户输入是否为正确答案。 \n2、确定用户输入是否符合答案标准，根据输入的成语进行校验正确性，若成语库未收录该词，请点击这里向我们反馈。 \n3、出题规则为随机出题。</string>
+    <string name="game2_ex">1、玩家根据文字信息提示，在上面的输入框中输入自己认为的答案，系统会自动判断用户输入是否为正确答案。\n2、出题规则为随机出题。\n3、用户在没有输入正确答案之前，点击查看答案，将不会获得积分。</string>
+    <string name="game3_ex">1、玩家根据图片信息提示，在上面的输入框中输入自己认为的答案，系统会自动判断用户输入是否为正确答案。\n2、出题规则为随机出题。\n3、用户在没有输入正确答案之前，点击查看答案，将不会获得积分。</string>
 </resources>

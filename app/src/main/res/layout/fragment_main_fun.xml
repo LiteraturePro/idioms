@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7eded"
+    tools:context=".navigation.main.Main_fun">
+    <include
+        android:id="@+id/include"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        layout="@layout/fragment_me_topbar"/>
+
+</LinearLayout>

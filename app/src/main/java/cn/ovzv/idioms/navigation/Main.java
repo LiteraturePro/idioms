@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import cn.ovzv.idioms.R;
+import cn.ovzv.idioms.navigation.main.Main_couplet;
+import cn.ovzv.idioms.navigation.main.Main_fun;
 import cn.ovzv.idioms.navigation.main.Main_game1;
 import cn.ovzv.idioms.navigation.main.Main_game2;
 import cn.ovzv.idioms.navigation.main.Main_game3;
@@ -26,7 +28,7 @@ import cn.ovzv.idioms.navigation.main.Main_words;
  */
 public class Main extends Fragment {
 
-    private TextView Studyset;
+    private TextView Studyset,Couplet,Fun;
     private Button Words,Study,Game1,Game2,Game3;
 
 
@@ -135,6 +137,26 @@ public class Main extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Main_game3.class);
+                startActivity(intent);
+            }
+        });
+
+        // 成语对联
+        Couplet = (TextView)getActivity().findViewById(R.id.couplet);
+        Couplet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_couplet.class);
+                startActivity(intent);
+            }
+        });
+
+        // 有趣的成语
+        Fun = (TextView) getActivity().findViewById(R.id.fun);
+        Fun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_fun.class);
                 startActivity(intent);
             }
         });

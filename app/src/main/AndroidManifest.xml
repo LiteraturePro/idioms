@@ -19,6 +19,12 @@
         android:theme="@style/Theme.Idioms"
         tools:replace="android:theme">
         <activity
+            android:name=".navigation.main.Main_fun"
+            android:exported="false" />
+        <activity
+            android:name=".navigation.main.Main_couplet"
+            android:exported="false" />
+        <activity
             android:name=".navigation.main.Main_game3"
             android:exported="false" />
         <activity

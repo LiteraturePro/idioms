@@ -495,6 +495,7 @@
                 android:background="@drawable/fragement_main_bg4"
                 android:layout_height="80dp">
                 <TextView
+                    android:id="@+id/couplet"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
@@ -527,6 +528,7 @@
                 android:background="@drawable/fragement_main_bg4"
                 android:layout_height="80dp">
                 <TextView
+                    android:id="@+id/fun"
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"

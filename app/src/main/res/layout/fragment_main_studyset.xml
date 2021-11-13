@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e7eded"
     tools:context=".navigation.main.Main_studyset">
     <include
         android:id="@+id/include"
@@ -14,6 +15,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:background="@drawable/fragement_main_bg2"
         android:layout_height="120dp">
         <LinearLayout
             android:layout_width="120dp"
@@ -57,27 +59,177 @@
                 android:layout_marginBottom="15dp"
                 android:layout_height="20dp">
                 <TextView
+                    android:id="@+id/num_limitation1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_marginStart="40dp"
-                    android:text="每日新词 80"
+                    android:text="每日新词 20个"
                     android:textSize="10sp"
                     android:textStyle="bold">
-
                 </TextView>
                 <TextView
-                    android:layout_width="60dp"
+                    android:id="@+id/num_limitation2"
+                    android:layout_width="70dp"
                     android:layout_marginEnd="40dp"
                     android:layout_height="match_parent"
-                    android:text="每日复习 80"
+                    android:text="每日复习 20个"
                     android:textSize="10sp"
                     android:textStyle="bold">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:textSize="15sp"
+        android:text="学习设置"
+        android:gravity=""
+        android:textColor="#000000"
+        android:textStyle="bold">
+
+    </TextView>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@drawable/fragement_main_bg2"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
+                    android:text="学习顺序"
+                    android:gravity=""
+                    android:textColor="#000000">
 
                 </TextView>
 
             </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/chk1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="混合学习"/>
+
+            <CheckBox
+                android:id="@+id/chk2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="复习优先"/>
+
         </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:gravity=""
+                    android:layout_marginTop="10dp"
+                    android:text="成语自动发音"
+                    android:textColor="#000000"
+                    android:textSize="15sp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent">
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_height="wrap_content"
+                    android:thumb="@drawable/fragment_main_studyset_switch_ios_thumb"
+                    android:track="@drawable/fragment_main_studyset_switch_ios_track_selector" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:gravity=""
+                    android:layout_marginTop="10dp"
+                    android:text="例句自动发音"
+                    android:textColor="#000000"
+                    android:textSize="15sp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent">
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_height="wrap_content"
+                    android:thumb="@drawable/fragment_main_studyset_switch_ios_thumb"
+                    android:track="@drawable/fragment_main_studyset_switch_ios_track_selector" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:gravity=""
+                    android:layout_marginTop="10dp"
+                    android:text="移动网络缓存"
+                    android:textColor="#000000"
+                    android:textSize="15sp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent">
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_height="wrap_content"
+                    android:thumb="@drawable/fragment_main_studyset_switch_ios_thumb"
+                    android:track="@drawable/fragment_main_studyset_switch_ios_track_selector" />
+            </LinearLayout>
+        </LinearLayout>
+
 
     </LinearLayout>
 

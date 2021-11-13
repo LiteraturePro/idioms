@@ -1,5 +1,6 @@
 package cn.ovzv.idioms.navigation;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import cn.ovzv.idioms.R;
+import cn.ovzv.idioms.navigation.main.Main_studyset;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +19,11 @@ import cn.ovzv.idioms.R;
  * create an instance of this fragment.
  */
 public class Main extends Fragment {
+
+    private TextView Studyset;
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +70,24 @@ public class Main extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false);
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onActivityCreated(savedInstanceState);
+
+        // 学习设置
+        Studyset = (TextView) getActivity().findViewById(R.id.studyset);
+        Studyset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_studyset.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
     }
 }

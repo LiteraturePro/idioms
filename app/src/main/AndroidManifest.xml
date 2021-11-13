@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Idioms"
         tools:replace="android:theme">
         <activity
+            android:name=".navigation.main.Main_words"
+            android:exported="false" />
+        <activity
             android:name=".navigation.main.Main_studyset"
             android:exported="false" />
         <activity

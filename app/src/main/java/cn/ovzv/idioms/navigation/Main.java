@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.navigation.main.Main_studyset;
+import cn.ovzv.idioms.navigation.main.Main_words;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +23,7 @@ import cn.ovzv.idioms.navigation.main.Main_studyset;
 public class Main extends Fragment {
 
     private TextView Studyset;
+    private Button words;
 
 
 
@@ -84,6 +87,15 @@ public class Main extends Fragment {
                 Intent intent = new Intent(getActivity(), Main_studyset.class);
                 startActivity(intent);
 
+            }
+        });
+        // 查看词表
+        words = (Button) getActivity().findViewById(R.id.words);
+        words.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Main_words.class);
+                startActivity(intent);
             }
         });
 

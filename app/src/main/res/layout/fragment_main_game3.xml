@@ -20,7 +20,7 @@
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginStart="12dp"
-                android:src="@drawable/fragement_me_back">
+                android:src="@drawable/fragment_me_back">
             </ImageView>
         </LinearLayout>
         <LinearLayout
@@ -74,7 +74,7 @@
                 android:id="@+id/idiom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/fragement_me_cat">
+                android:src="@drawable/fragment_me_cat">
             </ImageView>
         </LinearLayout>
         <LinearLayout

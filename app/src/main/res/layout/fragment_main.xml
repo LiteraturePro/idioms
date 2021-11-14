@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:orientation="vertical"
-                android:background="@drawable/fragement_main_bg1"
+                android:background="@drawable/fragment_main_bg1"
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
                 <LinearLayout
@@ -70,7 +70,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/fragement_me_cat">
+                            android:src="@drawable/fragment_me_cat">
                         </ImageView>
                     </LinearLayout>
                 </LinearLayout>
@@ -83,7 +83,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/fragement_main_bg2"
+                        android:background="@drawable/fragment_main_bg2"
                         android:layout_width="match_parent"
                         android:layout_marginBottom="10dp"
                         android:layout_height="match_parent">
@@ -125,13 +125,13 @@
                 android:layout_width="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/fragement_main_bg3"
+                android:background="@drawable/fragment_main_bg3"
                 android:layout_height="210dp">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:background="@drawable/fragement_main_bg5"
+                    android:background="@drawable/fragment_main_bg5"
                     android:layout_height="90dp">
                     <LinearLayout
                         android:orientation="horizontal"
@@ -343,7 +343,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_bg4"
+                android:background="@drawable/fragment_main_bg4"
                 android:layout_height="80dp">
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -393,7 +393,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_bg4"
+                android:background="@drawable/fragment_main_bg4"
                 android:layout_height="80dp">
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -442,7 +442,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_bg4"
+                android:background="@drawable/fragment_main_bg4"
                 android:layout_height="80dp">
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -492,7 +492,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_bg4"
+                android:background="@drawable/fragment_main_bg4"
                 android:layout_height="80dp">
                 <TextView
                     android:id="@+id/couplet"
@@ -525,7 +525,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_bg4"
+                android:background="@drawable/fragment_main_bg4"
                 android:layout_height="80dp">
                 <TextView
                     android:id="@+id/fun"
@@ -557,7 +557,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_bg4"
+                android:background="@drawable/fragment_main_bg4"
                 android:layout_height="130dp">
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -612,7 +612,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
-                            android:src="@drawable/fragement_me_cat">
+                            android:src="@drawable/fragment_me_cat">
 
                         </ImageView>
                     </LinearLayout>
@@ -624,7 +624,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_bg4"
+                android:background="@drawable/fragment_main_bg4"
                 android:layout_height="130dp">
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -678,7 +678,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
-                            android:src="@drawable/fragement_me_cat">
+                            android:src="@drawable/fragment_me_cat">
 
                         </ImageView>
                     </LinearLayout>

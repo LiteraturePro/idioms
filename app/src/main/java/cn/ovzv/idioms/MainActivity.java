@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Handler handler;
 
     private String[] tabText = {"首页","课程","学习","我的"};
-    private int[] normalIcon = {R.drawable.fragement_main_1,R.drawable.fragement_course_1,R.drawable.fragement_study_1,R.drawable.fragement_me_1};
-    private int[] selectIcon = {R.drawable.fragement_main_2,R.drawable.fragement_course_2,R.drawable.fragement_study_2,R.drawable.fragement_me_2};
+    private int[] normalIcon = {R.drawable.fragment_main_1,R.drawable.fragment_course_1,R.drawable.fragment_study_1,R.drawable.fragment_me_1};
+    private int[] selectIcon = {R.drawable.fragment_main_2,R.drawable.fragment_course_2,R.drawable.fragment_study_2,R.drawable.fragment_me_2};
 
 
     @SuppressLint("HandlerLeak")

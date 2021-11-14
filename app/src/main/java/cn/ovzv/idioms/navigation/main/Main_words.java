@@ -22,7 +22,6 @@ import cn.ovzv.idioms.navigation.main.fragment.words_fragment2;
 import cn.ovzv.idioms.navigation.main.fragment.words_fragment3;
 
 public class Main_words extends AppCompatActivity {
-    private TextView mTextView;
     private ImageView mImageView;
 
     private TabLayout tableLayout;
@@ -45,6 +44,7 @@ public class Main_words extends AppCompatActivity {
         FragmentPagerAdapter adapter = new FragmentOrderListAdapter(getSupportFragmentManager(),fragments, new String[]{"今日任务", "未学成语","全部成语"});
         viewPager.setAdapter(adapter);
         tableLayout.setupWithViewPager(viewPager);
+
     }
     /**
      * 设置view

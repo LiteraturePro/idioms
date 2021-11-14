@@ -11,7 +11,7 @@
         android:layout_height="120dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/fragement_me_subscribe_bg_1">
+        android:background="@drawable/fragment_me_subscribe_bg_1">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -39,7 +39,7 @@
                 android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:text="已付款"
-                android:background="@drawable/fragement_me_subscribe_bg_2">
+                android:background="@drawable/fragment_me_subscribe_bg_2">
             </TextView>
 
         </LinearLayout>

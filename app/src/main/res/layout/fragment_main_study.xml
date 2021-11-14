@@ -21,7 +21,7 @@
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginStart="12dp"
-                android:src="@drawable/fragement_me_back">
+                android:src="@drawable/fragment_me_back">
             </ImageView>
         </LinearLayout>
         <LinearLayout
@@ -59,7 +59,7 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_study_bg1"
+                android:background="@drawable/fragment_main_study_bg1"
                 android:layout_height="60dp">
                 <LinearLayout
                     android:orientation="vertical"
@@ -144,7 +144,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:background="@drawable/fragement_main_study_bg2"
+                    android:background="@drawable/fragment_main_study_bg2"
                     android:layout_width="140dp"
                     android:layout_height="match_parent">
                     <LinearLayout
@@ -182,7 +182,7 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:background="@drawable/fragement_main_study_bg3_up"
+                    android:background="@drawable/fragment_main_study_bg3_up"
                     android:layout_height="150dp">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -225,7 +225,7 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:background="@drawable/fragement_main_study_bg3_down"
+                    android:background="@drawable/fragment_main_study_bg3_down"
                     android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_marginTop="10dp"

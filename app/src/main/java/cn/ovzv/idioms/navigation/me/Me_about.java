@@ -29,7 +29,7 @@ public class Me_about extends AppCompatActivity {
         initViews();
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setImage(R.drawable.fragement_course_1)
+                .setImage(R.drawable.fragment_course_1)
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("Connect with us")
                 .addEmail("elmehdi.sakout@gmail.com")

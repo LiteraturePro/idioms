@@ -24,7 +24,7 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragement_main_news_bg1"
+                android:background="@drawable/fragment_main_news_bg1"
                 android:layout_height="match_parent">
 
                 <LinearLayout
@@ -54,7 +54,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            app:srcCompat="@drawable/fragement_me_cat" />
+                            app:srcCompat="@drawable/fragment_me_cat" />
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_marginTop="10dp"
@@ -103,7 +103,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:src="@drawable/fragement_me_cat">
+                        android:src="@drawable/fragment_me_cat">
                     </ImageView>
                 </LinearLayout>
             </LinearLayout>

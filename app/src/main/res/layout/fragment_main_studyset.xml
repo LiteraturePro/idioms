@@ -15,7 +15,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@drawable/fragement_main_bg2"
+        android:background="@drawable/fragment_main_bg2"
         android:layout_height="120dp">
         <LinearLayout
             android:layout_width="120dp"
@@ -96,7 +96,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:background="@drawable/fragement_main_bg2"
+        android:background="@drawable/fragment_main_bg2"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"

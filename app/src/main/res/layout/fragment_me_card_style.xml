@@ -10,7 +10,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_height="10dp"
-        android:background="@drawable/fragement_me_card_bgup">
+        android:background="@drawable/fragment_me_card_bgup">
 
     </LinearLayout>
     <LinearLayout
@@ -19,7 +19,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/fragement_me_card_bgdowm">
+        android:background="@drawable/fragment_me_card_bgdowm">
         <LinearLayout
             android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:textSize="11sp"
                 android:text="限相关课程"
-                android:background="@drawable/fragement_me_card_bg_1">
+                android:background="@drawable/fragment_me_card_bg_1">
 
             </TextView>
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:gravity="center"
-                android:src="@drawable/fragement_me_card_monery">
+                android:src="@drawable/fragment_me_card_monery">
 
             </ImageView>
             <TextView
@@ -92,7 +92,7 @@
                 android:gravity="center"
                 android:textSize="11sp"
                 android:text="未使用"
-                android:background="@drawable/fragement_me_card_bg_1">
+                android:background="@drawable/fragment_me_card_bg_1">
 
             </TextView>
 

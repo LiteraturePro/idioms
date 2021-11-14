@@ -17,6 +17,7 @@ import cn.ovzv.idioms.navigation.main.Main_fun;
 import cn.ovzv.idioms.navigation.main.Main_game1;
 import cn.ovzv.idioms.navigation.main.Main_game2;
 import cn.ovzv.idioms.navigation.main.Main_game3;
+import cn.ovzv.idioms.navigation.main.Main_news;
 import cn.ovzv.idioms.navigation.main.Main_study;
 import cn.ovzv.idioms.navigation.main.Main_studyset;
 import cn.ovzv.idioms.navigation.main.Main_words;
@@ -28,10 +29,8 @@ import cn.ovzv.idioms.navigation.main.Main_words;
  */
 public class Main extends Fragment {
 
-    private TextView Studyset,Couplet,Fun;
+    private TextView Studyset,Couplet,Fun,News;
     private Button Words,Study,Game1,Game2,Game3;
-
-
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -161,7 +160,14 @@ public class Main extends Fragment {
             }
         });
 
-
-
+        // 新闻详情
+        News = (TextView) getActivity().findViewById(R.id.news1);
+        News.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_news.class);
+                startActivity(intent);
+            }
+        });
     }
 }

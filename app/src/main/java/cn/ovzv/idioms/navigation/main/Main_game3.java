@@ -1,12 +1,10 @@
 package cn.ovzv.idioms.navigation.main;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import cn.ovzv.idioms.R;
 public class Main_game3 extends AppCompatActivity {

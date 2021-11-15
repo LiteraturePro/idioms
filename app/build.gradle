@@ -58,9 +58,17 @@ dependencies {
 
     implementation 'de.hdodenhof:circleimageview:2.1.0'
 
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
-    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // 友盟统计SDK
+    implementation  'com.umeng.umsdk:common:9.4.4'// 必选
+    implementation  'com.umeng.umsdk:asms:1.4.1'// 必选
+
+    implementation  'com.umeng.umsdk:abtest:1.0.0'//使用U-App中ABTest能力，可选
+
+    implementation 'com.umeng.umsdk:apm:1.5.2' // U-APM包依赖(必选)
 
 
 }

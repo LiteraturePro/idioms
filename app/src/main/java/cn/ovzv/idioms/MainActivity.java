@@ -10,6 +10,9 @@ import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import com.next.easynavigation.view.EasyNavigationBar;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 初始化SDK appkey在官方注册应用即可获取
+        UMConfigure.init(this, "6191b9f9e014255fcb786568", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, null);
+        // 选用AUTO页面采集模式，如果是在AUTO页面采集模式下，则需要注意，所有Activity中都不能调用MobclickAgent.onResume和onPause方法
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+
+
+
 
         navigationBar = (EasyNavigationBar) findViewById(R.id.easy_bars);
         //创建handler

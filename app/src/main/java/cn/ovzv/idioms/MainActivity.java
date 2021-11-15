@@ -7,11 +7,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import com.next.easynavigation.view.EasyNavigationBar;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
+import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.message.PushAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         UMConfigure.init(this, "6191b9f9e014255fcb786568", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, null);
         // 选用AUTO页面采集模式，如果是在AUTO页面采集模式下，则需要注意，所有Activity中都不能调用MobclickAgent.onResume和onPause方法
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
-
 
 
 
@@ -86,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             .navigationHeight(50)  //导航栏高度
                             .lineHeight(10)         //分割线高度  默认1px
                             .lineColor(Color.parseColor("#F5F5F5"))
-                            .centerLayoutRule(EasyNavigationBar.RULE_BOTTOM) //RULE_CENTER 加号居中addLayoutHeight调节位置 EasyNavigationBar.RULE_BOTTOM 加号在导航栏靠下
                             .build();
                 }
             }

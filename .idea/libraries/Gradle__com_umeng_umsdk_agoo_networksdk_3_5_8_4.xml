@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.umeng.umsdk:agoo_networksdk:3.5.8.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/agoo_networksdk/3.5.8.4/489f265612e67162a84bb0731189e07cf1872535/agoo_networksdk-3.5.8.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/agoo_networksdk/3.5.8.4/afa972a37e7486ee21f341a12d57ce5a390b805e/agoo_networksdk-3.5.8.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/agoo_networksdk/3.5.8.4/ce82754a33ff96f8e720db5f8177d05556b3385f/agoo_networksdk-3.5.8.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

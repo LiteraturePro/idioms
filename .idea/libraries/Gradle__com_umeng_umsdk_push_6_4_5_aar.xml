@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.umeng.umsdk:push:6.4.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bb9308fa02338889ecb1a3185482fb1a/transformed/jetified-push-6.4.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bb9308fa02338889ecb1a3185482fb1a/transformed/jetified-push-6.4.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bb9308fa02338889ecb1a3185482fb1a/transformed/jetified-push-6.4.5/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

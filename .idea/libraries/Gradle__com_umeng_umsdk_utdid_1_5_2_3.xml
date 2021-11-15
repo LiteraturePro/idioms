@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.umeng.umsdk:utdid:1.5.2.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/utdid/1.5.2.3/e7204cf443e06fb31c39b6bb9d277c2609f792da/utdid-1.5.2.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/utdid/1.5.2.3/8ca747470fb8b3669bebc77d0c287be3a0d54ff1/utdid-1.5.2.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/utdid/1.5.2.3/8ca747470fb8b3669bebc77d0c287be3a0d54ff1/utdid-1.5.2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

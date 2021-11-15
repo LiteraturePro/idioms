@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.umeng.umsdk:agoo-accs:3.4.2.7.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/agoo-accs/3.4.2.7.1/ff7ae233466612940476842051b69ae86f0e8699/agoo-accs-3.4.2.7.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/agoo-accs/3.4.2.7.1/eebdc98d3b9c3eab4d5d5574411c4f7e98016a62/agoo-accs-3.4.2.7.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.umsdk/agoo-accs/3.4.2.7.1/eebdc98d3b9c3eab4d5d5574411c4f7e98016a62/agoo-accs-3.4.2.7.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

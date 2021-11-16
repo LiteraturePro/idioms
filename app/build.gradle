@@ -82,5 +82,13 @@ dependencies {
     implementation 'com.umeng.umsdk:agoo_networksdk:3.5.8'
     implementation 'com.umeng.umsdk:agoo_tnet4android:3.1.14.10'
 
+    // Leancloud 后端服务
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    // 数据储存
+    implementation 'cn.leancloud:storage-android:8.1.5'
+
+    // 即时通讯/推送
+    implementation 'cn.leancloud:realtime-android:8.1.5'
+
 
 }

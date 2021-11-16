@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.leancloud:storage-core:8.1.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.leancloud/storage-core/8.1.5/9f6f773371341ebbe894de8e5b6fc33ac435e3a6/storage-core-8.1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.leancloud/storage-core/8.1.5/b9ab18b4d911680def1ac3de33424ea4f01afc7d/storage-core-8.1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.leancloud/storage-core/8.1.5/fa2bb56e71fbf7f9dfd9e34a05ce3c475d2ab21d/storage-core-8.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

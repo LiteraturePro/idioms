@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.leancloud:realtime-android:8.1.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.leancloud/realtime-android/8.1.5/f4970f5fed73e6f1bc913573ace1f422024ff8cf/realtime-android-8.1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.leancloud/realtime-android/8.1.5/fc475c239012660fd78d9d49e2859c3becebbe36/realtime-android-8.1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.leancloud/realtime-android/8.1.5/f71bd341587b47a583c8e56a3ed500cce319be6e/realtime-android-8.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

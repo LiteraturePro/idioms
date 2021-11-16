@@ -3,6 +3,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,12 +15,15 @@ import android.widget.ImageView;
 import com.next.easynavigation.view.EasyNavigationBar;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
-import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.commonsdk.utils.UMUtils;
 import com.umeng.message.PushAgent;
-
+import com.umeng.message.api.UPushRegisterCallback;
 import java.util.ArrayList;
 import java.util.List;
-
+import cn.leancloud.LCLogger;
+import cn.leancloud.LeanCloud;
+import cn.ovzv.idioms.api.LeancloudApi;
+import cn.ovzv.idioms.help.PushHelper;
 import cn.ovzv.idioms.navigation.Course;
 import cn.ovzv.idioms.navigation.Main;
 import cn.ovzv.idioms.navigation.Me;
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EasyNavigationBar navigationBar;
     private List<Fragment> fragmentList = new ArrayList<>();
     private Handler handler;
+    private LeancloudApi leancloudApi;
 
     private String[] tabText = {"首页","课程","学习","我的"};
     private int[] normalIcon = {R.drawable.fragment_main_1,R.drawable.fragment_course_1,R.drawable.fragment_study_1,R.drawable.fragment_me_1};
@@ -41,10 +47,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 调试模式，在 LeanCloud.initialize() 之前调用
+        LeanCloud.setLogLevel(LCLogger.Level.DEBUG);
+        // 在 AVOSCloud.initialize 之前调用
+        // 可选的节点有：
+        //    REGION.NorthChina - 华北节点，默认节点
+        //    REGION.EastChina  - 华东节点
+        //    REGION.NorthAmerica - 北美节点
+        LeanCloud.setRegion(LeanCloud.REGION.EastChina);
+
+        // 初始化 Leancloud SDK
+        LeanCloud.initialize(this, leancloudApi.APP_ID,leancloudApi.APP_KEY, leancloudApi.REST_API);
+
         // 初始化SDK appkey在官方注册应用即可获取
         UMConfigure.init(this, "6191b9f9e014255fcb786568", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, null);
         // 选用AUTO页面采集模式，如果是在AUTO页面采集模式下，则需要注意，所有Activity中都不能调用MobclickAgent.onResume和onPause方法
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+
+        initUmengSDK();
+
+        if (hasAgreedAgreement()) {
+            PushAgent.getInstance(this).onAppStart();
+            String deviceToken = PushAgent.getInstance(this).getRegistrationId();
+//            TextView token = findViewById(R.id.tv_device_token);
+//            token.setText(deviceToken);
+            Log.d("deviceToken=", deviceToken);
+        } else {
+            showAgreementDialog();
+        }
 
 
 
@@ -112,6 +142,78 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 handler.sendMessage(message);
             }
         }).start();
+    }
+
+    private boolean hasAgreedAgreement() {
+        return PushPreferences.getInstance(this).hasAgreePrivacyAgreement();
+    }
+    private void showAgreementDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.agreement_title);
+        builder.setMessage(R.string.agreement_msg);
+        builder.setPositiveButton(R.string.agreement_ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                //用户点击隐私协议同意按钮后，初始化PushSDK
+                PushPreferences.getInstance(getApplicationContext()).setAgreePrivacyAgreement(true);
+                PushHelper.init(getApplicationContext());
+                PushAgent.getInstance(getApplicationContext()).register(new UPushRegisterCallback() {
+                    @Override
+                    public void onSuccess(final String deviceToken) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+//                                TextView token = findViewById(R.id.tv_device_token);
+//                                token.setText(deviceToken);
+                                Log.d("deviceToken=", deviceToken);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(String code, String msg) {
+                        Log.d("MainActivity", "code:" + code + " msg:" + msg);
+                    }
+                });
+            }
+        });
+        builder.setNegativeButton(R.string.agreement_cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+        builder.create().show();
+    }
+
+    /**
+     * 初始化友盟SDK
+     */
+    private void initUmengSDK() {
+        //日志开关
+        UMConfigure.setLogEnabled(true);
+        //预初始化
+        PushHelper.preInit(this);
+        //是否同意隐私政策
+        boolean agreed = PushPreferences.getInstance(this).hasAgreePrivacyAgreement();
+        if (!agreed) {
+            return;
+        }
+        boolean isMainProcess = UMUtils.isMainProgress(this);
+        if (isMainProcess) {
+            //启动优化：建议在子线程中执行初始化
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    PushHelper.init(getApplicationContext());
+                }
+            }).start();
+        } else {
+            //若不是主进程（":channel"结尾的进程），直接初始化sdk，不可在子线程中执行
+            PushHelper.init(getApplicationContext());
+        }
     }
 
     @Override

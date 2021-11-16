@@ -8,10 +8,10 @@
         android:id="@+id/sideslipListView"
         android:scrollingCache="false"
         android:cacheColorHint="#00000000"
-        android:divider="#ffeeeeee"
+        android:divider="#e7eded"
         android:dividerHeight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
     </cn.ovzv.idioms.help.SideslipListView>
 
 </FrameLayout>

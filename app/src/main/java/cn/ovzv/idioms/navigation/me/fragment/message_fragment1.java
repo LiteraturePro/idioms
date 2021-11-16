@@ -34,7 +34,7 @@ public class message_fragment1 extends Fragment {
      */
     private ArrayList<String> mDataList = new ArrayList<String>() {
         {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 2; i++) {
                 add("ListView item  " + i);
             }
         }

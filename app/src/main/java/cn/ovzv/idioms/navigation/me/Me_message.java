@@ -31,8 +31,6 @@ public class Me_message extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_me_message);
-
-
         initView();
 
         tableLayout = findViewById(R.id.order_tab);

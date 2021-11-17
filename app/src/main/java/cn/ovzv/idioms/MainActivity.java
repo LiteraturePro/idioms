@@ -12,6 +12,9 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.next.easynavigation.view.EasyNavigationBar;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -46,6 +49,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //
+        // 将“12345678”替换成您申请的APPID，申请地址：http://www.xfyun.cn
+        // 请勿在“=”与appid之间添加任何空字符或者转义符
+        SpeechUtility.createUtility(getApplicationContext(), SpeechConstant.APPID +"=8b071f83");
 
         // 调试模式，在 LeanCloud.initialize() 之前调用
         LeanCloud.setLogLevel(LCLogger.Level.DEBUG);

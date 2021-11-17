@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.umeng.commonsdk.debug.I;
+
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.navigation.me.Me_about;
 import cn.ovzv.idioms.navigation.me.Me_card;
@@ -17,6 +19,7 @@ import cn.ovzv.idioms.navigation.me.Me_collection;
 import cn.ovzv.idioms.navigation.me.Me_feedback;
 import cn.ovzv.idioms.navigation.me.Me_footprint;
 import cn.ovzv.idioms.navigation.me.Me_message;
+import cn.ovzv.idioms.navigation.me.Me_mine;
 import cn.ovzv.idioms.navigation.me.Me_setting;
 import cn.ovzv.idioms.navigation.me.Me_subscribe;
 
@@ -27,7 +30,7 @@ import cn.ovzv.idioms.navigation.me.Me_subscribe;
  */
 public class Me extends Fragment {
 
-    private ImageView mImageView_1,mImageView_2,mImageView_3,mImageView_4,mImageView_5,mImageView_6,mImageView_7,mImageView_8;
+    private ImageView Me,mImageView_1,mImageView_2,mImageView_3,mImageView_4,mImageView_5,mImageView_6,mImageView_7,mImageView_8;
 
 
 
@@ -83,7 +86,7 @@ public class Me extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
-
+        Me = (ImageView) getActivity().findViewById(R.id.me);
         mImageView_1 = (ImageView)getActivity().findViewById(R.id.circleImageView1);
         mImageView_2 = (ImageView)getActivity().findViewById(R.id.circleImageView2);
         mImageView_3 = (ImageView)getActivity().findViewById(R.id.circleImageView3);
@@ -93,6 +96,13 @@ public class Me extends Fragment {
         mImageView_7 = (ImageView)getActivity().findViewById(R.id.circleImageView7);
         mImageView_8 = (ImageView)getActivity().findViewById(R.id.circleImageView8);
 
+        Me.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Me_mine.class);
+                startActivity(intent);
+            }
+        });
         mImageView_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

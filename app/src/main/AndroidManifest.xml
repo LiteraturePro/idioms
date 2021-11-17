@@ -11,23 +11,34 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 以下为需要的基本权限，需要自行添加至您的AndroidManifest文件中 start -->
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- 以下为需要的基本权限，需要自行添加至您的AndroidManifest文件中 start-->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED"/>
-    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED"/>
-    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL"/>
-    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <!-- 以下为需要的基本权限，需要自行添加至您的AndroidManifest文件中 end-->
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 连接网络权限，用于执行云端语音能力 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 读取网络信息状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取当前wifi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序改变网络连接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 读取手机信息权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 读取联系人权限，上传联系人需要用到此权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 外存储写权限，构建语法需要用到此权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 外存储读权限，构建语法需要用到此权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 配置权限，用来记录应用配置信息 -->
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" /> <!-- 手机定位信息，用来为语义等功能提供定位，提供更精准的服务 -->
+    <!-- 定位信息是敏感信息，可通过Setting.setLocationEnable(false)关闭定位请求 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 如需使用人脸识别，还要添加：摄相头权限，拍照需要用到 -->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application xmlns:tools="http://schemas.android.com/tools"
         android:allowBackup="true"
@@ -38,14 +49,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Idioms"
         tools:replace="android:theme">
+        <activity
+            android:name=".tts"
+            android:exported="false" />
+        <activity
+            android:name=".navigation.me.Me_mine"
+            android:exported="false" />
+
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="6191b9f9e014255fcb786568">
-        </meta-data>
+            android:value="6191b9f9e014255fcb786568" />
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
-            android:value="7046367c9c1456d2553313f4f8d753f1">
-        </meta-data>
+            android:value="7046367c9c1456d2553313f4f8d753f1" />
+
         <activity
             android:name=".navigation.main.Main_news"
             android:exported="false" />
@@ -106,73 +123,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 关闭自启动 Start -->
-        <!--        <receiver android:name="com.taobao.accs.EventReceiver">-->
-        <!--            &lt;!&ndash;低版本机型自启动相关可删除&ndash;&gt;-->
-        <!--            <intent-filter tools:node="remove">-->
-        <!--                <action android:name="android.intent.action.BOOT_COMPLETED" />-->
-        <!--            </intent-filter>-->
-        <!--            <intent-filter tools:node="remove">-->
-        <!--                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
-        <!--            </intent-filter>-->
-        <!--            <intent-filter tools:node="remove">-->
-        <!--                <action android:name="android.intent.action.PACKAGE_REMOVED" />-->
-        <!--                <data android:scheme="package" />-->
-        <!--            </intent-filter>-->
-        <!--        </receiver>-->
-        <!--        <receiver android:name="com.taobao.agoo.AgooCommondReceiver">-->
-        <!--            &lt;!&ndash;低版本机型自启动相关可删除&ndash;&gt;-->
-        <!--            <intent-filter tools:node="remove">-->
-        <!--                <action android:name="android.intent.action.PACKAGE_REMOVED" />-->
-        <!--                <data android:scheme="package" />-->
-        <!--            </intent-filter>-->
-        <!--        </receiver>-->
-        <!-- 关闭自启动 End -->
-
-        <!-- 关闭Service拉活功能，将所有推送相关的Service和BroadcastReceiver组件设置为android:exported="false"即可-->
-        <!-- U-Push关闭Service拉活功能 Start -->
-        <!--        <service-->
-        <!--            android:name="com.taobao.accs.ChannelService"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-
-        <!--        <service-->
-        <!--            android:name="com.taobao.accs.data.MsgDistributeService"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-
-        <!--        <receiver-->
-        <!--            android:name="com.taobao.accs.EventReceiver"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-
-        <!--        <receiver-->
-        <!--            android:name="com.taobao.accs.ServiceReceiver"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-
-        <!--        <service-->
-        <!--            android:name="org.android.agoo.accs.AgooService"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-        <!--        <service-->
-        <!--            android:name="com.umeng.message.UmengIntentService"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-        <!--        <service-->
-        <!--            android:name="com.umeng.message.XiaomiIntentService"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-
-        <!--        <receiver-->
-        <!--            android:name="com.taobao.agoo.AgooCommondReceiver"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-        <!--        <service-->
-        <!--            android:name="com.umeng.message.UmengMessageIntentReceiverService"-->
-        <!--            android:exported="false"-->
-        <!--            tools:replace="android:exported" />-->
-        <!-- U-Push关闭Service拉活功能 End -->
     </application>
 
 </manifest>

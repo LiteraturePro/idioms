@@ -5,13 +5,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechSynthesizer;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +25,14 @@ import cn.ovzv.idioms.adapter.FragmentOrderListAdapter;
 import cn.ovzv.idioms.navigation.main.fragment.words_fragment1;
 import cn.ovzv.idioms.navigation.main.fragment.words_fragment2;
 import cn.ovzv.idioms.navigation.main.fragment.words_fragment3;
+import cn.ovzv.idioms.tts;
 
 public class Main_words extends AppCompatActivity {
     private ImageView mImageView;
 
     private TabLayout tableLayout;
     private ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

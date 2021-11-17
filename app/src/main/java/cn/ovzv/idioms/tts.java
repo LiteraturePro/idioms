@@ -1,23 +1,23 @@
-package cn.ovzv.idioms.navigation.main.fragment;
+package cn.ovzv.idioms;
 
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 import com.iflytek.cloud.ErrorCode;
@@ -28,36 +28,15 @@ import com.iflytek.cloud.SpeechEvent;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SynthesizerListener;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
 
-import cn.ovzv.idioms.R;
-import cn.ovzv.idioms.help.SideslipListView;
 import cn.ovzv.idioms.help.TtsSettings;
-import cn.ovzv.idioms.tts;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link words_fragment1#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class words_fragment1 extends Fragment {
-
-    private SideslipListView mSideslipListView;
-    /**
-     * 初始化数据
-     */
-    private ArrayList<String> mDataList = new ArrayList<String>() {
-        {
-            for (int i = 0; i < 10; i++) {
-                add("大海捞针 " + i);
-            }
-        }
-    };
-
+public class tts extends Activity implements OnClickListener {
     private static String TAG = tts.class.getSimpleName();
     // 语音合成对象
     private SpeechSynthesizer mTts;
@@ -83,76 +62,71 @@ public class words_fragment1 extends Fragment {
     private SharedPreferences mSharedPreferences;
     private File pcmFile;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_tts);
+        texts = getResources().getString(R.string.text_tts_source);
+        initLayout();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public words_fragment1() {
-        // Required empty public constructor
+        // 初始化合成对象
+        mTts = SpeechSynthesizer.createSynthesizer(tts.this, mTtsInitListener);
+
+        // 云端发音人名称列表
+        mCloudVoicersEntries = getResources().getStringArray(R.array.voicer_cloud_entries);
+        mCloudVoicersValue = getResources().getStringArray(R.array.voicer_cloud_values);
+        mSharedPreferences = getSharedPreferences(TtsSettings.PREFER_NAME, MODE_PRIVATE);
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment words_fragment1.
+     * 初始化Layout。
      */
-    // TODO: Rename and change types and number of parameters
-    public static words_fragment1 newInstance(String param1, String param2) {
-        words_fragment1 fragment = new words_fragment1();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private void initLayout() {
+        findViewById(R.id.tts_play).setOnClickListener(tts.this);
+        findViewById(R.id.tts_cancel).setOnClickListener(tts.this);
+        findViewById(R.id.tts_pause).setOnClickListener(tts.this);
+        findViewById(R.id.tts_resume).setOnClickListener(tts.this);
+        findViewById(R.id.image_tts_set).setOnClickListener(tts.this);
+        findViewById(R.id.tts_btn_person_select).setOnClickListener(tts.this);
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+        mRadioGroup = ((RadioGroup) findViewById(R.id.tts_rediogroup));
+        mRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main_words_fragment1, container, false);
-
-        mSideslipListView = (SideslipListView) view.findViewById(R.id.sideslipListView);
-        mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
-
-        // 初始化合成对象
-        mTts = SpeechSynthesizer.createSynthesizer(getActivity().getApplicationContext(), mTtsInitListener);
-        mSharedPreferences = getActivity().getSharedPreferences(TtsSettings.PREFER_NAME, getActivity().MODE_PRIVATE);
-
-
-
-
-        //设置item点击事件
-        mSideslipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mSideslipListView.isAllowItemClick()) {
-                    Log.d(TAG, mDataList.get(position) + "被点击了");
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.tts_radioCloud:
+                        mEngineType = SpeechConstant.TYPE_CLOUD;
+                        break;
+                    default:
+                        break;
+                }
 
-                    pcmFile = new File(getActivity().getExternalCacheDir().getAbsolutePath(), "tts_pcmFile.pcm");
-                    pcmFile.delete();
-                    //texts = ((EditText) getActivity().findViewById(R.id.tts_text)).getText().toString();
-                    // 设置参数
-                    setParam();
-                    // 合成并播放
-                    int code = mTts.startSpeaking(mDataList.get(position) , mTtsListener);
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (null == mTts) {
+            // 创建单例失败，与 21001 错误为同样原因，参考 http://bbs.xfyun.cn/forum.php?mod=viewthread&tid=9688
+            this.showTip("创建对象失败，请确认 libmsc.so 放置正确，且有调用 createUtility 进行初始化");
+            return;
+        }
+
+        switch (view.getId()) {
+            // 开始合成
+            // 收到onCompleted 回调时，合成结束、生成合成音频
+            // 合成的音频格式：只支持pcm格式
+            case R.id.tts_play:
+                pcmFile = new File(getExternalCacheDir().getAbsolutePath(), "tts_pcmFile.pcm");
+                pcmFile.delete();
+                texts = ((EditText) findViewById(R.id.tts_text)).getText().toString();
+                // 设置参数
+                setParam();
+                // 合成并播放
+                int code = mTts.startSpeaking(texts, mTtsListener);
 //			/**
 //			 * 只保存音频不进行播放接口,调用此接口请注释startSpeaking接口
 //			 * text:要合成的文本，uri:需要保存的音频全路径，listener:回调接口
@@ -161,55 +135,59 @@ public class words_fragment1 extends Fragment {
 //                //  synthesizeToUri 只保存音频不进行播放
 //                int code = mTts.synthesizeToUri(texts, path, mTtsListener);
 
-                    if (code != ErrorCode.SUCCESS) {
-                        showTip("语音合成失败,错误码: " + code + ",请点击网址https://www.xfyun.cn/document/error-code查询解决方案");
-                    }
-
-
+                if (code != ErrorCode.SUCCESS) {
+                    showTip("语音合成失败,错误码: " + code + ",请点击网址https://www.xfyun.cn/document/error-code查询解决方案");
                 }
-            }
-        });
-        return view;
+                break;
+            // 取消合成
+            case R.id.tts_cancel:
+                mTts.stopSpeaking();
+                break;
+            // 暂停播放
+            case R.id.tts_pause:
+                mTts.pauseSpeaking();
+                break;
+            // 继续播放
+            case R.id.tts_resume:
+                mTts.resumeSpeaking();
+                break;
+            // 选择发音人
+            case R.id.tts_btn_person_select:
+                showPersonSelectDialog();
+                break;
+        }
     }
+
+    private int selectedNum = 0;
 
     /**
-     * 自定义ListView适配器
+     * 发音人选择。
      */
-    class CustomAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            return mDataList.size();
+    private void showPersonSelectDialog() {
+        switch (mRadioGroup.getCheckedRadioButtonId()) {
+            // 选择在线合成
+            case R.id.tts_radioCloud:
+                new AlertDialog.Builder(this).setTitle("在线合成发音人选项")
+                        .setSingleChoiceItems(mCloudVoicersEntries, // 单选框有几项,各是什么名字
+                                selectedNum, // 默认的选项
+                                new DialogInterface.OnClickListener() { // 点击单选框后的处理
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) { // 点击了哪一项
+                                        voicer = mCloudVoicersValue[which];
+                                        if ("catherine".equals(voicer) || "henry".equals(voicer) || "vimary".equals(voicer)) {
+                                            ((EditText) findViewById(R.id.tts_text)).setText(R.string.text_tts_source_en);
+                                        } else {
+                                            ((EditText) findViewById(R.id.tts_text)).setText(R.string.text_tts_source);
+                                        }
+                                        selectedNum = which;
+                                        dialog.dismiss();
+                                    }
+                                }).show();
+                break;
+
+            default:
+                break;
         }
-
-        @Override
-        public Object getItem(int position) {
-            return mDataList.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder viewHolder;
-            if (null == convertView) {
-                convertView = View.inflate(getContext(), R.layout.fragment_main_words_style, null);
-                viewHolder = new ViewHolder();
-                viewHolder.textView = (TextView) convertView.findViewById(R.id.words);
-                convertView.setTag(viewHolder);
-            } else {
-                viewHolder = (ViewHolder) convertView.getTag();
-            }
-            viewHolder.textView.setText(mDataList.get(position));
-
-            return convertView;
-        }
-    }
-
-    class ViewHolder {
-        public TextView textView;
     }
 
     /**
@@ -270,7 +248,7 @@ public class words_fragment1 extends Fragment {
             SpannableStringBuilder style = new SpannableStringBuilder(texts);
             Log.e(TAG, "beginPos = " + beginPos + "  endPos = " + endPos);
             style.setSpan(new BackgroundColorSpan(Color.RED), beginPos, endPos, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            ((EditText) getActivity().findViewById(R.id.tts_text)).setText(style);
+            ((EditText) findViewById(R.id.tts_text)).setText(style);
         }
 
         @Override
@@ -302,11 +280,11 @@ public class words_fragment1 extends Fragment {
     };
 
     private void showTip(final String str) {
-        getActivity().runOnUiThread(() -> {
+        runOnUiThread(() -> {
             if (mToast != null) {
                 mToast.cancel();
             }
-            mToast = Toast.makeText(getActivity().getApplicationContext(), str, Toast.LENGTH_SHORT);
+            mToast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT);
             mToast.show();
         });
     }
@@ -329,11 +307,11 @@ public class words_fragment1 extends Fragment {
             // 设置在线合成发音人
             mTts.setParameter(SpeechConstant.VOICE_NAME, voicer);
             //设置合成语速
-            mTts.setParameter(SpeechConstant.SPEED, mSharedPreferences.getString("speed_preference", "60"));
+            mTts.setParameter(SpeechConstant.SPEED, mSharedPreferences.getString("speed_preference", "50"));
             //设置合成音调
             mTts.setParameter(SpeechConstant.PITCH, mSharedPreferences.getString("pitch_preference", "50"));
             //设置合成音量
-            mTts.setParameter(SpeechConstant.VOLUME, mSharedPreferences.getString("volume_preference", "80"));
+            mTts.setParameter(SpeechConstant.VOLUME, mSharedPreferences.getString("volume_preference", "50"));
         } else {
             mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_LOCAL);
             mTts.setParameter(SpeechConstant.VOICE_NAME, "");
@@ -348,11 +326,11 @@ public class words_fragment1 extends Fragment {
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         mTts.setParameter(SpeechConstant.AUDIO_FORMAT, "pcm");
         mTts.setParameter(SpeechConstant.TTS_AUDIO_PATH,
-                getActivity().getExternalFilesDir("msc").getAbsolutePath() + "/tts.pcm");
+                getExternalFilesDir("msc").getAbsolutePath() + "/tts.pcm");
     }
 
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         if (null != mTts) {
             mTts.stopSpeaking();
             // 退出时释放连接
@@ -360,6 +338,7 @@ public class words_fragment1 extends Fragment {
         }
         super.onDestroy();
     }
+
 
     /**
      * 给file追加数据
@@ -377,4 +356,5 @@ public class words_fragment1 extends Fragment {
             e.printStackTrace();
         }
     }
+
 }

@@ -22,7 +22,7 @@ public class SideslipListView extends ListView {
     private int mDownY;//手指初次按下的Y坐标
 
     private int mPointPosition;//手指按下位置所在的item位置
-    private boolean isAllowItemClick;//是否允许item点击
+    private boolean isAllowItemClick = true;//是否允许item点击
 
     public SideslipListView(Context context) {
         super(context);

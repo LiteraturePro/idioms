@@ -38,6 +38,7 @@
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragment_main_studyset_switch_ios_track_selector.xml" value="0.23333333333333334" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragment_main_words_bg.xml" value="0.23333333333333334" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragment_me_card_bg_1.xml" value="0.23022222222222222" />
+        <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragment_me_mine_line.xml" value="0.26564102564102565" />
         <entry key="..\:/Github/idioms/app/src/main/res/drawable/fragment_progressbar_ct.xml" value="0.23333333333333334" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/Navigation/fragment_main.xml" value="0.3233695652173913" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/Navigation/layout/fragment_course.xml" value="0.19895833333333332" />
@@ -46,6 +47,7 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/Navigation/layout/fragment_study.xml" value="0.19895833333333332" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_main.xml" value="0.175" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_me_message.xml" value="0.31666666666666665" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_tts.xml" value="0.140625" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragement__me_feedback.xml" value="0.31666666666666665" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragement_me.xml" value="0.264" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragement_me_about.xml" value="0.31666666666666665" />
@@ -93,6 +95,8 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message_fragment1.xml" value="0.15855855855855855" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message_fragment2.xml" value="0.15855855855855855" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message_style.xml" value="0.2318840579710145" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_mine.xml" value="0.264" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_setting.xml" value="0.17798913043478262" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_subscribe.xml" value="0.15855855855855855" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_subscribe_fragment1.xml" value="0.15855855855855855" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_subscribe_fragment2.xml" value="0.15855855855855855" />
@@ -106,6 +110,7 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/item.xml" value="0.15855855855855855" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/navigation/layout/fragment_course.xml" value="0.19895833333333332" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/navigation/layout/fragment_study.xml" value="0.19895833333333332" />
+        <entry key="..\:/Github/idioms/app/src/main/res/xml/tts_setting.xml" value="0.18854166666666666" />
       </map>
     </option>
   </component>

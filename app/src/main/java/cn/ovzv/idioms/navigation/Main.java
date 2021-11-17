@@ -21,6 +21,7 @@ import cn.ovzv.idioms.navigation.main.Main_news;
 import cn.ovzv.idioms.navigation.main.Main_study;
 import cn.ovzv.idioms.navigation.main.Main_studyset;
 import cn.ovzv.idioms.navigation.main.Main_words;
+import cn.ovzv.idioms.tts;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,7 +100,7 @@ public class Main extends Fragment {
         Words.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),Main_words.class);
+                Intent intent = new Intent(getActivity(), Main_words.class);
                 startActivity(intent);
             }
         });

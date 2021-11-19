@@ -6,16 +6,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+import cn.leancloud.LCCloud;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.SideslipListView;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class Me_card extends AppCompatActivity {
     private TextView mTextView;
@@ -25,53 +27,39 @@ public class Me_card extends AppCompatActivity {
     /**
      * 初始化数据
      */
-    private ArrayList<String> mDataList = new ArrayList<String>() {
-        {
-            for (int i = 0; i < 5; i++) {
-                add("ListView item  " + i);
-            }
-        }
-    };
+    private JSONArray DataJSONArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_me_card);
-
-
         initView();
 
+        /** 设置请求参数*/
+        Map<String, Object> dicParameters = new HashMap<>();
+        dicParameters.put("UserID", "system" );
+        /** 调用云函数*/
+        LCCloud.callFunctionInBackground("Card_Get", dicParameters).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable disposable) {
 
-        mSideslipListView = (SideslipListView) findViewById(R.id.sideslipListView);
-        mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
-//        //设置item点击事件
-//        mSideslipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if (mSideslipListView.isAllowItemClick()) {
-//                    Log.i(TAG, mDataList.get(position) + "被点击了");
-//                    Toast.makeText(Me_card.this, mDataList.get(position) + "被点击了",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//        //设置item长按事件
-//        mSideslipListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                if (mSideslipListView.isAllowItemClick()) {
-//                    Log.i(TAG, mDataList.get(position) + "被长按了");
-//                    Toast.makeText(Me_card.this, mDataList.get(position) + "被长按了",
-//                            Toast.LENGTH_SHORT).show();
-//                    return true;//返回true表示本次事件被消耗了，若返回
-//                }
-//                return false;
-//            }
-//        });
-
-
-
-
+            }
+            @Override
+            public void onNext(Object object) {
+                JSONObject json = (JSONObject) JSONObject.toJSON(object);
+                DataJSONArray = json.getJSONArray("data");
+            }
+            @Override
+            public void onError(Throwable throwable) {
+                // failed.
+                Log.d("error",throwable.toString());
+            }
+            @Override
+            public void onComplete() {
+                mSideslipListView = (SideslipListView) findViewById(R.id.sideslipListView);
+                mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
+            }
+        });
     }
     /**
      * 设置view
@@ -79,8 +67,6 @@ public class Me_card extends AppCompatActivity {
     public void initView(){
         mTextView = (TextView) findViewById(R.id.title);
         mTextView.setText("我的卡券");
-
-
         mImageView = (ImageView)findViewById(R.id.back);
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,12 +83,12 @@ public class Me_card extends AppCompatActivity {
     class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return mDataList.size();
+            return DataJSONArray.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return mDataList.get(position);
+            return DataJSONArray.get(position);
         }
 
         @Override
@@ -112,25 +98,32 @@ public class Me_card extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            JSONObject OneDate = DataJSONArray.getJSONObject(position);
             ViewHolder viewHolder;
             if (null == convertView) {
                 convertView = View.inflate(Me_card.this, R.layout.fragment_me_card_style, null);
                 viewHolder = new ViewHolder();
-//                viewHolder.textView = (TextView) convertView.findViewById(R.id.textView);
-//                viewHolder.txtv_delete = (TextView) convertView.findViewById(R.id.txtv_delete);
+                viewHolder.Used = (TextView) convertView.findViewById(R.id.used);
+                viewHolder.Quota = (TextView) convertView.findViewById(R.id.quota);
+                viewHolder.Time = (TextView) convertView.findViewById(R.id.time);
+                viewHolder.Course = (TextView) convertView.findViewById(R.id.course);
+                viewHolder.Limit = (TextView) convertView.findViewById(R.id.limit);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-//            viewHolder.textView.setText(mDataList.get(position));
+            viewHolder.Used.setText(OneDate.getString(""));
 
+            viewHolder.Limit.setText(OneDate.getString("Limit"));
+            viewHolder.Course.setText(OneDate.getString("Course"));
+            viewHolder.Quota.setText(OneDate.getString("Quota"));
+            viewHolder.Time.setText(OneDate.getString("Time"));
             return convertView;
         }
     }
 
     class ViewHolder {
-        public TextView textView;
-        public TextView txtv_delete;
+        public TextView Used,Quota,Time,Course,Limit;
     }
 
 }

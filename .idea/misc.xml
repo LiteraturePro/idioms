@@ -45,8 +45,10 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/Navigation/layout/fragment_main.xml" value="0.19895833333333332" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/Navigation/layout/fragment_me.xml" value="0.3484375" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/Navigation/layout/fragment_study.xml" value="0.19895833333333332" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_main.xml" value="0.175" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_me_message.xml" value="0.31666666666666665" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_register.xml" value="0.1296875" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/activity_tts.xml" value="0.140625" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragement__me_feedback.xml" value="0.31666666666666665" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragement_me.xml" value="0.264" />
@@ -84,7 +86,7 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_words_fragment2.xml" value="0.2028985507246377" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_words_fragment3.xml" value="0.2028985507246377" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_main_words_style.xml" value="0.4" />
-        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me.xml" value="0.33" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me.xml" value="0.176" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_about.xml" value="0.21936936936936938" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_card.xml" value="0.15855855855855855" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_card_style.xml" value="0.4" />
@@ -94,7 +96,7 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message.xml" value="0.2028985507246377" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message_fragment1.xml" value="0.15855855855855855" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message_fragment2.xml" value="0.15855855855855855" />
-        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message_style.xml" value="0.2318840579710145" />
+        <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_message_style.xml" value="0.4" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_mine.xml" value="0.264" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_setting.xml" value="0.17798913043478262" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/fragment_me_subscribe.xml" value="0.15855855855855855" />

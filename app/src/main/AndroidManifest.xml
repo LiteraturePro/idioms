@@ -50,19 +50,17 @@
         android:theme="@style/Theme.Idioms"
         tools:replace="android:theme">
         <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
             android:name=".tts"
             android:exported="false" />
         <activity
             android:name=".navigation.me.Me_mine"
             android:exported="false" />
-
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="6191b9f9e014255fcb786568" />
-        <meta-data
-            android:name="UMENG_MESSAGE_SECRET"
-            android:value="7046367c9c1456d2553313f4f8d753f1" />
-
         <activity
             android:name=".navigation.main.Main_news"
             android:exported="false" />
@@ -123,6 +121,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="6191b9f9e014255fcb786568" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="7046367c9c1456d2553313f4f8d753f1" />
     </application>
 
 </manifest>

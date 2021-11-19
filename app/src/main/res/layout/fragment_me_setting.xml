@@ -17,20 +17,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.codbking.view.ItemView
+                android:id="@+id/zhanghao"
                 android:layout_width="match_parent"
                 android:layout_height="40.0dip"
                 app:ItemView_type="activity"
                 app:ItemView_text="账号与安全" />
             <com.codbking.view.ItemView
+                android:id="@+id/requestPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="40.0dip"
                 app:ItemView_type="activity"
-                app:ItemView_text="测试" />
+                app:ItemView_text="修改密码" />
             <com.codbking.view.ItemView
+                android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:ItemView_type="activity"
-                app:ItemView_text="测试" />
+                app:ItemView_text="退出登录" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

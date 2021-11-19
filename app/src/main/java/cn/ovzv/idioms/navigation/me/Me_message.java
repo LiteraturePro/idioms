@@ -51,8 +51,6 @@ public class Me_message extends AppCompatActivity {
     public void initView(){
         mTextView = (TextView) findViewById(R.id.title);
         mTextView.setText("消息中心");
-
-
         mImageView = (ImageView)findViewById(R.id.back);
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override

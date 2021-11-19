@@ -1,6 +1,7 @@
 package cn.ovzv.idioms.navigation;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.umeng.commonsdk.debug.I;
-
+import cn.leancloud.LCUser;
+import cn.ovzv.idioms.Login;
 import cn.ovzv.idioms.R;
+import cn.ovzv.idioms.help.CircleImageView;
+import cn.ovzv.idioms.help.GetHttpBitmap;
 import cn.ovzv.idioms.navigation.me.Me_about;
 import cn.ovzv.idioms.navigation.me.Me_card;
 import cn.ovzv.idioms.navigation.me.Me_collection;
@@ -30,8 +34,9 @@ import cn.ovzv.idioms.navigation.me.Me_subscribe;
  */
 public class Me extends Fragment {
 
-    private ImageView Me,mImageView_1,mImageView_2,mImageView_3,mImageView_4,mImageView_5,mImageView_6,mImageView_7,mImageView_8;
-
+    private ImageView Me,mImageView_1,mImageView_2,mImageView_3,mImageView_4;
+    private ImageView ICO,mImageView_5,mImageView_6,mImageView_7,mImageView_8;
+    private TextView Name, Phone;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -95,6 +100,43 @@ public class Me extends Fragment {
         mImageView_6 = (ImageView)getActivity().findViewById(R.id.circleImageView6);
         mImageView_7 = (ImageView)getActivity().findViewById(R.id.circleImageView7);
         mImageView_8 = (ImageView)getActivity().findViewById(R.id.circleImageView8);
+
+
+        Name = (TextView) getActivity().findViewById(R.id.name);
+        Phone = (TextView) getActivity().findViewById(R.id.phone);
+        ICO = (CircleImageView) getActivity().findViewById(R.id.touxiang);
+
+        /**
+         * 判定用户登录状态
+         */
+        LCUser currentUser = LCUser.getCurrentUser();
+        if (currentUser != null) {
+            // 跳到首页
+            System.out.println(currentUser);
+            System.out.println(currentUser.getUsername());
+            System.out.println(currentUser.getMobilePhoneNumber());
+            if (currentUser.getMobilePhoneNumber() == null){
+                Phone.setText("暂未设置号码");
+            }else{
+                Phone.setText(currentUser.getMobilePhoneNumber());
+            }
+            Name.setText(currentUser.getUsername());
+            currentUser.getObjectId();
+        } else {
+            // 显示注册或登录页面
+//            Intent intent = new Intent(getActivity(), Login.class);
+//            startActivity(intent);
+
+        }
+
+
+        Name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Login.class);
+                startActivity(intent);
+            }
+        });
 
         Me.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,9 +210,5 @@ public class Me extends Fragment {
                 startActivity(intent);
             }
         });
-
-
     }
-
-
 }

@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="20dp">
             <TextView
+                android:id="@+id/limit"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:textColor="#ffffff"
@@ -37,6 +38,7 @@
 
             </TextView>
             <TextView
+                android:id="@+id/course"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
@@ -49,6 +51,7 @@
 
         </LinearLayout>
         <TextView
+            android:id="@+id/time"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_width="match_parent"
@@ -74,6 +77,7 @@
 
             </ImageView>
             <TextView
+                android:id="@+id/quota"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:textColor="#00BFFF"
@@ -84,6 +88,7 @@
 
             </TextView>
             <TextView
+                android:id="@+id/used"
                 android:layout_width="80dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="20dp"

@@ -2,8 +2,10 @@ package cn.ovzv.idioms.navigation.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -19,23 +21,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import cn.leancloud.LCCloud;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.adapter.CommentExpandAdapter;
 import cn.ovzv.idioms.bean.CommentBean;
 import cn.ovzv.idioms.bean.CommentDetailBean;
 import cn.ovzv.idioms.bean.ReplyDetailBean;
 import cn.ovzv.idioms.help.CommentExpandableListView;
+import cn.ovzv.idioms.help.GetHttpBitmap;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class Main_news extends AppCompatActivity {
     private ImageView mImageView;
     private TextView mTextView;
+
+    private TextView News,Text,Time;
+    private ImageView Image;
 
 
     private static final String TAG = "MainActivity";
@@ -46,66 +58,96 @@ public class Main_news extends AppCompatActivity {
     private CommentBean commentBean;
     private List<CommentDetailBean> commentsList;
     private BottomSheetDialog dialog;
-    private String testJson = "{\n" +
-            "\t\"code\": 1000,\n" +
-            "\t\"message\": \"查看评论成功\",\n" +
-            "\t\"data\": {\n" +
-            "\t\t\"total\": 3,\n" +
-            "\t\t\"list\": [{\n" +
-            "\t\t\t\t\"id\": 42,\n" +
-            "\t\t\t\t\"nickName\": \"程序猿\",\n" +
-            "\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\"content\": \"时间是一切财富中最宝贵的财富。\",\n" +
-            "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
-            "\t\t\t\t\"replyTotal\": 1,\n" +
-            "\t\t\t\t\"createDate\": \"三分钟前\",\n" +
-            "\t\t\t\t\"replyList\": [{\n" +
-            "\t\t\t\t\t\"nickName\": \"沐風\",\n" +
-            "\t\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\t\"id\": 40,\n" +
-            "\t\t\t\t\t\"commentId\": \"42\",\n" +
-            "\t\t\t\t\t\"content\": \"时间总是在不经意中擦肩而过,不留一点痕迹.\",\n" +
-            "\t\t\t\t\t\"status\": \"01\",\n" +
-            "\t\t\t\t\t\"createDate\": \"一个小时前\"\n" +
-            "\t\t\t\t}]\n" +
-            "\t\t\t},\n" +
-            "\t\t\t{\n" +
-            "\t\t\t\t\"id\": 41,\n" +
-            "\t\t\t\t\"nickName\": \"设计狗\",\n" +
-            "\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\"content\": \"这世界要是没有爱情，它在我们心中还会有什么意义！这就如一盏没有亮光的走马灯。\",\n" +
-            "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
-            "\t\t\t\t\"replyTotal\": 1,\n" +
-            "\t\t\t\t\"createDate\": \"一天前\",\n" +
-            "\t\t\t\t\"replyList\": [{\n" +
-            "\t\t\t\t\t\"nickName\": \"沐風\",\n" +
-            "\t\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\t\"commentId\": \"41\",\n" +
-            "\t\t\t\t\t\"content\": \"时间总是在不经意中擦肩而过,不留一点痕迹.\",\n" +
-            "\t\t\t\t\t\"status\": \"01\",\n" +
-            "\t\t\t\t\t\"createDate\": \"三小时前\"\n" +
-            "\t\t\t\t}]\n" +
-            "\t\t\t},\n" +
-            "\t\t\t{\n" +
-            "\t\t\t\t\"id\": 40,\n" +
-            "\t\t\t\t\"nickName\": \"产品喵\",\n" +
-            "\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\"content\": \"笨蛋自以为聪明，聪明人才知道自己是笨蛋。\",\n" +
-            "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
-            "\t\t\t\t\"replyTotal\": 0,\n" +
-            "\t\t\t\t\"createDate\": \"三天前\",\n" +
-            "\t\t\t\t\"replyList\": []\n" +
-            "\t\t\t}\n" +
-            "\t\t]\n" +
-            "\t}\n" +
-            "}";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frgament_main_news);
+        setContentView(R.layout.fragment_main_news);
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         initView();
+        News = (TextView) findViewById(R.id.news);
+        Time = (TextView) findViewById(R.id.time);
+        Image = (ImageView) findViewById(R.id.image);
+        Text = (TextView) findViewById(R.id.text);
+
+        // 构建传递给服务端的参数字典
+        Map<String, Object> NewsData = new HashMap<String, Object>();
+
+        // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
+        LCCloud.callFunctionInBackground("News_Get", NewsData).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable disposable) {
+
+            }
+
+            @Override
+            public void onNext(Object object) {
+                // succeed.
+                System.out.println(object);
+                JSONObject json = (JSONObject) JSONObject.toJSON(object);
+
+                JSONArray DataJSONArray = json.getJSONArray("data");
+                System.out.println(DataJSONArray.getJSONObject(0));
+                News.setText(DataJSONArray.getJSONObject(0).getString("Title"));
+                Text.setText(DataJSONArray.getJSONObject(0).getString("Text"));
+                Time.setText(DataJSONArray.getJSONObject(0).getString("Time"));
+                Image.setImageBitmap(GetHttpBitmap.getHttpBitmap(DataJSONArray.getJSONObject(0).getString("Image")));
+                Map<String, Object> CommentData = new HashMap<String, Object>();
+                try {
+                    CommentData.put("NewsID", Integer.parseInt(DataJSONArray.getJSONObject(0).getString("NewsID")));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+                // 调用指定名称的云函数 Comment_Get，并且传递参数（默认不使用缓存）
+                LCCloud.callFunctionInBackground("Comment_Get", CommentData).subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object object) {
+                        // succeed.
+                        System.out.println(object);
+                        JSONObject Commentjson = (JSONObject) JSONObject.toJSON(object);
+                        String jsonStr = JSONObject.toJSONString(Commentjson);
+                        commentsList = generateTestData(jsonStr);
+                        initExpandableListView(commentsList);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        // failed.
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
+            }
+            @Override
+            public void onError(Throwable throwable) {
+                // failed.
+            }
+
+            @Override
+            public void onComplete() {
+
+
+
+            }
+        });
+
+
     }
 
     /**
@@ -115,8 +157,6 @@ public class Main_news extends AppCompatActivity {
         mTextView = (TextView) findViewById(R.id.title);
         mTextView.setText("文章详情");
 
-
-
         expandableListView = (CommentExpandableListView) findViewById(R.id.detail_page_lv_comment);
         bt_comment = (TextView) findViewById(R.id.detail_page_do_comment);
         bt_comment.setOnClickListener(new View.OnClickListener() {
@@ -125,11 +165,6 @@ public class Main_news extends AppCompatActivity {
                 showCommentDialog();
             }
         });
-
-
-        commentsList = generateTestData();
-        initExpandableListView(commentsList);
-
 
 
         mImageView = (ImageView)findViewById(R.id.back);
@@ -189,9 +224,9 @@ public class Main_news extends AppCompatActivity {
      * func:生成测试数据
      * @return 评论数据
      */
-    private List<CommentDetailBean> generateTestData(){
+    private List<CommentDetailBean> generateTestData(String Json){
         Gson gson = new Gson();
-        commentBean = gson.fromJson(testJson, CommentBean.class);
+        commentBean = gson.fromJson(Json, CommentBean.class);
         List<CommentDetailBean> commentList = commentBean.getData().getList();
         return commentList;
     }

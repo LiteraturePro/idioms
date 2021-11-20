@@ -564,7 +564,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp">
                     <TextView
-                        android:id="@+id/news1"
+                        android:id="@+id/news"
                         android:layout_width="match_parent"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
@@ -586,6 +586,7 @@
                         android:layout_weight="1"
                         android:layout_height="match_parent">
                         <TextView
+                            android:id="@+id/new_text"
                             android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_marginStart="10dp"
@@ -595,6 +596,7 @@
 
                         </TextView>
                         <TextView
+                            android:id="@+id/new_time"
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_marginStart="15dp"
@@ -609,6 +611,7 @@
                         android:layout_width="100dp"
                         android:layout_height="match_parent">
                         <ImageView
+                            android:id="@+id/new_img"
                             android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
@@ -620,69 +623,9 @@
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragment_main_bg4"
-                android:layout_height="130dp">
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="match_parent"
-                        android:text="分享奉贤教育经验，共同推进上海基础教育"
-                        android:textSize="15sp"
-                        android:textColor="#000000"
-                        android:textStyle="bold">
-                    </TextView>
+                android:layout_height="20dp">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="50dp"
-                            android:text="由上海市教育委员会、中央电化教育馆指导，上海市教育学会、上..."
-                            android:textSize="12sp">
-
-                        </TextView>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="15dp"
-                            android:text="2021-10-11"
-                            android:textSize="10sp">
-
-                        </TextView>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginEnd="20dp"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:src="@drawable/fragment_me_cat">
-
-                        </ImageView>
-                    </LinearLayout>
-                </LinearLayout>
             </LinearLayout>
 
 

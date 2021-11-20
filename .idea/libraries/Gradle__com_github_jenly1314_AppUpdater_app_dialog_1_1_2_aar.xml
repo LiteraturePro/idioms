@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.jenly1314.AppUpdater:app-dialog:1.1.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a53ed3e030a7f26bc763313167cab90f/transformed/jetified-app-dialog-1.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a53ed3e030a7f26bc763313167cab90f/transformed/jetified-app-dialog-1.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a53ed3e030a7f26bc763313167cab90f/transformed/jetified-app-dialog-1.1.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jenly1314.AppUpdater/app-dialog/1.1.2/646e5070d2ded43b3bc9b47f7a67708a1609f101/app-dialog-1.1.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jenly1314.AppUpdater/app-dialog/1.1.2/127bd940559ba3a72d157476b49cbdef4253c069/app-dialog-1.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

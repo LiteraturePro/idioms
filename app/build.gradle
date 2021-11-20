@@ -96,8 +96,16 @@ dependencies {
     // 即时通讯/推送
     implementation 'cn.leancloud:realtime-android:8.1.5'
 
-    // 图片上传
+    // API请求工具包
     implementation 'com.loopj.android:android-async-http:1.4.9'
+
+    // 版本更新
+    //app-updater
+    implementation 'com.github.jenly1314.AppUpdater:app-updater:1.1.2'
+    //app-dialog
+    implementation 'com.github.jenly1314.AppUpdater:app-dialog:1.1.2'
+
+
 
 
 }

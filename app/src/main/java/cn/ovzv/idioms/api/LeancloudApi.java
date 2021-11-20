@@ -76,6 +76,35 @@ public class LeancloudApi {
             }
         });
     }
+    /**
+     * 收集反馈意见
+     * @return JSON格式结果
+     */
+    public static void Comment_save(String str){
+        Map<String, Object> dicParameters = new HashMap<>();
+        dicParameters.put("feedback", str );
+        LCCloud.callFunctionInBackground("Feedback_save", dicParameters).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable disposable) {
+
+            }
+
+            @Override
+            public void onNext(Object object) {
+                // succeed.
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                // failed.
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
 
 
     /**

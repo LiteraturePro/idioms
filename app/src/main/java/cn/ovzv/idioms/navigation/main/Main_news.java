@@ -32,6 +32,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.leancloud.LCCloud;
+import cn.leancloud.LCUser;
+import cn.ovzv.idioms.Login;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.adapter.CommentExpandAdapter;
 import cn.ovzv.idioms.bean.CommentBean;
@@ -129,10 +131,11 @@ public class Main_news extends AppCompatActivity {
                     @Override
                     public void onComplete() {
 
+
+
+
                     }
                 });
-
-
             }
             @Override
             public void onError(Throwable throwable) {
@@ -141,8 +144,6 @@ public class Main_news extends AppCompatActivity {
 
             @Override
             public void onComplete() {
-
-
 
             }
         });
@@ -162,7 +163,17 @@ public class Main_news extends AppCompatActivity {
         bt_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCommentDialog();
+                LCUser currentUser = LCUser.getCurrentUser();
+                if (currentUser != null) {
+                    showCommentDialog();
+                    currentUser.getObjectId();
+                } else {
+                    // 显示注册或登录页面
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                    startActivity(intent);
+
+                }
+
             }
         });
 
@@ -262,12 +273,18 @@ public class Main_news extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String commentContent = commentText.getText().toString().trim();
+
                 if(!TextUtils.isEmpty(commentContent)){
 
                     //commentOnWork(commentContent);
                     dialog.dismiss();
+
+
                     CommentDetailBean detailBean = new CommentDetailBean("小明", commentContent,"刚刚");
+
                     adapter.addTheCommentData(detailBean);
+
+
                     Toast.makeText(Main_news.this,"评论成功",Toast.LENGTH_SHORT).show();
 
                 }else {

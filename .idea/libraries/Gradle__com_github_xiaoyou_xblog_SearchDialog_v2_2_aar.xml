@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.xiaoyou-xblog:SearchDialog:v2.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/227a25f43138caba7cb245b3cc50c108/transformed/jetified-SearchDialog-v2.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/227a25f43138caba7cb245b3cc50c108/transformed/jetified-SearchDialog-v2.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/227a25f43138caba7cb245b3cc50c108/transformed/jetified-SearchDialog-v2.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.xiaoyou-xblog/SearchDialog/v2.2/1bf692d00f6f148ec1f6c357def35262aa724d72/SearchDialog-v2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -36,6 +36,7 @@ import cn.leancloud.LCUser;
 import cn.ovzv.idioms.Login;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.adapter.CommentExpandAdapter;
+import cn.ovzv.idioms.api.LeancloudApi;
 import cn.ovzv.idioms.bean.CommentBean;
 import cn.ovzv.idioms.bean.CommentDetailBean;
 import cn.ovzv.idioms.bean.ReplyDetailBean;
@@ -60,6 +61,7 @@ public class Main_news extends AppCompatActivity {
     private CommentBean commentBean;
     private List<CommentDetailBean> commentsList;
     private BottomSheetDialog dialog;
+    LCUser currentUser = LCUser.getCurrentUser();
 
 
     @Override
@@ -101,7 +103,7 @@ public class Main_news extends AppCompatActivity {
                 Image.setImageBitmap(GetHttpBitmap.getHttpBitmap(DataJSONArray.getJSONObject(0).getString("Image")));
                 Map<String, Object> CommentData = new HashMap<String, Object>();
                 try {
-                    CommentData.put("NewsID", Integer.parseInt(DataJSONArray.getJSONObject(0).getString("NewsID")));
+                    CommentData.put("NewsID", DataJSONArray.getJSONObject(0).getString("NewsID"));
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
@@ -163,16 +165,8 @@ public class Main_news extends AppCompatActivity {
         bt_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LCUser currentUser = LCUser.getCurrentUser();
-                if (currentUser != null) {
-                    showCommentDialog();
-                    currentUser.getObjectId();
-                } else {
-                    // 显示注册或登录页面
-                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                    startActivity(intent);
 
-                }
+                showCommentDialog();
 
             }
         });
@@ -280,7 +274,9 @@ public class Main_news extends AppCompatActivity {
                     dialog.dismiss();
 
 
-                    CommentDetailBean detailBean = new CommentDetailBean("小明", commentContent,"刚刚");
+                    CommentDetailBean detailBean = new CommentDetailBean(currentUser.getUsername(), commentContent,"刚刚");
+
+                    LeancloudApi.Comment_save(commentsList.get(0).getNewsId(),currentUser.getUsername(),commentContent);
 
                     adapter.addTheCommentData(detailBean);
 
@@ -324,6 +320,7 @@ public class Main_news extends AppCompatActivity {
         final EditText commentText = (EditText) commentView.findViewById(R.id.dialog_comment_et);
         final Button bt_comment = (Button) commentView.findViewById(R.id.dialog_comment_bt);
         commentText.setHint("回复 " + commentsList.get(position).getNickName() + " 的评论:");
+
         dialog.setContentView(commentView);
         bt_comment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -332,7 +329,10 @@ public class Main_news extends AppCompatActivity {
                 if(!TextUtils.isEmpty(replyContent)){
 
                     dialog.dismiss();
-                    ReplyDetailBean detailBean = new ReplyDetailBean("小红",replyContent);
+                    ReplyDetailBean detailBean = new ReplyDetailBean(currentUser.getUsername(),replyContent);
+
+                    LeancloudApi.Commentreply_save(commentsList.get(position).getId(),currentUser.getUsername(),replyContent);
+
                     adapter.addTheReplyData(detailBean, position);
                     expandableListView.expandGroup(position);
                     Toast.makeText(Main_news.this,"回复成功",Toast.LENGTH_SHORT).show();

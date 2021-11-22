@@ -77,13 +77,46 @@ public class LeancloudApi {
         });
     }
     /**
-     * 收集反馈意见
+     * 评论文章
      * @return JSON格式结果
      */
-    public static void Comment_save(String str){
+    public static void Comment_save(String NewsId,String Username,String content){
         Map<String, Object> dicParameters = new HashMap<>();
-        dicParameters.put("feedback", str );
-        LCCloud.callFunctionInBackground("Feedback_save", dicParameters).subscribe(new Observer<Object>() {
+        dicParameters.put("NewsId", NewsId );
+        dicParameters.put("Username", Username );
+        dicParameters.put("content", content );
+        LCCloud.callFunctionInBackground("Comment_save", dicParameters).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable disposable) {
+
+            }
+
+            @Override
+            public void onNext(Object object) {
+                // succeed.
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                // failed.
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+    /**
+     * 回复文章的评论
+     * @return JSON格式结果
+     */
+    public static void Commentreply_save(String Comment_replyID,String Username,String content){
+        Map<String, Object> dicParameters = new HashMap<>();
+        dicParameters.put("Comment_replyID", Comment_replyID );
+        dicParameters.put("Username", Username );
+        dicParameters.put("content", content );
+        LCCloud.callFunctionInBackground("Commentreply_save", dicParameters).subscribe(new Observer<Object>() {
             @Override
             public void onSubscribe(Disposable disposable) {
 
@@ -124,10 +157,6 @@ public class LeancloudApi {
         }
 
     }
-
-
-
-
 
 
     private static JSONObject streamToJson(InputStream inputStream) throws Exception {

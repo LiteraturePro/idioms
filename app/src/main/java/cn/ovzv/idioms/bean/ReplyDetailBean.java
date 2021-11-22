@@ -3,7 +3,7 @@ package cn.ovzv.idioms.bean;
 public class ReplyDetailBean {
     private String nickName;
     private String userLogo;
-    private int id;
+    private String id;
     private String commentId;
     private String content;
     private String status;
@@ -28,10 +28,10 @@ public class ReplyDetailBean {
         return userLogo;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 

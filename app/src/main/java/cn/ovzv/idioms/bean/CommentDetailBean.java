@@ -4,7 +4,8 @@ import java.util.List;
 
 
 public class CommentDetailBean {
-    private int id;
+    private String id;
+    private String NewsId;
     private String nickName;
     private String userLogo;
     private String content;
@@ -19,11 +20,19 @@ public class CommentDetailBean {
         this.createDate = createDate;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
-    public int getId() {
+    public String getId() {
         return id;
+    }
+
+    public String getNewsId() {
+        return NewsId;
+    }
+
+    public void setNewsId(String newsId) {
+        NewsId = newsId;
     }
 
     public void setNickName(String nickName) {

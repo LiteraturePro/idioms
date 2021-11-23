@@ -176,5 +176,6 @@
     <orderEntry type="library" name="Gradle: com.github.jenly1314.AppUpdater:app-updater:1.1.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.jenly1314.AppUpdater:app-dialog:1.1.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.xiaoyou-xblog:SearchDialog:v2.2@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.HanHuoBin:BaseDialog:1.2.0@aar" level="project" />
   </component>
 </module>

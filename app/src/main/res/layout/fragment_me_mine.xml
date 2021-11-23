@@ -45,7 +45,8 @@
                         android:textColor="#000000">
                     </TextView>
                 </LinearLayout>
-                <cn.ovzv.idioms.help.CircleImageView
+                <ImageView
+                    android:id="@+id/image"
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"

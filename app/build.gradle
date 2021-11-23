@@ -109,6 +109,10 @@ dependencies {
     // 搜索框
     implementation 'com.github.xiaoyou-xblog:SearchDialog:v2.2'
 
+    // 图片上传
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.github.HanHuoBin:BaseDialog:1.2.0'
+
 
 
 

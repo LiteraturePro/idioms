@@ -122,12 +122,20 @@ public class Me extends Fragment {
             }
             Name.setText(currentUser.getUsername());
             currentUser.getObjectId();
+
+
+
+
+
+
         } else {
             // 显示注册或登录页面
 //            Intent intent = new Intent(getActivity(), Login.class);
 //            startActivity(intent);
 
         }
+
+
 
 
         Name.setOnClickListener(new View.OnClickListener() {

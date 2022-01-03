@@ -10,6 +10,15 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/241e01c72513858fde899654451b1420/transformed/jetified-apm-1.5.2/jars/libs/pasdk-2.1.155.umeng.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/241e01c72513858fde899654451b1420/transformed/jetified-apm-1.5.2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/241e01c72513858fde899654451b1420/transformed/jetified-apm-1.5.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/jars/libs/crashsdk-3.3.1.1_umeng.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/jars/libs/efs-base-1.3.9.umeng.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/jars/libs/memsdk-0.0.2.umeng.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/jars/libs/pasdk-2.1.155.umeng.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/jars/libs/netsdk-0.0.2.umeng.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d04b0f20945178df9a69dcd143596313/transformed/jetified-apm-1.5.2/jars/libs/launchsdk-0.0.3.umeng.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

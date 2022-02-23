@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.umeng.umsdk:agoo_tnet4android:3.1.14.10.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d34f52249a2ef1c2188e13d9686e520d/transformed/jetified-agoo_tnet4android-3.1.14.10.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d34f52249a2ef1c2188e13d9686e520d/transformed/jetified-agoo_tnet4android-3.1.14.10.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d34f52249a2ef1c2188e13d9686e520d/transformed/jetified-agoo_tnet4android-3.1.14.10.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1f4dad7dc52aa02a47e1b2a217acf064/transformed/jetified-agoo_tnet4android-3.1.14.10.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f4dad7dc52aa02a47e1b2a217acf064/transformed/jetified-agoo_tnet4android-3.1.14.10.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f4dad7dc52aa02a47e1b2a217acf064/transformed/jetified-agoo_tnet4android-3.1.14.10.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

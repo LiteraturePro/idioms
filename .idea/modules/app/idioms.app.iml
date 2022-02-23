@@ -5,7 +5,7 @@
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":app" />
         <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="7.0.3" />
-        <option name="LAST_KNOWN_AGP_VERSION" value="7.0.3" />
+        <option name="LAST_KNOWN_AGP_VERSION" value="7.1.1" />
       </configuration>
     </facet>
     <facet type="android" name="Android">
@@ -42,12 +42,14 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/assets" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/assets" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
@@ -120,7 +122,7 @@
     <orderEntry type="library" name="Gradle: cz.msebera.android:httpclient:4.3.6" level="project" />
     <orderEntry type="library" name="Gradle: D./Githubs/idioms/app/libs/dogeplayer-release-1.0.6.aar" level="project" />
     <orderEntry type="library" name="Gradle: com.umeng.umsdk:push:6.4.5@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.databinding:viewbinding:7.0.3@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.databinding:viewbinding:7.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.umeng.umsdk:agoo_tnet4android:3.1.14.10.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.navigation:navigation-ui:2.3.5@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.material:material:1.4.0@aar" level="project" />

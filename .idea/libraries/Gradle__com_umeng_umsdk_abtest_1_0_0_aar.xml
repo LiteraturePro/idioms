@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.umeng.umsdk:abtest:1.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b83053b9d6ea323db296b8363231e804/transformed/jetified-abtest-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b83053b9d6ea323db296b8363231e804/transformed/jetified-abtest-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b83053b9d6ea323db296b8363231e804/transformed/jetified-abtest-1.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/83008ebb43ca3dc0ecae79b10f7923d5/transformed/jetified-abtest-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/83008ebb43ca3dc0ecae79b10f7923d5/transformed/jetified-abtest-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/83008ebb43ca3dc0ecae79b10f7923d5/transformed/jetified-abtest-1.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: D./Githubs/idioms/app/libs/dogeplayer-release-1.0.6.aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a7ad95c6a78002880345612761baf1be/transformed/jetified-dogeplayer-release-1.0.6/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a7ad95c6a78002880345612761baf1be/transformed/jetified-dogeplayer-release-1.0.6/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a7ad95c6a78002880345612761baf1be/transformed/jetified-dogeplayer-release-1.0.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d5e4959cc1991fedbaf7048dd21f68e2/transformed/jetified-dogeplayer-release-1.0.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d5e4959cc1991fedbaf7048dd21f68e2/transformed/jetified-dogeplayer-release-1.0.6/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d5e4959cc1991fedbaf7048dd21f68e2/transformed/jetified-dogeplayer-release-1.0.6/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

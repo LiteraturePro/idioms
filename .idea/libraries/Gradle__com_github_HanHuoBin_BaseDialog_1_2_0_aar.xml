@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.HanHuoBin:BaseDialog:1.2.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1e56814ea5b51adb0d5c3a4718ba781c/transformed/jetified-BaseDialog-1.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1e56814ea5b51adb0d5c3a4718ba781c/transformed/jetified-BaseDialog-1.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1e56814ea5b51adb0d5c3a4718ba781c/transformed/jetified-BaseDialog-1.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/000b45d71ed7111ce01cc28c7e7b8b01/transformed/jetified-BaseDialog-1.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/000b45d71ed7111ce01cc28c7e7b8b01/transformed/jetified-BaseDialog-1.2.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/000b45d71ed7111ce01cc28c7e7b8b01/transformed/jetified-BaseDialog-1.2.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.jenly1314.AppUpdater:app-dialog:1.1.2@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a53ed3e030a7f26bc763313167cab90f/transformed/jetified-app-dialog-1.1.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a53ed3e030a7f26bc763313167cab90f/transformed/jetified-app-dialog-1.1.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a53ed3e030a7f26bc763313167cab90f/transformed/jetified-app-dialog-1.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/227419f0c535be56dd0517aa2367dd65/transformed/jetified-app-dialog-1.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/227419f0c535be56dd0517aa2367dd65/transformed/jetified-app-dialog-1.1.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/227419f0c535be56dd0517aa2367dd65/transformed/jetified-app-dialog-1.1.2/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jenly1314.AppUpdater/app-dialog/1.1.2/646e5070d2ded43b3bc9b47f7a67708a1609f101/app-dialog-1.1.2-javadoc.jar!/" />

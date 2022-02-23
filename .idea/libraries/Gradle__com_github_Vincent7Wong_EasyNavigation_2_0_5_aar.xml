@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.Vincent7Wong:EasyNavigation:2.0.5@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9985c9fecdc0bcdae68128f5543628fe/transformed/jetified-EasyNavigation-2.0.5/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/3665d7581a3def8d6ce9aeaf0067e182/transformed/jetified-EasyNavigation-2.0.5/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9985c9fecdc0bcdae68128f5543628fe/transformed/jetified-EasyNavigation-2.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9985c9fecdc0bcdae68128f5543628fe/transformed/jetified-EasyNavigation-2.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9985c9fecdc0bcdae68128f5543628fe/transformed/jetified-EasyNavigation-2.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3665d7581a3def8d6ce9aeaf0067e182/transformed/jetified-EasyNavigation-2.0.5/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/3665d7581a3def8d6ce9aeaf0067e182/transformed/jetified-EasyNavigation-2.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3665d7581a3def8d6ce9aeaf0067e182/transformed/jetified-EasyNavigation-2.0.5/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

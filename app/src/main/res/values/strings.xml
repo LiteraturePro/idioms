@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">idioms</string>
+    <string name="app_name">成语通</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_me_message">me_message</string>

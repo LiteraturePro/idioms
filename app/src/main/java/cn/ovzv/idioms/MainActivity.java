@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.dogecloud.support.DogeManager;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.next.easynavigation.view.EasyNavigationBar;
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        DogeManager.DogeInit(this);    //整个 app 只需要运行一次，最好直接放在 Application 中
+
 
         //
         // 将“12345678”替换成您申请的APPID，申请地址：http://www.xfyun.cn

@@ -50,6 +50,12 @@
         android:theme="@style/Theme.Idioms"
         tools:replace="android:theme">
         <activity
+            android:name=".navigation.course.video_api"
+            android:exported="false" />
+        <activity
+            android:name=".navigation.course.course_video"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
@@ -121,6 +127,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="cn.ovzv.idioms.fileprovider"

@@ -1,29 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/listview_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LISTVIEW" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Spinner
-            android:id="@+id/spin_province"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/spin_city"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spin_county"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UserId:" />
+
+        <EditText
+            android:id="@+id/UserId_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vCode:" />
+
+        <EditText
+            android:id="@+id/vCode_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="baa45d1691de80e5" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/info_get_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Info Get" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Base Info:"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/info_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:singleLine="false"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thumb:"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/thumb_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:color/darker_gray" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 

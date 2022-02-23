@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.HanHuoBin:BaseDialog:1.2.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0b38194c7dd1bf6a3c5b04eba446285c/transformed/jetified-BaseDialog-1.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0b38194c7dd1bf6a3c5b04eba446285c/transformed/jetified-BaseDialog-1.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0b38194c7dd1bf6a3c5b04eba446285c/transformed/jetified-BaseDialog-1.2.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8606e51e0c0576ddc340643bb91e3bbe/transformed/jetified-BaseDialog-1.2.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8606e51e0c0576ddc340643bb91e3bbe/transformed/jetified-BaseDialog-1.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8606e51e0c0576ddc340643bb91e3bbe/transformed/jetified-BaseDialog-1.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1e56814ea5b51adb0d5c3a4718ba781c/transformed/jetified-BaseDialog-1.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1e56814ea5b51adb0d5c3a4718ba781c/transformed/jetified-BaseDialog-1.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1e56814ea5b51adb0d5c3a4718ba781c/transformed/jetified-BaseDialog-1.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

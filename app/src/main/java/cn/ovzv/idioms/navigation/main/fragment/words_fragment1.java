@@ -57,18 +57,14 @@ public class words_fragment1 extends Fragment {
             }
         }
     };
-
     private static String TAG = tts.class.getSimpleName();
     // 语音合成对象
     private SpeechSynthesizer mTts;
-
     // 默认发音人
     private String voicer = "aisxping";
-
     private String[] mCloudVoicersEntries;
     private String[] mCloudVoicersValue;
     private String texts = "";
-
     // 缓冲进度
     private int mPercentForBuffering = 0;
     // 播放进度

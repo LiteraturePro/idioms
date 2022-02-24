@@ -122,6 +122,9 @@ dependencies {
     // 多吉云视频支持
     //implementation(name: 'dogeplayer-release-1.0.6', ext: 'aar')
 
+    // 提示框、弹窗
+    implementation 'com.github.HanHuoBin:BaseDialog:1.2.0'
+
 
 
 

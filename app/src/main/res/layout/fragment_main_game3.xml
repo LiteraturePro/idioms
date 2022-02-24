@@ -46,14 +46,14 @@
                 android:layout_marginTop="14dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="我的积分"
+                android:text=""
                 android:textSize="15sp">
             </TextView>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="20dp">
 
     </LinearLayout>
     <ViewFlipper
@@ -66,6 +66,44 @@
         <!--android:outAnimation="@anim/right_out"-->
         <include layout="@layout/fragment_main_game3_item" />
     </ViewFlipper>
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="10dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            style="@style/InputBoxStyle">
+            <EditText
+                android:id="@+id/game3_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="   输入答案"
+                style="@style/EditTextStyle">
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            style="@style/InputBoxStyle">
+            <Button
+                android:id="@+id/game3_button"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_margin="0dip"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg_red"
+                android:gravity="center"
+                android:text="提交答案"
+                android:textSize="20dp">
+
+            </Button>
+
+        </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
         android:layout_marginTop="10dp"

@@ -1,24 +1,36 @@
 package cn.ovzv.idioms.navigation;
 
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.dogecloud.support.DogeInclude;
-import com.dogecloud.support.DogeInfoManager;
-import com.dogecloud.support.VideoInfo;
-
-import java.util.LinkedHashMap;
-
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import cn.leancloud.LCCloud;
+import cn.leancloud.LCUser;
+import cn.ovzv.idioms.Login;
 import cn.ovzv.idioms.R;
+import cn.ovzv.idioms.adapter.MsgAdapter;
+import cn.ovzv.idioms.help.Msg;
+import cn.ovzv.idioms.help.MsgLab;
 import cn.ovzv.idioms.navigation.course.course_video;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,10 +39,13 @@ import cn.ovzv.idioms.navigation.course.course_video;
  */
 public class Course extends Fragment {
     public Button listview_bt;
-    EditText UserId_et;
-    EditText vCode_et;
-    TextView info_tv;
-    ImageView thumb_iv;
+    /**
+     * 初始化数据
+     */
+    private JSONArray DataJSONArray;
+    private GridView mLvMsgList;
+    private List<Msg> mDatas = new ArrayList<>();
+    private MsgAdapter mAdapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -73,64 +88,73 @@ public class Course extends Fragment {
         }
 
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_course, container, false);
+        // 检测用户是否登录
+        LCUser currentUser = LCUser.getCurrentUser();
+        if (currentUser != null) {
+            /** 设置请求参数*/
+            Map<String, Object> dicParameters = new HashMap<>();
+            dicParameters.put("UserID", currentUser.getObjectId());
+            /** 调用云函数*/
+            LCCloud.callFunctionInBackground("Get_all_video_list", dicParameters).subscribe(new Observer<Object>() {
+                @Override
+                public void onSubscribe(Disposable disposable) {
+
+                }
+                @Override
+                public void onNext(Object object) {
+                    JSONObject json = (JSONObject) JSONObject.toJSON(object);
+                    DataJSONArray = json.getJSONArray("data");
+                    Log.d("DataJSONArray",DataJSONArray.toJSONString());
+                    mLvMsgList = view.findViewById(R.id.id_lv_msgList);
 
 
-        listview_bt = (Button) view.findViewById(R.id.listview_btn);
-        listview_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), course_video.class);
-                startActivity(intent);
-            }
-        });
+                    // 设置纵向数据
+                    //mDatas.addAll(MsgLab.generateMockList(C_Name,C_Pic1));
+                    mDatas.addAll(MsgLab.generateMockList(DataJSONArray));
+
+                    mAdapter = new MsgAdapter(getActivity(), mDatas);
+                    mLvMsgList.setAdapter(mAdapter);
+                    // 纵向的gridview的item的点击事件
+                    mLvMsgList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Log.e("onItemClick", mDatas.get(position).getTitle());
+                            //可以把要传递的参数放到一个bundle里传递过去，bumdle可以看做一个特殊的map。
+                            Bundle bundle = new Bundle() ;
 
 
-        UserId_et = view.findViewById(R.id.UserId_et);
-        vCode_et = view.findViewById(R.id.vCode_et);
-        info_tv = view.findViewById(R.id.info_tv);
-        thumb_iv = view.findViewById(R.id.thumb_iv);
-        view.findViewById(R.id.info_get_btn).setOnClickListener(views -> {
-            DogeInfoManager.addDogeInfoRequest(Integer.parseInt(UserId_et.getText().toString()),vCode_et.getText().toString(), DogeInclude.INFO_GET_BASEINFO,InfoListener);
-        });
+                            Intent intent = new Intent(getActivity(), course_video.class);
+                            JSONObject Data = DataJSONArray.getJSONObject(position);
+                            bundle.putString("cid",Data.getString("videocid"));
+                            intent.putExtras(bundle) ;
+
+                            startActivity(intent);
+                        }
+                    });
+
+                }
+                @Override
+                public void onError(Throwable throwable) {
+                    // failed.
+                    Log.d("error",throwable.toString());
+                }
+                @Override
+                public void onComplete() {
+
+                }
+            });
+        } else {
+            // 显示注册或登录页面
+            Intent intent = new Intent(getActivity(), Login.class);
+            startActivity(intent);
+        }
 
         return view;
     }
-    private DogeInfoManager.infoListener InfoListener = new DogeInfoManager.infoListener() {
-        String Info = "";
-        @Override
-        public void onInfoUpdate(int type,String vcode,DogeInfoManager.InfoData infoData) {
-            switch (type){
-                case DogeInclude.INFO_GET_BASEINFO:
-                    DogeInfoManager.addDogeInfoRequest(Integer.parseInt(UserId_et.getText().toString()),vCode_et.getText().toString(), DogeInclude.INFO_GET_THUMB,InfoListener);
-                    Info = "";
-                    Info += "\tVideoName:" + infoData.getVideoName() + "\n";
-                    Info += "\tDuration:"+ infoData.getVideoDuration() + "\n";
-                    Info += "\tVtypes:\n";
-                    Info += "\tDefalutVtypes:"+infoData.getDefaultVtype()+"\n";
-                    LinkedHashMap<Integer, VideoInfo> videos = infoData.getVideos();
-                    for (Integer key : videos.keySet()) {
-                        VideoInfo vi = videos.get(key);
-                        Info+="\t\tvtype:"+vi.vtype+"  ---->>\n";
-                        Info+="\t\t\tName:"+vi.name+"\n";
-                        Info+="\t\t\tFormat:"+vi.format+"\n";
-                        Info+="\t\t\tSize:"+vi.size+"\n";
-                        Info+="\t\t\tisLocal:"+vi.isLocal+"\n";
-                        //Info+="\t\tUrl:"+vi.url+"\n";
-                    }
-                    info_tv.setText(Info);
-                    break;
-                case DogeInclude.INFO_GET_THUMB:
-                    thumb_iv.setImageBitmap(infoData.getThumb());
-                    break;
-            }
-        }
-    };
 
 }

@@ -50,6 +50,9 @@
         android:theme="@style/Theme.Idioms"
         tools:replace="android:theme">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".navigation.course.video_api"
             android:exported="false" />
         <activity
@@ -119,7 +122,7 @@
             android:name=".navigation.me.Me_message"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

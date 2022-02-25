@@ -14,33 +14,67 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="20dp"
-        android:layout_height="400dp">
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="wo">
+        android:layout_height="wrap_content"
+        >
+<!--        <TextView-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:id="@+id/text_left"-->
+<!--            android:ems="1"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="25sp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="">-->
 
-        </TextView>
+<!--        </TextView>-->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/study_words_left"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1">
+
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l_right"
         android:layout_width="80dp"
         android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_height="400dp">
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="ni">
 
-        </TextView>
+        android:layout_height="wrap_content">
+<!--        <TextView-->
+<!--            android:id="@+id/text_right"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:ems="1"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="25sp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="">-->
+
+<!--        </TextView>-->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/study_words_right"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
     </LinearLayout>
 </LinearLayout>

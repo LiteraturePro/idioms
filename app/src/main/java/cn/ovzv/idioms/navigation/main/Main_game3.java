@@ -34,8 +34,6 @@ import io.reactivex.disposables.Disposable;
 public class Main_game3 extends AppCompatActivity implements View.OnTouchListener{
     private ImageView mImageView;
     private ViewFlipper viewFlipper;
-    //要添加的页面布局ID
-    private int viewIds[] = {R.layout.fragment_main_couplet_item};
     private float startX; //手指按下时的x坐标
     private float endX; //手指抬起时的x坐标
     private float moveX = 100f; //判断是否切换页面的标准值
@@ -44,7 +42,6 @@ public class Main_game3 extends AppCompatActivity implements View.OnTouchListene
     private EditText game3_text;
     private Button game3_button;
     private TextView game3_daan;
-    private ImageView game3_image;
     private JSONArray DataJSONArray;
     private String daan;
     private ConfirmDialog confirmDialog;
@@ -165,6 +162,9 @@ public class Main_game3 extends AppCompatActivity implements View.OnTouchListene
     private View createViewWithXml() {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        lp.setMarginEnd(40);
+        lp.setMarginStart(40);
         View view = LayoutInflater.from(this).inflate(R.layout.fragment_main_game3_item, null);//也可以从XML中加载布局
 
         view.setLayoutParams(lp);//设置布局参数

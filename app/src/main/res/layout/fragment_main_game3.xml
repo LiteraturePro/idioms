@@ -64,7 +64,7 @@
         android:flipInterval="3000">
         <!--android:inAnimation="@anim/left_in"-->
         <!--android:outAnimation="@anim/right_out"-->
-        <include layout="@layout/fragment_main_game3_item" />
+<!--        <include layout="@layout/fragment_main_game3_item" />-->
     </ViewFlipper>
     <LinearLayout
         android:layout_margin="10dp"
@@ -103,6 +103,20 @@
             </Button>
 
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/game3_daan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/EditTextStyle"
+            android:clickable="true"
+            android:text="点击查看答案"
+            android:gravity="center"
+            android:textSize="18sp">
+        </TextView>
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"

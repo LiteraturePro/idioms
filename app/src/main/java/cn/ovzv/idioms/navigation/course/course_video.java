@@ -8,24 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.dogecloud.support.DogeManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import cn.leancloud.LCCloud;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.adapter.DogeLisAdapter;
-import cn.ovzv.idioms.adapter.MsgAdapter;
 import cn.ovzv.idioms.help.DogeVideo;
-import cn.ovzv.idioms.help.MsgLab;
 import cn.ovzv.idioms.help.ScrollDogePlayer;
 import cn.ovzv.idioms.help.ScrollHelper;
 import io.reactivex.Observer;
@@ -59,10 +53,6 @@ public class course_video extends AppCompatActivity {
                 JSONObject json = (JSONObject) JSONObject.toJSON(object);
                 DataJSONArray = json.getJSONArray("data");
                 TestVideo(DataJSONArray);
-
-
-
-
             }
             @Override
             public void onError(Throwable throwable) {

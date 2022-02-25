@@ -18,9 +18,7 @@ import java.util.List;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.adapter.FragmentOrderListAdapter;
 import cn.ovzv.idioms.navigation.main.fragment.fun_fragment;
-import cn.ovzv.idioms.navigation.main.fragment.words_fragment1;
-import cn.ovzv.idioms.navigation.main.fragment.words_fragment2;
-import cn.ovzv.idioms.navigation.main.fragment.words_fragment3;
+
 
 public class Main_fun extends AppCompatActivity {
     private TextView mTextView;
@@ -38,12 +36,14 @@ public class Main_fun extends AppCompatActivity {
 
         tableLayout = findViewById(R.id.order_tab);
         viewPager = findViewById(R.id.order_viewpager);
+        String[] words = new String[]{"成语之最", "量词成语","动物类","5字成语","6字成语","7字成语","8字成语"};
+        String[] word = new String[]{"most", "num_word","animal_word","5_word","6_word","7_word","8_word"};
 
         List<Fragment> fragments = new ArrayList<>();
         for(int i = 0;i <7;i++){
-            fragments.add(new fun_fragment());
+            fragments.add(fun_fragment.newInstance(word[i]));
         }
-        FragmentPagerAdapter adapter = new FragmentOrderListAdapter(getSupportFragmentManager(),fragments, new String[]{"成语之最", "量词成语","动物类","5字成语","6字成语","7字成语","8字成语"});
+        FragmentPagerAdapter adapter = new FragmentOrderListAdapter(getSupportFragmentManager(),fragments,words );
         viewPager.setAdapter(adapter);
         tableLayout.setupWithViewPager(viewPager);
     }

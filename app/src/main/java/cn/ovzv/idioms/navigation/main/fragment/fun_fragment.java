@@ -10,10 +10,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.leancloud.LCCloud;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.SideslipListView;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,28 +32,20 @@ public class fun_fragment extends Fragment {
 
 
     private SideslipListView mSideslipListView;
-    /**
-     * 初始化数据
-     */
-    private ArrayList<String> mDataList = new ArrayList<String>() {
-        {
-            for (int i = 0; i < 10; i++) {
-                add("ListView item  " + i);
-            }
-        }
-    };
+    private JSONArray DataJSONArray;
+    private ArrayList<String> mDataList ;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    private String mParam2;
+
 
     public fun_fragment() {
         // Required empty public constructor
+
     }
 
     /**
@@ -53,15 +53,13 @@ public class fun_fragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment fun_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static fun_fragment newInstance(String param1, String param2) {
+    public static fun_fragment newInstance(String param1) {
         fun_fragment fragment = new fun_fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,7 +69,8 @@ public class fun_fragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            System.out.println(mParam1);
+
         }
     }
 
@@ -81,9 +80,43 @@ public class fun_fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_fun_fragment, container, false);
 
-        mSideslipListView = (SideslipListView) view.findViewById(R.id.sideslipListView);
-        mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
+        // 构建传递给服务端的参数字典
+        Map<String, Object> dicParameters = new HashMap<String, Object>();
+        dicParameters.put("dbname", mParam1);
 
+        // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
+        LCCloud.callFunctionInBackground("DB_Get_fun", dicParameters).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable disposable) {
+
+            }
+
+            @Override
+            public void onNext(Object object) {
+                // succeed.
+                JSONObject json = (JSONObject) JSONObject.toJSON(object);
+                DataJSONArray = json.getJSONArray("data");
+                mDataList = new ArrayList<String>() {
+                    {
+                        for (int i = 0; i < 50; i++) {
+                            add(DataJSONArray.get(i).toString());
+                        }
+                    }
+                };
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                // failed.
+            }
+
+            @Override
+            public void onComplete() {
+                mSideslipListView = (SideslipListView) view.findViewById(R.id.sideslipListView);
+                mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
+
+            }
+        });
 
         return view;
     }
@@ -112,13 +145,12 @@ public class fun_fragment extends Fragment {
             if (null == convertView) {
                 convertView = View.inflate(getContext(), R.layout.fragment_main_fun_style, null);
                 viewHolder = new ViewHolder();
-//                viewHolder.textView = (TextView) convertView.findViewById(R.id.textView);
-//                viewHolder.txtv_delete = (TextView) convertView.findViewById(R.id.txtv_delete);
+                viewHolder.textView = (TextView) convertView.findViewById(R.id.text);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-//            viewHolder.textView.setText(mDataList.get(position));
+            viewHolder.textView.setText(mDataList.get(position));
 
             return convertView;
         }
@@ -126,6 +158,5 @@ public class fun_fragment extends Fragment {
 
     class ViewHolder {
         public TextView textView;
-        public TextView txtv_delete;
     }
 }

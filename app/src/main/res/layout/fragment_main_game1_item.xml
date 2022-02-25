@@ -8,13 +8,15 @@
     android:layout_width="match_parent"
     android:layout_height="320dp">
     <LinearLayout
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/study_words"
+            android:id="@+id/words"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:gravity="center"

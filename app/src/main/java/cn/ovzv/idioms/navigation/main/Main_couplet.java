@@ -100,26 +100,6 @@ public class Main_couplet extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View v, MotionEvent event) {
         gestureDetector.onTouchEvent(event);
 
-//        switch (event.getAction()) {
-//            case MotionEvent.ACTION_DOWN:
-//                //手指按下时获取起始点坐标
-//                startX = event.getX();
-//                break;
-//            case MotionEvent.ACTION_UP:
-//                //手指抬起时获取结束点坐标
-//                endX = event.getX();
-//                //比较startX和endX，判断手指的滑动方向
-//                if (endX - startX > moveX) { //手指从左向右滑动
-//                    viewFlipper.setInAnimation(this, R.anim.left_in);
-//                    viewFlipper.setOutAnimation(this, R.anim.right_out);
-//                    viewFlipper.showPrevious();
-//                } else if (startX - endX > moveX) { //手指向右向左滑动
-//                    viewFlipper.setInAnimation(this, R.anim.right_in);
-//                    viewFlipper.setOutAnimation(this, R.anim.left_out);
-//                    viewFlipper.showNext();
-//                }
-//                break;
-//        }
         return true;
     }
     private View createViewWithXml() {

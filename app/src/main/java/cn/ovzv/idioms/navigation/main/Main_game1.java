@@ -1,6 +1,8 @@
 package cn.ovzv.idioms.navigation.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -16,14 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hb.dialog.dialog.ConfirmDialog;
 import java.util.HashMap;
 import java.util.Map;
 import cn.leancloud.LCCloud;
 import cn.ovzv.idioms.R;
-import cn.ovzv.idioms.help.GetHttpBitmap;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -31,6 +31,7 @@ public class Main_game1 extends AppCompatActivity implements View.OnTouchListene
     private ImageView mImageView;
 
     private ViewFlipper viewFlipper;
+    private View mGridView;
     //要添加的页面布局ID
     private int viewIds[] = {R.layout.fragment_main_couplet_item};
     private float startX; //手指按下时的x坐标
@@ -41,9 +42,9 @@ public class Main_game1 extends AppCompatActivity implements View.OnTouchListene
     private EditText game1_text;
     private Button game1_button;
     private TextView game1_daan;
-    private JSONArray DataJSONArray;
     private String daan;
     private ConfirmDialog confirmDialog;
+    private LinearLayout mLinearLayout;//对应于主布局中用来添加子布局的View
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,18 +69,19 @@ public class Main_game1 extends AppCompatActivity implements View.OnTouchListene
             @Override
             public void onClick(View v) {
                 game1_daan.setText(daan);
-                showToast("已查看答案，3秒后自动跳转下一个");
+                showToast("已查看答案，5秒后自动跳转下一个");
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        viewFlipper.removeAllViews();
                         viewFlipper.addView(createViewWithXml(), viewFlipper.getChildCount());
                         viewFlipper.setInAnimation(Main_game1.this, R.anim.right_in);
                         viewFlipper.setOutAnimation(Main_game1.this, R.anim.left_out);
                         viewFlipper.showNext();
                         game1_daan.setText("点击查看答案");
                     }
-                }, 3000);//3秒后执行Runnable中的run方法
+                }, 5000);//3秒后执行Runnable中的run方法
 
 
             }
@@ -111,6 +113,7 @@ public class Main_game1 extends AppCompatActivity implements View.OnTouchListene
                 viewFlipper.setOutAnimation(Main_game1.this, R.anim.right_out);
                 viewFlipper.showPrevious();
             } else if (e2.getX() - e1.getX() < moveX) {
+                viewFlipper.removeAllViews();
                 viewFlipper.addView(createViewWithXml(), viewFlipper.getChildCount());
                 viewFlipper.setInAnimation(Main_game1.this, R.anim.right_in);
                 viewFlipper.setOutAnimation(Main_game1.this, R.anim.left_out);
@@ -134,7 +137,7 @@ public class Main_game1 extends AppCompatActivity implements View.OnTouchListene
         dicParameters.put("test", "test");
 
         // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
-        LCCloud.callFunctionInBackground("DB_Get_word_url", dicParameters).subscribe(new Observer<Object>() {
+        LCCloud.callFunctionInBackground("Get_one_word", dicParameters).subscribe(new Observer<Object>() {
             @Override
             public void onSubscribe(Disposable disposable) {
 
@@ -144,10 +147,26 @@ public class Main_game1 extends AppCompatActivity implements View.OnTouchListene
             public void onNext(Object object) {
                 // succeed.
                 JSONObject json = (JSONObject) JSONObject.toJSON(object);
-                DataJSONArray = json.getJSONArray("data");
-                daan = DataJSONArray.get(0).toString();
+                mLinearLayout = (LinearLayout) findViewById(R.id.words);
 
-                //设置文本
+                daan = json.get("words").toString();
+
+                // 楷体
+                AssetManager mgr = getAssets();
+                Typeface tf = Typeface.createFromAsset(mgr, "fonts/kaiti_GB2312.ttf");
+
+
+                char left_str[] = json.get("word").toString().toCharArray();//利用toCharArray方法转换
+                for (int j = 0; j < left_str.length; j++) {
+                    System.out.println(left_str[j]);
+                    mGridView = View.inflate(getApplicationContext(), R.layout.fragment_main_study_words, null);
+                    TextView txt = mGridView.findViewById(R.id.words_text);
+                    txt.setText(String.valueOf(left_str[j]));
+                    txt.setTextSize(40);
+                    txt.setTypeface(tf);
+                    mLinearLayout.addView(mGridView, 140, 140);
+                }
+
             }
 
             @Override
@@ -164,60 +183,93 @@ public class Main_game1 extends AppCompatActivity implements View.OnTouchListene
                             showToast("答案不能为空");
                             return;
                         }else{
-                            if(game1_text.getText().toString().equals(daan)){
 
-                                confirmDialog.setLogoImg(R.drawable.true_1).setMsg("恭喜你！回答正确，点击确认进入下一题");
-                                confirmDialog.setClickListener(new ConfirmDialog.OnBtnClickListener() {
-                                    @Override
-                                    public void ok() {
+                            // 构建传递给服务端的参数字典
+                            Map<String, Object> dicParameters = new HashMap<>();
+                            dicParameters.put("word", game1_text.getText().toString().trim());
 
-                                        Handler handler = new Handler();
-                                        handler.postDelayed(new Runnable() {
+                            // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
+                            LCCloud.callFunctionInBackground("Get_idioms_info", dicParameters).subscribe(new Observer<Object>() {
+                                @Override
+                                public void onSubscribe(Disposable disposable) {
+
+                                }
+
+                                @Override
+                                public void onNext(Object object) {
+                                    // succeed.
+                                    JSONObject json = (JSONObject) JSONObject.toJSON(object);
+                                    System.out.println(json);
+                                    if((boolean)json.get("result")){
+
+
+                                        confirmDialog.setLogoImg(R.drawable.true_1).setMsg("恭喜你！回答正确，点击确认进入下一题");
+                                        confirmDialog.setClickListener(new ConfirmDialog.OnBtnClickListener() {
                                             @Override
-                                            public void run() {
-                                                viewFlipper.addView(createViewWithXml(), viewFlipper.getChildCount());
-                                                viewFlipper.setInAnimation(Main_game1.this, R.anim.right_in);
-                                                viewFlipper.setOutAnimation(Main_game1.this, R.anim.left_out);
-                                                viewFlipper.showNext();
+                                            public void ok() {
+
+                                                Handler handler = new Handler();
+                                                handler.postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        viewFlipper.removeAllViews();
+                                                        viewFlipper.addView(createViewWithXml(), viewFlipper.getChildCount());
+                                                        viewFlipper.setInAnimation(Main_game1.this, R.anim.right_in);
+                                                        viewFlipper.setOutAnimation(Main_game1.this, R.anim.left_out);
+                                                        viewFlipper.showNext();
+                                                        game1_text.setText("");
+                                                    }
+                                                }, 1000);//3秒后执行Runnable中的run方法
+
+                                            }
+                                            @Override
+                                            public void cancel() {
+                                                Handler handler = new Handler();
+                                                handler.postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        viewFlipper.removeAllViews();
+                                                        viewFlipper.addView(createViewWithXml(), viewFlipper.getChildCount());
+                                                        viewFlipper.setInAnimation(Main_game1.this, R.anim.right_in);
+                                                        viewFlipper.setOutAnimation(Main_game1.this, R.anim.left_out);
+                                                        viewFlipper.showNext();
+                                                        game1_text.setText("");
+                                                    }
+                                                }, 1000);//3秒后执行Runnable中的run方法
+                                            }
+                                        });
+                                        confirmDialog.show();
+                                        //回答正确，跳转下一题
+                                    }
+                                    else{
+                                        confirmDialog.setLogoImg(R.drawable.false_1).setMsg("答案不正确哦！再试试吧");
+                                        confirmDialog.setClickListener(new ConfirmDialog.OnBtnClickListener() {
+                                            @Override
+                                            public void ok() {
                                                 game1_text.setText("");
                                             }
-                                        }, 1000);//3秒后执行Runnable中的run方法
 
-                                    }
-                                    @Override
-                                    public void cancel() {
-                                        Handler handler = new Handler();
-                                        handler.postDelayed(new Runnable() {
                                             @Override
-                                            public void run() {
-                                                viewFlipper.addView(createViewWithXml(), viewFlipper.getChildCount());
-                                                viewFlipper.setInAnimation(Main_game1.this, R.anim.right_in);
-                                                viewFlipper.setOutAnimation(Main_game1.this, R.anim.left_out);
-                                                viewFlipper.showNext();
+                                            public void cancel() {
                                                 game1_text.setText("");
                                             }
-                                        }, 1000);//3秒后执行Runnable中的run方法
+                                        });
+                                        confirmDialog.show();
+                                        return;
                                     }
-                                });
-                                confirmDialog.show();
-                                //回答正确，跳转下一题
-                            }
-                            else{
-                                confirmDialog.setLogoImg(R.drawable.false_1).setMsg("答案不正确哦！再试试吧");
-                                confirmDialog.setClickListener(new ConfirmDialog.OnBtnClickListener() {
-                                    @Override
-                                    public void ok() {
-                                        game1_text.setText("");
-                                    }
+                                }
 
-                                    @Override
-                                    public void cancel() {
-                                        game1_text.setText("");
-                                    }
-                                });
-                                confirmDialog.show();
-                                return;
-                            }
+                                @Override
+                                public void onError(Throwable throwable) {
+                                    // failed.
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
+
                         }
                     }
                 });

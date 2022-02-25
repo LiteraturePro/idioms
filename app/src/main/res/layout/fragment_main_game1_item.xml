@@ -8,37 +8,18 @@
     android:layout_width="match_parent"
     android:layout_height="320dp">
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="80dp">
-        <TextView
-            android:id="@+id/idiom"
+        <LinearLayout
+            android:id="@+id/study_words"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="坐吃山空"
-            android:autoLink="all"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textSize="40sp">
-        </TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="90dp">
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="参考答案"
-            android:gravity="center"
-            android:textSize="15sp">
-        </TextView>
+            android:orientation="horizontal"/>
     </LinearLayout>
+
 </LinearLayout>

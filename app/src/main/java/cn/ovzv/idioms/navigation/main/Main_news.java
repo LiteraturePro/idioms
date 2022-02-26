@@ -61,6 +61,7 @@ public class Main_news extends AppCompatActivity {
     private CommentBean commentBean;
     private List<CommentDetailBean> commentsList;
     private BottomSheetDialog dialog;
+    private String newsid;
     LCUser currentUser = LCUser.getCurrentUser();
 
 
@@ -104,6 +105,7 @@ public class Main_news extends AppCompatActivity {
                 Map<String, Object> CommentData = new HashMap<String, Object>();
                 try {
                     CommentData.put("NewsID", DataJSONArray.getJSONObject(0).getString("NewsID"));
+                    newsid = DataJSONArray.getJSONObject(0).getString("NewsID");
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
@@ -276,7 +278,7 @@ public class Main_news extends AppCompatActivity {
 
                     CommentDetailBean detailBean = new CommentDetailBean(currentUser.getUsername(), commentContent,"刚刚");
 
-                    LeancloudApi.Comment_save(commentsList.get(0).getNewsId(),currentUser.getUsername(),commentContent);
+                    LeancloudApi.Comment_save(newsid,currentUser.getUsername(),commentContent);
 
                     adapter.addTheCommentData(detailBean);
 

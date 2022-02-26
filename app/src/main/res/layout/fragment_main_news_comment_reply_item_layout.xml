@@ -37,5 +37,11 @@
             android:textSize="14sp"
             android:text="世上本没有路，走的人多了，也就成了路"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="32dp"
+        android:background="#F6F6F6"/>
 
 </LinearLayout>

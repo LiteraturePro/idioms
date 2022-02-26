@@ -19,26 +19,30 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            style="@style/InputBoxStyle2">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:background="@drawable/fragment_main_news_bg1"
+
+
                 android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
+
                     android:layout_height="60dp">
                     <TextView
                         android:id="@+id/news"
                         android:gravity="center"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginStart="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="全国教育工作会议召开，传递这些重要信息！"
-                        android:textSize="18sp"
+
+                        android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold">
                     </TextView>
@@ -50,8 +54,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
+
                         android:layout_width="match_parent"
-                        android:layout_height="60dp">
+                        android:layout_height="60dp"
+                        >
                         <cn.ovzv.idioms.help.CircleImageView
                             android:layout_marginTop="10dp"
                             android:layout_marginStart="10dp"
@@ -79,7 +85,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_marginStart="10dp"
                                 android:layout_height="match_parent"
-                                android:text="2021-11-11"
                                 android:gravity=""
                                 android:textSize="10sp">
                             </TextView>
@@ -95,22 +100,20 @@
                             android:layout_marginEnd="20dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/news"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textColor="#000000"
-                            android:typeface="serif"
-                            android:textStyle="bold">
+                            android:typeface="serif">
                         </TextView>
 
                     </LinearLayout>
                     <ImageView
                         android:id="@+id/image"
+                        android:layout_marginTop="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:src="@drawable/fragment_me_cat">
+                        android:layout_height="200dp">
                     </ImageView>
                 </LinearLayout>
             </LinearLayout>
@@ -120,15 +123,15 @@
                 android:layout_below="@+id/detail_page_above_container"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <cn.ovzv.idioms.help.CommentExpandableListView
                     android:id="@+id/detail_page_lv_comment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:divider="@null"
-                    android:layout_marginBottom="64dp"
+
                     android:listSelector="@android:color/transparent"
                     android:scrollbars="none"/>
 
@@ -158,6 +161,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="18dp"/>
         <ImageView
+            android:id="@+id/new_loves"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:src="@drawable/fragment_main_news_icon_collect"/>
@@ -167,9 +171,10 @@
             android:textColor="#9A9A9A"
             android:textSize="14sp"
             android:layout_marginLeft="10dp"
-            android:text="32"/>
+            android:text="0"/>
 
         <ImageView
+            android:id="@+id/new_love"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:src="@drawable/fragment_main_news_icon_work_like"
@@ -181,7 +186,7 @@
             android:textSize="14sp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="14dp"
-            android:text="66"/>
+            android:text="0"/>
 
     </LinearLayout>
 

@@ -8,6 +8,14 @@
         <item name="android:gravity">center</item>
         <item name="android:orientation">horizontal</item>
     </style>
+    <style name="InputBoxStyle2">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@drawable/border_input_box2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
     <style name="EditTextStyle">
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginRight">10dp</item>

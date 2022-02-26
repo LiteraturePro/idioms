@@ -49,7 +49,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class Main extends Fragment {
 
-    private TextView Studyset,Couplet,Fun,News,Text,Time;
+    private TextView Studyset,Couplet,Fun,News,Text,Time,News_src;
     private Button Words,Study,Game1,Game2,Game3;
     private ImageView Image;
     private AppUpdater mAppUpdater;
@@ -179,6 +179,7 @@ public class Main extends Fragment {
         Time = (TextView) view.findViewById(R.id.new_time);
         Image = (ImageView) view.findViewById(R.id.new_img);
         Text = (TextView)view.findViewById(R.id.new_text);
+        News_src = (TextView)view.findViewById(R.id.new_src);
 
 
         // 构建传递给服务端的参数字典
@@ -203,6 +204,7 @@ public class Main extends Fragment {
                 News.setText(DataJSONArray.getJSONObject(0).getString("Title"));
                 Text.setText(DataJSONArray.getJSONObject(0).getString("Text"));
                 Time.setText(DataJSONArray.getJSONObject(0).getString("Time"));
+                News_src.setText(DataJSONArray.getJSONObject(0).getString("Src"));
                 Image.setImageBitmap(GetHttpBitmap.getHttpBitmap(DataJSONArray.getJSONObject(0).getString("Image")));
 
             }

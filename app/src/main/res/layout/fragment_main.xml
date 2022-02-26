@@ -593,16 +593,32 @@
                             android:textSize="12sp">
 
                         </TextView>
-                        <TextView
-                            android:id="@+id/new_time"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="12dp"
-                            android:layout_marginStart="10dp"
-                            android:text="2021-10-11"
-                            android:textSize="10sp">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/new_time"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="10dp"
+                                android:text="2022-02-26 08:56:00"
+                                android:textSize="10sp">
 
-                        </TextView>
+                            </TextView>
+                            <TextView
+                                android:id="@+id/new_src"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="50dp"
+                                android:text="来源: 北京日报客户端"
+                                android:textSize="10sp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
 
                     </LinearLayout>
                     <LinearLayout

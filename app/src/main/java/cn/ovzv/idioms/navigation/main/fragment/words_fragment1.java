@@ -1,7 +1,9 @@
 package cn.ovzv.idioms.navigation.main.fragment;
 
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +22,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.SpeechConstant;
@@ -31,12 +35,20 @@ import com.iflytek.cloud.SynthesizerListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import cn.leancloud.LCCloud;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.SideslipListView;
 import cn.ovzv.idioms.help.TtsSettings;
 import cn.ovzv.idioms.tts;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 
 /**
@@ -47,16 +59,9 @@ import cn.ovzv.idioms.tts;
 public class words_fragment1 extends Fragment {
 
     private SideslipListView mSideslipListView;
-    /**
-     * 初始化数据
-     */
-    private ArrayList<String> mDataList = new ArrayList<String>() {
-        {
-            for (int i = 0; i < 10; i++) {
-                add("大海捞针 " + i);
-            }
-        }
-    };
+
+    private ArrayList<String> mDataList_word,mDataList_pinyin,mDataList_text;
+    private JSONArray DataJSONArray;
     private static String TAG = tts.class.getSimpleName();
     // 语音合成对象
     private SpeechSynthesizer mTts;
@@ -117,6 +122,8 @@ public class words_fragment1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -125,30 +132,82 @@ public class words_fragment1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_words_fragment1, container, false);
 
-        mSideslipListView = (SideslipListView) view.findViewById(R.id.sideslipListView);
-        mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
+        // 构建传递给服务端的参数字典
+        Map<String, Object> dicParameters = new HashMap<String, Object>();
+        dicParameters.put("tag", 2);
+        dicParameters.put("UserID", "61936fa79ba582465b45d312");
 
-        // 初始化合成对象
-        mTts = SpeechSynthesizer.createSynthesizer(getActivity().getApplicationContext(), mTtsInitListener);
-        mSharedPreferences = getActivity().getSharedPreferences(TtsSettings.PREFER_NAME, getActivity().MODE_PRIVATE);
-
-
-
-
-        //设置item点击事件
-        mSideslipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
+        LCCloud.callFunctionInBackground("DB_Get_word", dicParameters).subscribe(new Observer<Object>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mSideslipListView.isAllowItemClick()) {
-                    Log.d(TAG, mDataList.get(position) + "被点击了");
+            public void onSubscribe(Disposable disposable) {
 
-                    pcmFile = new File(getActivity().getExternalCacheDir().getAbsolutePath(), "tts_pcmFile.pcm");
-                    pcmFile.delete();
-                    //texts = ((EditText) getActivity().findViewById(R.id.tts_text)).getText().toString();
-                    // 设置参数
-                    setParam();
-                    // 合成并播放
-                    int code = mTts.startSpeaking(mDataList.get(position) , mTtsListener);
+            }
+
+            @Override
+            public void onNext(Object object) {
+                // succeed.
+                JSONObject json = (JSONObject) JSONObject.toJSON(object);
+
+
+                DataJSONArray = json.getJSONArray("data");
+
+                System.out.println(DataJSONArray.getJSONObject(0).toString());
+
+                System.out.println(DataJSONArray.getJSONObject(0).getString("uuid"));
+
+
+                mDataList_word = new ArrayList<String>() {
+                    {
+                        for (int i = 0; i < DataJSONArray.size(); i++) {
+                            add(DataJSONArray.getJSONObject(i).getString("word"));
+                        }
+                    }
+                };
+                mDataList_pinyin = new ArrayList<String>() {
+                    {
+                        for (int i = 0; i < DataJSONArray.size(); i++) {
+                            add(DataJSONArray.getJSONObject(i).getString("pinyin"));
+                        }
+                    }
+                };
+                mDataList_text = new ArrayList<String>() {
+                    {
+                        for (int i = 0; i < DataJSONArray.size(); i++) {
+                            add(DataJSONArray.getJSONObject(i).getString("explanation"));
+                        }
+                    }
+                };
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                // failed.
+            }
+
+            @Override
+            public void onComplete() {
+
+                mSideslipListView = (SideslipListView) view.findViewById(R.id.sideslipListView);
+                mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
+
+                // 初始化合成对象
+                mTts = SpeechSynthesizer.createSynthesizer(getActivity().getApplicationContext(), mTtsInitListener);
+                mSharedPreferences = getActivity().getSharedPreferences(TtsSettings.PREFER_NAME, getActivity().MODE_PRIVATE);
+                //设置item点击事件
+                mSideslipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        if (mSideslipListView.isAllowItemClick()) {
+                            Log.d(TAG, mDataList_word.get(position) + "被点击了");
+
+                            pcmFile = new File(getActivity().getExternalCacheDir().getAbsolutePath(), "tts_pcmFile.pcm");
+                            pcmFile.delete();
+                            //texts = ((EditText) getActivity().findViewById(R.id.tts_text)).getText().toString();
+                            // 设置参数
+                            setParam();
+                            // 合成并播放
+                            int code = mTts.startSpeaking(mDataList_word.get(position) , mTtsListener);
 //			/**
 //			 * 只保存音频不进行播放接口,调用此接口请注释startSpeaking接口
 //			 * text:要合成的文本，uri:需要保存的音频全路径，listener:回调接口
@@ -157,16 +216,22 @@ public class words_fragment1 extends Fragment {
 //                //  synthesizeToUri 只保存音频不进行播放
 //                int code = mTts.synthesizeToUri(texts, path, mTtsListener);
 
-                    if (code != ErrorCode.SUCCESS) {
-                        showTip("语音合成失败,错误码: " + code + ",请点击网址https://www.xfyun.cn/document/error-code查询解决方案");
+//                            if (code != ErrorCode.SUCCESS) {
+//                                showTip("语音合成失败,错误码: " + code + ",请点击网址https://www.xfyun.cn/document/error-code查询解决方案");
+//                            }
+
+
+                        }
                     }
+                });
 
 
-                }
             }
         });
+
         return view;
     }
+
 
     /**
      * 自定义ListView适配器
@@ -174,12 +239,12 @@ public class words_fragment1 extends Fragment {
     class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return mDataList.size();
+            return mDataList_word.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return mDataList.get(position);
+            return mDataList_word.get(position);
         }
 
         @Override
@@ -193,19 +258,32 @@ public class words_fragment1 extends Fragment {
             if (null == convertView) {
                 convertView = View.inflate(getContext(), R.layout.fragment_main_words_style, null);
                 viewHolder = new ViewHolder();
-                viewHolder.textView = (TextView) convertView.findViewById(R.id.words);
+                viewHolder.word = (TextView) convertView.findViewById(R.id.words);
+                viewHolder.pinyin = (TextView) convertView.findViewById(R.id.pingyin);
+                viewHolder.texts = (TextView) convertView.findViewById(R.id.text);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-            viewHolder.textView.setText(mDataList.get(position));
+
+            // 楷体
+            AssetManager mgr = getActivity().getAssets();
+            Typeface tf = Typeface.createFromAsset(mgr, "fonts/kaiti_GB2312.ttf");
+
+            viewHolder.word.setText(mDataList_word.get(position));
+            viewHolder.word.setTypeface(tf, Typeface.BOLD);
+
+            viewHolder.pinyin.setText("【"+mDataList_pinyin.get(position)+"】");
+            viewHolder.texts.setText("\t\t"+mDataList_text.get(position));
 
             return convertView;
         }
     }
 
     class ViewHolder {
-        public TextView textView;
+        public TextView word;
+        public TextView pinyin;
+        public TextView texts;
     }
 
     /**
@@ -237,12 +315,12 @@ public class words_fragment1 extends Fragment {
 
         @Override
         public void onSpeakPaused() {
-            showTip("暂停播放");
+            //showTip("暂停播放");
         }
 
         @Override
         public void onSpeakResumed() {
-            showTip("继续播放");
+            //showTip("继续播放");
         }
 
         @Override
@@ -251,8 +329,8 @@ public class words_fragment1 extends Fragment {
             // 合成进度
             Log.e("MscSpeechLog_", "percent =" + percent);
             mPercentForBuffering = percent;
-            showTip(String.format(getString(R.string.tts_toast_format),
-                    mPercentForBuffering, mPercentForPlaying));
+            //showTip(String.format(getString(R.string.tts_toast_format),
+                    //mPercentForBuffering, mPercentForPlaying));
         }
 
         @Override
@@ -260,8 +338,8 @@ public class words_fragment1 extends Fragment {
             // 播放进度
             Log.e("MscSpeechLog_", "percent =" + percent);
             mPercentForPlaying = percent;
-            showTip(String.format(getString(R.string.tts_toast_format),
-                    mPercentForBuffering, mPercentForPlaying));
+            //showTip(String.format(getString(R.string.tts_toast_format),
+                    //mPercentForBuffering, mPercentForPlaying));
 
             SpannableStringBuilder style = new SpannableStringBuilder(texts);
             Log.e(TAG, "beginPos = " + beginPos + "  endPos = " + endPos);
@@ -271,7 +349,7 @@ public class words_fragment1 extends Fragment {
 
         @Override
         public void onCompleted(SpeechError error) {
-            showTip("播放完成");
+            //showTip("播放完成");
             if (error != null) {
                 showTip(error.getPlainDescription(true));
                 return;

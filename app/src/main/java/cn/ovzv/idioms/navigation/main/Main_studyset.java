@@ -102,7 +102,7 @@ public class Main_studyset extends AppCompatActivity {
                                 numLimitation1.setText("每日新词 "+selectText);
                                 Log.d("每日新词",selectText);
                             }else{
-                                numLimitation2.setText("每日复习 "+selectText);
+                                numLimitation1.setText("每日新词 "+selectText);
                                 Log.d("每日复习",selectText);
                             }
                             textView.setTextColor(this.getResources().getColor(R.color.txtnumber));

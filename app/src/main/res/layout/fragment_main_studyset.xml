@@ -17,18 +17,41 @@
         android:layout_width="match_parent"
         android:background="@drawable/fragment_main_bg2"
         android:layout_height="120dp">
-        <LinearLayout
-            android:layout_width="120dp"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/fragment_main_progressbar_ct">
-            </ImageView>
-        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            app:cardUseCompatPadding="false"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="10.0dip"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="25dp"
+            android:paddingStart="25dp"
+            android:checked="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:paddingEnd="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardPreventCornerOverlap="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_marginTop="5dp"
+
+
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/book">
+                </ImageView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -48,7 +71,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:layout_height="match_parent"
-                android:text="《中华成语词典》共收录成语30178条，除常用成语外，还酌收部分正向成语发展的词组和常用熟语。"
+                android:text="《中华成语词典》共收录成语信息30862条，除常用成语外，还酌收部分正向成语发展的词组和常用熟语。"
                 android:textSize="10sp"
                 android:textStyle="bold">
 

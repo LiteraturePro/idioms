@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,6 +51,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sp = getSharedPreferences("one",MODE_PRIVATE);
+        //编辑者
+        SharedPreferences.Editor edit = sp.edit();
+
+        Boolean aBoolean = sp.getBoolean("one", true);
+
+        if (aBoolean == false){
+            writeSp();
+        }
 
 
         DogeManager.DogeInit(this);    //整个 app 只需要运行一次，最好直接放在 Application 中
@@ -227,6 +238,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //若不是主进程（":channel"结尾的进程），直接初始化sdk，不可在子线程中执行
             PushHelper.init(getApplicationContext());
         }
+    }
+
+    public void writeSp() {
+        //获取Sp对象
+        //参数一 文件名   参数二  模式（固定写法）
+        SharedPreferences sp = getSharedPreferences("words",MODE_PRIVATE);
+        //编辑者
+        SharedPreferences.Editor edit = sp.edit();
+        //写入数据
+        edit.putInt("new_words",20);
+        edit.putInt("fuxi_words",20);
+        edit.putBoolean("study_1",false);
+        edit.putBoolean("study_2",false);
+        edit.putBoolean("auto_1",false);
+        edit.putBoolean("auto_2",false);
+        edit.putBoolean("auto_3",false);
+        //提交
+        edit.commit();
+
     }
 
     @Override

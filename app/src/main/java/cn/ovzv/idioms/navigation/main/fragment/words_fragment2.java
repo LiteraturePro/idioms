@@ -1,20 +1,35 @@
 package cn.ovzv.idioms.navigation.main.fragment;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.iflytek.cloud.SpeechSynthesizer;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.leancloud.LCCloud;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.SideslipListView;
+import cn.ovzv.idioms.help.TtsSettings;
 import cn.ovzv.idioms.navigation.me.fragment.message_fragment1;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,16 +39,8 @@ import cn.ovzv.idioms.navigation.me.fragment.message_fragment1;
 public class words_fragment2 extends Fragment {
 
     private SideslipListView mSideslipListView;
-    /**
-     * 初始化数据
-     */
-    private ArrayList<String> mDataList = new ArrayList<String>() {
-        {
-            for (int i = 0; i < 10; i++) {
-                add("ListView item  " + i);
-            }
-        }
-    };
+    private ArrayList<String> mDataList_word,mDataList_pinyin,mDataList_text;
+    private JSONArray DataJSONArray;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,8 +86,71 @@ public class words_fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_words_fragment2, container, false);
-        mSideslipListView = (SideslipListView) view.findViewById(R.id.sideslipListView);
-        mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
+
+
+
+        // 构建传递给服务端的参数字典
+        Map<String, Object> dicParameters = new HashMap<String, Object>();
+        dicParameters.put("tag", 1);
+        dicParameters.put("UserID", "61936fa79ba582465b45d312");
+
+        // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
+        LCCloud.callFunctionInBackground("DB_Get_word", dicParameters).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable disposable) {
+
+            }
+
+            @Override
+            public void onNext(Object object) {
+                // succeed.
+                JSONObject json = (JSONObject) JSONObject.toJSON(object);
+
+
+                DataJSONArray = json.getJSONArray("data");
+
+                System.out.println(DataJSONArray.getJSONObject(0).toString());
+
+                System.out.println(DataJSONArray.getJSONObject(0).getString("uuid"));
+
+
+                mDataList_word = new ArrayList<String>() {
+                    {
+                        for (int i = 0; i < DataJSONArray.size(); i++) {
+                            add(DataJSONArray.getJSONObject(i).getString("word"));
+                        }
+                    }
+                };
+                mDataList_pinyin = new ArrayList<String>() {
+                    {
+                        for (int i = 0; i < DataJSONArray.size(); i++) {
+                            add(DataJSONArray.getJSONObject(i).getString("pinyin"));
+                        }
+                    }
+                };
+                mDataList_text = new ArrayList<String>() {
+                    {
+                        for (int i = 0; i < DataJSONArray.size(); i++) {
+                            add(DataJSONArray.getJSONObject(i).getString("explanation"));
+                        }
+                    }
+                };
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                // failed.
+            }
+
+            @Override
+            public void onComplete() {
+                mSideslipListView = (SideslipListView) view.findViewById(R.id.sideslipListView);
+                mSideslipListView.setAdapter(new CustomAdapter());//设置适配器
+
+
+
+            }
+        });
 
 
         return view;
@@ -91,12 +161,12 @@ public class words_fragment2 extends Fragment {
     class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return mDataList.size();
+            return mDataList_word.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return mDataList.get(position);
+            return mDataList_word.get(position);
         }
 
         @Override
@@ -108,22 +178,32 @@ public class words_fragment2 extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder viewHolder;
             if (null == convertView) {
-                convertView = View.inflate(getContext(), R.layout.fragment_main_words_style, null);
+                convertView = View.inflate(getContext(), R.layout.fragment_main_words_style2, null);
                 viewHolder = new ViewHolder();
-//                viewHolder.textView = (TextView) convertView.findViewById(R.id.textView);
-//                viewHolder.txtv_delete = (TextView) convertView.findViewById(R.id.txtv_delete);
+                viewHolder.word = (TextView) convertView.findViewById(R.id.words);
+                viewHolder.pinyin = (TextView) convertView.findViewById(R.id.pingyin);
+                viewHolder.texts = (TextView) convertView.findViewById(R.id.text);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-//            viewHolder.textView.setText(mDataList.get(position));
+            // 楷体
+            AssetManager mgr = getActivity().getAssets();
+            Typeface tf = Typeface.createFromAsset(mgr, "fonts/kaiti_GB2312.ttf");
+
+            viewHolder.word.setText(mDataList_word.get(position));
+            viewHolder.word.setTypeface(tf, Typeface.BOLD);
+            viewHolder.pinyin.setText("【"+mDataList_pinyin.get(position)+"】");
+            viewHolder.texts.setText("\t\t"+mDataList_text.get(position));
 
             return convertView;
         }
     }
 
     class ViewHolder {
-        public TextView textView;
-        public TextView txtv_delete;
+        public TextView word;
+        public TextView pinyin;
+        public TextView texts;
     }
+
 }

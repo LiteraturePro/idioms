@@ -166,6 +166,7 @@
             android:layout_height="22dp"
             android:src="@drawable/fragment_main_news_icon_collect"/>
         <TextView
+            android:id="@+id/loves_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#9A9A9A"
@@ -180,6 +181,7 @@
             android:src="@drawable/fragment_main_news_icon_work_like"
             android:layout_marginLeft="20dp" />
         <TextView
+            android:id="@+id/love_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#9A9A9A"

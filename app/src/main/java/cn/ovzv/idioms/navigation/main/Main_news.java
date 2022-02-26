@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -26,6 +27,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
+import com.umeng.commonsdk.debug.I;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,8 +51,8 @@ public class Main_news extends AppCompatActivity {
     private ImageView mImageView;
     private TextView mTextView;
 
-    private TextView News,Text,Time;
-    private ImageView Image;
+    private TextView News,Text,Time ,loves_num,love_num;
+    private ImageView Image, Image_loves,Image_love;
 
 
     private static final String TAG = "MainActivity";
@@ -79,6 +81,10 @@ public class Main_news extends AppCompatActivity {
         Time = (TextView) findViewById(R.id.time);
         Image = (ImageView) findViewById(R.id.image);
         Text = (TextView) findViewById(R.id.text);
+        Image_loves = (ImageView)findViewById(R.id.new_loves);
+        Image_love = (ImageView)findViewById(R.id.new_love);
+        loves_num = (TextView)findViewById(R.id.loves_num);
+        love_num = (TextView)findViewById(R.id.love_num);
 
         // 构建传递给服务端的参数字典
         Map<String, Object> NewsData = new HashMap<String, Object>();
@@ -134,6 +140,23 @@ public class Main_news extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
+                        Image_love.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Image_love.setImageResource(R.drawable.fragment_main_news_icon_work_like_red);
+                                love_num.setText("1");
+
+                            }
+                        });
+                        Image_loves.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Image_loves.setImageResource(R.drawable.fragment_main_news_icon_collect_yellow);
+                                loves_num.setText("1");
+                                // 上传收藏数据
+
+                            }
+                        });
 
 
 

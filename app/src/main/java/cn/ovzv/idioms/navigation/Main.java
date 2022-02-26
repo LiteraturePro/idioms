@@ -1,6 +1,7 @@
 package cn.ovzv.idioms.navigation;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -49,10 +51,11 @@ import io.reactivex.disposables.Disposable;
  */
 public class Main extends Fragment {
 
-    private TextView Studyset,Couplet,Fun,News,Text,Time,News_src;
+    private TextView Studyset,Couplet,Fun,News,Text,Time,News_src,word_do,word_no;
     private Button Words,Study,Game1,Game2,Game3;
     private ImageView Image;
     private AppUpdater mAppUpdater;
+    private ProgressBar progressBar;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -180,6 +183,9 @@ public class Main extends Fragment {
         Image = (ImageView) view.findViewById(R.id.new_img);
         Text = (TextView)view.findViewById(R.id.new_text);
         News_src = (TextView)view.findViewById(R.id.new_src);
+        word_do = (TextView) view.findViewById(R.id.word_do);
+        word_no = (TextView) view.findViewById(R.id.word_no);
+        progressBar = (ProgressBar) view.findViewById(R.id.progress_bar_healthy);
 
 
         // 构建传递给服务端的参数字典
@@ -207,6 +213,40 @@ public class Main extends Fragment {
                 News_src.setText(DataJSONArray.getJSONObject(0).getString("Src"));
                 Image.setImageBitmap(GetHttpBitmap.getHttpBitmap(DataJSONArray.getJSONObject(0).getString("Image")));
 
+                // 构建传递给服务端的参数字典
+                Map<String, Object> dicParameters = new HashMap<String, Object>();
+                dicParameters.put("UserID", "61936fa79ba582465b45d312");
+
+                // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
+                LCCloud.callFunctionInBackground("Get_word_do", dicParameters).subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object object) {
+                        // succeed.
+                        System.out.println(object);
+                        JSONObject json = (JSONObject) JSONObject.toJSON(object);
+                        word_do.setText("已完成"+json.getString("do_bili")+"%");
+                        word_no.setText(json.getString("no"));
+                        progressBar.setProgress(Math.round(json.getIntValue("do_bili")));
+
+
+                    }
+                    @Override
+                    public void onError(Throwable throwable) {
+                        // failed.
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+
+                    }
+                });
+
             }
             @Override
             public void onError(Throwable throwable) {
@@ -222,8 +262,12 @@ public class Main extends Fragment {
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), Main_news.class);
                         startActivity(intent);
+
                     }
                 });
+
+
+
 
             }
         });
@@ -311,8 +355,6 @@ public class Main extends Fragment {
             }
         });
 
-
-
-
     }
+
 }

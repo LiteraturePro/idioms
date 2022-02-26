@@ -3,11 +3,14 @@ package cn.ovzv.idioms.navigation.main;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import java.util.ArrayList;
 import cn.ovzv.idioms.R;
@@ -21,6 +24,9 @@ public class Main_studyset extends AppCompatActivity {
     private ArrayList<String> numberlist = new ArrayList<>();
     private TextView numLimitation1,numLimitation2;
     private int TAG = 0;
+    private SharedPreferences sp;
+    private CheckBox chk1,chk2;
+    private Switch switch1,switch2,switch3;
 
 
     @Override
@@ -28,19 +34,156 @@ public class Main_studyset extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main_studyset);
         initView();
-        numLimitation1 = findViewById(R.id.num_limitation1);
-        numLimitation2 = findViewById(R.id.num_limitation2);
+        numLimitation1 = (TextView) findViewById(R.id.num_limitation1);
+        numLimitation2 = (TextView) findViewById(R.id.num_limitation2);
+
+        switch1 = (Switch) findViewById(R.id.switch1);
+        switch2 = (Switch) findViewById(R.id.switch2);
+        switch3 = (Switch) findViewById(R.id.switch3);
+
+        chk1 = (CheckBox) findViewById(R.id.chk1);
+        chk2 = (CheckBox) findViewById(R.id.chk2);
+
+
+        //获取Sp对象
+        //参数一 文件名   参数二  模式（固定写法）
+        sp = getSharedPreferences("words", MODE_PRIVATE);
+
+        chk1.setChecked(sp.getBoolean("study_1",false));
+        chk2.setChecked(sp.getBoolean("study_2",false));
+
+        chk1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(chk1.isChecked()){
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("study_1",true);
+                    //提交
+                    edit.commit();
+                }
+                else {
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("study_1",false);
+                    //提交
+                    edit.commit();
+                }
+
+            }
+        });
+
+        chk2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(chk2.isChecked()){
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("study_2",true);
+                    //提交
+                    edit.commit();
+                }
+                else {
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("study_2",false);
+                    //提交
+                    edit.commit();
+                }
+
+            }
+        });
+
+
+
+        switch1.setChecked(sp.getBoolean("auto_1",false));
+        switch2.setChecked(sp.getBoolean("auto_2",false));
+        switch3.setChecked(sp.getBoolean("auto_3",true));
+
+
+        switch1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(switch1.isChecked()){
+                    System.out.println(true);
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("auto_1",true);
+                    //提交
+                    edit.commit();
+                }
+                else {
+                    System.out.println(true);
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("auto_1",false);
+                    //提交
+                    edit.commit();
+                }
+
+            }
+        });
+        switch2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(switch2.isChecked()){
+                    System.out.println(true);
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("auto_2",true);
+                    //提交
+                    edit.commit();
+                }
+                else {
+                    System.out.println(true);
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("auto_2",false);
+                    //提交
+                    edit.commit();
+                }
+
+            }
+        });
+        switch3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(switch3.isChecked()){
+                    System.out.println(true);
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("auto_3",true);
+                    //提交
+                    edit.commit();
+                }
+                else {
+                    System.out.println(true);
+                    SharedPreferences.Editor edit = sp.edit();
+                    //写入数据
+                    edit.putBoolean("auto_3",false);
+                    //提交
+                    edit.commit();
+                }
+
+            }
+        });
+
+
+
+
+        //点击按钮吐司一下内容
+        numLimitation1.setText("每日新学 "+String.valueOf(sp.getInt("new_words", 20))+" 个");
+        numLimitation2.setText("每日复习 "+String.valueOf(sp.getInt("new_words", 20))+" 个");
 
         numLimitation1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog(numLimitation1, numberlist, 20,1);
-            }
-        });
-        numLimitation2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(numLimitation2, numberlist, 20,2);
             }
         });
 
@@ -50,7 +193,7 @@ public class Main_studyset extends AppCompatActivity {
     private void initData() {
         numberlist.clear();
         for (int i = 0; i <= 100; i++) {
-            numberlist.add(String.format("%d个", i));
+            numberlist.add(String.format("%d", i));
         }
     }
     /**
@@ -99,11 +242,17 @@ public class Main_studyset extends AppCompatActivity {
                         (dialogInterface, i) -> {
                             TAG = i;
                             if(tag == 1){
-                                numLimitation1.setText("每日新词 "+selectText);
+                                numLimitation1.setText("每日新词 "+selectText + " 个");
+                                numLimitation2.setText("每日复习 "+selectText + " 个");
+                                //参数一 文件名   参数二  模式（固定写法）
+                                SharedPreferences sp = getSharedPreferences("words",MODE_PRIVATE);
+                                //编辑者
+                                SharedPreferences.Editor edit = sp.edit();
+                                //写入数据
+                                edit.putInt("new_words",Integer.parseInt(selectText));
+                                //提交
+                                edit.commit();
                                 Log.d("每日新词",selectText);
-                            }else{
-                                numLimitation1.setText("每日新词 "+selectText);
-                                Log.d("每日复习",selectText);
                             }
                             textView.setTextColor(this.getResources().getColor(R.color.txtnumber));
                         })

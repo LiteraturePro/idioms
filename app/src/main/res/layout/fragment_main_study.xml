@@ -50,9 +50,6 @@
             </ImageView>
         </LinearLayout>
     </LinearLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -76,6 +73,7 @@
                         android:text="今日新词">
                     </TextView>
                     <TextView
+                        android:id="@+id/new_words"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="10sp"
@@ -99,6 +97,7 @@
                         android:text="今日复习">
                     </TextView>
                     <TextView
+                        android:id="@+id/fuxi_word"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="10sp"
@@ -122,19 +121,19 @@
                         android:text="学习时长">
                     </TextView>
                     <TextView
+                        android:id="@+id/timeView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:textColor="#000000"
-                        android:text="200min">
+                        android:textColor="#000000">
                     </TextView>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="match_parent"
@@ -145,24 +144,26 @@
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:background="@drawable/fragment_main_study_bg2"
-                    android:layout_width="140dp"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent">
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+
                         android:layout_height="match_parent">
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center"
                             android:src="@drawable/fragment_main_study_biaoji">
 
                         </ImageView>
 
                     </LinearLayout>
                     <TextView
-                        android:layout_width="100dp"
+                        android:layout_width="60dp"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:text="标记为太简单"
+                        android:text="这里还和DAU手段虎大将军迪欧擦UC恩锤死你这里还和DAU手段虎大将军迪欧擦UC恩锤死你"
                         android:gravity="center"
                         android:textSize="12sp"
                         android:textColor="#000000"
@@ -172,157 +173,16 @@
                     </TextView>
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
+            <ViewFlipper
+                android:id="@+id/viewFlipper"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/fragment_main_study_bg3_up"
-                    android:layout_height="150dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp">
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/fragment_main_study_shoucang_no">
+                android:layout_height="wrap_content"
+                android:autoStart="false"
+                android:flipInterval="3000">
 
-                        </ImageView>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/study_words"
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="【yǎn ěr dào líng】"
-                            android:gravity="center"
-                            android:textSize="12sp"
-                            android:textColor="#000000"
-                            android:textStyle="bold">
-                        </TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/fragment_main_study_bg3_down"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="【释义】"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
-                            android:textStyle="bold">
-
-                        </TextView>
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="wrap_content"
-                            android:text="      哀鸿哀鸣的鸿雁。比喻啼饥号寒的灾民。比喻在天灾人祸中到处都是流离失所、呻吟呼号的饥民。"
-                            android:textSize="14sp">
-
-                        </TextView>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="30dp"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="【出处】"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
-                            android:textStyle="bold">
-
-                        </TextView>
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="wrap_content"
-                            android:text="      哀鸿哀鸣的鸿雁。比喻啼饥号寒的灾民。比喻在天灾人祸中到处都是流离失所、呻吟呼号的饥民。"
-                            android:textSize="14sp">
-
-                        </TextView>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="30dp"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="【例句】"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
-                            android:textStyle="bold">
-
-                        </TextView>
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="wrap_content"
-                            android:text="      哀鸿哀鸣的鸿雁。比喻啼饥号寒的灾民。比喻在天灾人祸中到处都是流离失所、呻吟呼号的饥民。"
-                            android:textSize="14sp">
-
-                        </TextView>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp">
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp">
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            </ViewFlipper>
 
         </LinearLayout>
-    </ScrollView>
+
 
 </LinearLayout>

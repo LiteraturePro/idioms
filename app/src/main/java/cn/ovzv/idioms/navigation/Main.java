@@ -1,5 +1,6 @@
 package cn.ovzv.idioms.navigation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -51,7 +52,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class Main extends Fragment {
 
-    private TextView Studyset,Couplet,Fun,News,Text,Time,News_src,word_do,word_no;
+    private TextView Studyset,Couplet,Fun,News,Text,Time,News_src,word_do,word_no,word_study,word_fuxi;
     private Button Words,Study,Game1,Game2,Game3;
     private ImageView Image;
     private AppUpdater mAppUpdater;
@@ -185,8 +186,17 @@ public class Main extends Fragment {
         News_src = (TextView)view.findViewById(R.id.new_src);
         word_do = (TextView) view.findViewById(R.id.word_do);
         word_no = (TextView) view.findViewById(R.id.word_no);
+        word_fuxi =(TextView) view.findViewById(R.id.word_fuxi);
+        word_study = (TextView)view.findViewById(R.id.word_study);
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar_healthy);
 
+        //获取Sp对象
+        //参数一 文件名   参数二  模式（固定写法）
+        SharedPreferences sp = getActivity().getSharedPreferences("words", Context.MODE_PRIVATE);
+
+        //点击按钮吐司一下内容
+        word_fuxi.setText(String.valueOf(sp.getInt("new_words", 20)));
+        word_study.setText(String.valueOf(sp.getInt("new_words", 20)));
 
         // 构建传递给服务端的参数字典
         Map<String, Object> NewsData = new HashMap<String, Object>();
@@ -357,4 +367,17 @@ public class Main extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //参数一 文件名   参数二  模式（固定写法）
+        SharedPreferences sp = getActivity().getSharedPreferences("words", Context.MODE_PRIVATE);
+
+        //点击按钮吐司一下内容
+        word_fuxi.setText(String.valueOf(sp.getInt("new_words", 20)));
+        word_study.setText(String.valueOf(sp.getInt("new_words", 20)));
+
+
+    }
 }

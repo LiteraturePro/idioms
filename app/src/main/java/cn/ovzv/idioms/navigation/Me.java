@@ -112,9 +112,6 @@ public class Me extends Fragment {
         LCUser currentUser = LCUser.getCurrentUser();
         if (currentUser != null) {
             // 跳到首页
-            System.out.println(currentUser);
-            System.out.println(currentUser.getUsername());
-            System.out.println(currentUser.getMobilePhoneNumber());
             if (currentUser.getMobilePhoneNumber() == null){
                 Phone.setText("暂未设置号码");
             }else{

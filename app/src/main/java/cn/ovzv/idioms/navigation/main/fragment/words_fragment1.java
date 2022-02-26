@@ -1,5 +1,6 @@
 package cn.ovzv.idioms.navigation.main.fragment;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -132,9 +133,13 @@ public class words_fragment1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_words_fragment1, container, false);
 
+        //参数一 文件名   参数二  模式（固定写法）
+        SharedPreferences sp = getActivity().getSharedPreferences("words", Context.MODE_PRIVATE);
+
         // 构建传递给服务端的参数字典
         Map<String, Object> dicParameters = new HashMap<String, Object>();
         dicParameters.put("tag", 2);
+        dicParameters.put("count", sp.getInt("new_words", 20));
         dicParameters.put("UserID", "61936fa79ba582465b45d312");
 
         // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
@@ -152,9 +157,6 @@ public class words_fragment1 extends Fragment {
 
                 DataJSONArray = json.getJSONArray("data");
 
-                System.out.println(DataJSONArray.getJSONObject(0).toString());
-
-                System.out.println(DataJSONArray.getJSONObject(0).getString("uuid"));
 
 
                 mDataList_word = new ArrayList<String>() {

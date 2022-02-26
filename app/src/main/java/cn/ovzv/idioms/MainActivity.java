@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Handler handler;
     private LeancloudApi leancloudApi;
 
-    private String[] tabText = {"首页","课程","学习","我的"};
-    private int[] normalIcon = {R.drawable.fragment_main_1,R.drawable.fragment_course_1,R.drawable.fragment_study_1,R.drawable.fragment_me_1};
-    private int[] selectIcon = {R.drawable.fragment_main_2,R.drawable.fragment_course_2,R.drawable.fragment_study_2,R.drawable.fragment_me_2};
+    private String[] tabText = {"首页","课程","我的"};
+    private int[] normalIcon = {R.drawable.fragment_main_1,R.drawable.fragment_course_1,R.drawable.fragment_me_1};
+    private int[] selectIcon = {R.drawable.fragment_main_2,R.drawable.fragment_course_2,R.drawable.fragment_me_2};
 
 
     @SuppressLint("HandlerLeak")
@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         SharedPreferences sp = getSharedPreferences("one",MODE_PRIVATE);
-        //编辑者
-        SharedPreferences.Editor edit = sp.edit();
+
 
         Boolean aBoolean = sp.getBoolean("one", true);
 
@@ -156,7 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     fragmentList.add(new Main());
                     fragmentList.add(new Course());
-                    fragmentList.add(new Study());
                     fragmentList.add(new Me());
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -248,12 +246,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences.Editor edit = sp.edit();
         //写入数据
         edit.putInt("new_words",20);
-        edit.putInt("fuxi_words",20);
         edit.putBoolean("study_1",false);
         edit.putBoolean("study_2",false);
         edit.putBoolean("auto_1",false);
         edit.putBoolean("auto_2",false);
-        edit.putBoolean("auto_3",false);
+        edit.putBoolean("auto_3",true);
         //提交
         edit.commit();
 

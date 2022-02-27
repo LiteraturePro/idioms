@@ -449,6 +449,7 @@ public class Main_study extends AppCompatActivity implements View.OnTouchListene
                             Map<String, Object> dicParameters = new HashMap<>();
                             dicParameters.put("UserID", currentUser.getObjectId());
                             dicParameters.put("Use_time", time);
+                            dicParameters.put("id",sp.getInt("new_words", 20));
                             dicParameters.put("tag", 1);
 
                             // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）

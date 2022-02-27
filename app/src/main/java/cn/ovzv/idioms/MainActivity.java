@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //    REGION.NorthChina - 华北节点，默认节点
         //    REGION.EastChina  - 华东节点
         //    REGION.NorthAmerica - 北美节点
-        LeanCloud.setRegion(LeanCloud.REGION.EastChina);
-
-        // 初始化 Leancloud SDK
-        LeanCloud.initialize(this, leancloudApi.APP_ID,leancloudApi.APP_KEY, leancloudApi.REST_API);
+//        LeanCloud.setRegion(LeanCloud.REGION.EastChina);
+//
+//        // 初始化 Leancloud SDK
+//        LeanCloud.initialize(this, leancloudApi.APP_ID,leancloudApi.APP_KEY, leancloudApi.REST_API);
 
         // 初始化SDK appkey在官方注册应用即可获取
         UMConfigure.init(this, "6191b9f9e014255fcb786568", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, null);
@@ -171,8 +171,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void showAgreementDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.agreement_title);
-        builder.setMessage(R.string.agreement_msg);
+        builder.setTitle("邮箱验证说明");
+        builder.setMessage("注册成功后,您将收到一封邮箱验证的邮件,请您尽快完成验证,避免影响使用.");
         builder.setPositiveButton(R.string.agreement_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

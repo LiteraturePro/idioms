@@ -44,6 +44,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.leancloud.LCCloud;
+import cn.leancloud.LCUser;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.SideslipListView;
 import cn.ovzv.idioms.help.TtsSettings;
@@ -135,12 +136,13 @@ public class words_fragment1 extends Fragment {
 
         //参数一 文件名   参数二  模式（固定写法）
         SharedPreferences sp = getActivity().getSharedPreferences("words", Context.MODE_PRIVATE);
+        LCUser currentUser = LCUser.getCurrentUser();
 
         // 构建传递给服务端的参数字典
         Map<String, Object> dicParameters = new HashMap<String, Object>();
         dicParameters.put("tag", 2);
         dicParameters.put("count", sp.getInt("new_words", 20));
-        dicParameters.put("UserID", "61936fa79ba582465b45d312");
+        dicParameters.put("UserID", currentUser.getObjectId());
 
         // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
         LCCloud.callFunctionInBackground("DB_Get_word", dicParameters).subscribe(new Observer<Object>() {

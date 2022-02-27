@@ -33,6 +33,7 @@ import java.util.Map;
 import cn.leancloud.LCCloud;
 import cn.leancloud.LCInstallation;
 import cn.leancloud.LCObject;
+import cn.leancloud.LCUser;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.GetHttpBitmap;
 import cn.ovzv.idioms.navigation.main.Main_couplet;
@@ -253,8 +254,9 @@ public class Main extends Fragment {
                 Image.setImageBitmap(GetHttpBitmap.getHttpBitmap(DataJSONArray.getJSONObject(0).getString("Image")));
 
                 // 构建传递给服务端的参数字典
+                LCUser currentUser = LCUser.getCurrentUser();
                 Map<String, Object> dicParameters = new HashMap<String, Object>();
-                dicParameters.put("UserID", "61936fa79ba582465b45d312");
+                dicParameters.put("UserID", currentUser.getObjectId());
 
                 // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
                 LCCloud.callFunctionInBackground("Get_word_do", dicParameters).subscribe(new Observer<Object>() {

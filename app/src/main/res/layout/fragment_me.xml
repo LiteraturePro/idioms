@@ -39,7 +39,8 @@
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/fragment_me_cat" />
+                android:src="@drawable/touxiang"
+                />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"

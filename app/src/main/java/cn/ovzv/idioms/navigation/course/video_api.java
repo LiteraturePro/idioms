@@ -38,21 +38,6 @@ public class video_api extends AppCompatActivity {
         findViewById(R.id.start_btn).setOnClickListener(view->mMediaPlayer.start());
         findViewById(R.id.pause_btn).setOnClickListener(view->mMediaPlayer.pause());
         findViewById(R.id.toggle_btn).setOnClickListener(view->mMediaPlayer.toggle());
-        findViewById(R.id.notice_btn).setOnClickListener(view->mMediaPlayer.sendNotice("Hello DogePlayer!"));
-        findViewById(R.id.seek_btn).setOnClickListener(view->mMediaPlayer.seekTo(120000));
-        findViewById(R.id.retry_btn).setOnClickListener(view->mMediaPlayer.retry());
-        findViewById(R.id.speed2_btn).setOnClickListener(view->mMediaPlayer.setSpeed(2.0f));
-        findViewById(R.id.speed1_btn).setOnClickListener(view->mMediaPlayer.setSpeed(1.0f));
-        findViewById(R.id.to_360p_btn).setOnClickListener(view->{
-            if(mMediaPlayer.getCurrentPosition() == 0) mMediaPlayer.switchQuality(96,true);
-            else mMediaPlayer.switchQuality(96);
-        });
-        findViewById(R.id.to_720p_btn).setOnClickListener(view->{
-            if(mMediaPlayer.getCurrentPosition() == 0) mMediaPlayer.switchQuality(5,true);
-            else mMediaPlayer.switchQuality(5);
-        });
-        findViewById(R.id.mute_btn).setOnClickListener(view->mMediaPlayer.setMute(true));
-        findViewById(R.id.dismute_btn).setOnClickListener(view->mMediaPlayer.setMute(false));
     }
     @Override
     protected void onPause() {

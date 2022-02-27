@@ -46,6 +46,7 @@ import java.io.RandomAccessFile;
 import java.util.HashMap;
 import java.util.Map;
 import cn.leancloud.LCCloud;
+import cn.leancloud.LCUser;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.TtsSettings;
 import cn.ovzv.idioms.tts;
@@ -124,13 +125,15 @@ public class Main_study extends AppCompatActivity implements View.OnTouchListene
             wasRunning = savedInstanceState.getBoolean("wasRunning");
         }
 
+        LCUser currentUser = LCUser.getCurrentUser();
+
         running = true;
         runTime();
         initView();
 
         // 构建传递给服务端的参数字典
         Map<String, Object> dicParameters = new HashMap<>();
-        dicParameters.put("UserID", "61936fa79ba582465b45d312");
+        dicParameters.put("UserID", currentUser.getObjectId());
         dicParameters.put("tag", 0);
 
         // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
@@ -202,10 +205,11 @@ public class Main_study extends AppCompatActivity implements View.OnTouchListene
         tf = Typeface.createFromAsset(mgr, "fonts/kaiti_GB2312.ttf");
 
         // 构建传递给服务端的参数字典
+        LCUser currentUser = LCUser.getCurrentUser();
         Map<String, Object> dicParameters = new HashMap<>();
         dicParameters.put("tag", 2);
         dicParameters.put("count", sp.getInt("new_words", 20));
-        dicParameters.put("UserID", "61936fa79ba582465b45d312");
+        dicParameters.put("UserID", currentUser.getObjectId());
 
         // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
         LCCloud.callFunctionInBackground("DB_Get_word", dicParameters).subscribe(new Observer<Object>() {
@@ -402,8 +406,10 @@ public class Main_study extends AppCompatActivity implements View.OnTouchListene
                         @Override
                         public void ok() {
                             // 构建传递给服务端的参数字典
+                            LCUser currentUser = LCUser.getCurrentUser();
                             Map<String, Object> dicParameters = new HashMap<>();
-                            dicParameters.put("UserID", "61936fa79ba582465b45d312");
+                            dicParameters.put("UserID", currentUser.getObjectId());
+                            dicParameters.put("Use_time", time);
                             dicParameters.put("tag", 1);
 
                             // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
@@ -439,8 +445,10 @@ public class Main_study extends AppCompatActivity implements View.OnTouchListene
 
 
                             // 构建传递给服务端的参数字典
+                            LCUser currentUser = LCUser.getCurrentUser();
                             Map<String, Object> dicParameters = new HashMap<>();
-                            dicParameters.put("UserID", "61936fa79ba582465b45d312");
+                            dicParameters.put("UserID", currentUser.getObjectId());
+                            dicParameters.put("Use_time", time);
                             dicParameters.put("tag", 1);
 
                             // 调用指定名称的云函数 averageStars，并且传递参数（默认不使用缓存）
@@ -727,7 +735,7 @@ public class Main_study extends AppCompatActivity implements View.OnTouchListene
                              final TextView textView = findViewById(R.id.timeView);
                              int hour = seconds / 3600 % 24;
                              int minute = seconds % 3600 / 60;
-                             String time = String.format("%02d:%02d:%02d", hour, minute, seconds % 60);
+                             time = String.format("%02d:%02d:%02d", hour, minute, seconds % 60);
                              textView.setText(time);
                              if (running) seconds++;
                              handler.postDelayed(this, 1000);

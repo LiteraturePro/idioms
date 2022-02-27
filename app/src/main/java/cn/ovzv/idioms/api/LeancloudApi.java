@@ -139,26 +139,6 @@ public class LeancloudApi {
         });
     }
 
-
-    /**
-     * 用户注销
-     * @param token
-     * @return String格式结果
-     */
-    public static String Logout(String token) throws Exception {
-        String Url =  "";
-        JSONObject Json = URL_Post(Url);
-
-        String code = Json.getString("code");
-        if (code != "0"){
-            return Json.getString("msg");
-        }else {
-            return Json.getString("msg");
-        }
-
-    }
-
-
     private static JSONObject streamToJson(InputStream inputStream) throws Exception {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,UTF8));
         String temp = "";

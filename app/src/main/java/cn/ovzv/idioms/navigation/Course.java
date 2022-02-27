@@ -3,6 +3,8 @@ package cn.ovzv.idioms.navigation;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.os.Handler;
@@ -14,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import java.util.ArrayList;
@@ -46,6 +50,7 @@ public class Course extends Fragment {
     private GridView mLvMsgList;
     private List<Msg> mDatas = new ArrayList<>();
     private MsgAdapter mAdapter;
+    private Typeface tf;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -93,6 +98,16 @@ public class Course extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_course, container, false);
+
+        TextView textView10 = (TextView)view.findViewById(R.id.textView10);
+
+        AssetManager mgr = getActivity().getAssets();
+        tf = Typeface.createFromAsset(mgr, "fonts/kaiti_GB2312.ttf");
+
+        textView10.setTypeface(tf, Typeface.BOLD);
+
+
+
         // 检测用户是否登录
         LCUser currentUser = LCUser.getCurrentUser();
         if (currentUser != null) {

@@ -11,20 +11,21 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:text="藏品"
+                android:text="成语典故合集"
                 android:textColor="@color/black"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:typeface="monospace" />
 
             <ImageView
@@ -46,8 +47,8 @@
                 <ImageView
                     android:id="@+id/imageView17"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_margin="15dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/chengyugushi"
                      />
             </androidx.cardview.widget.CardView>
         </LinearLayout>

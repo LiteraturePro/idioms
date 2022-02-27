@@ -3,6 +3,8 @@ package cn.ovzv.idioms.navigation;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -52,11 +55,14 @@ import io.reactivex.disposables.Disposable;
  */
 public class Main extends Fragment {
 
-    private TextView Studyset,Couplet,Fun,News,Text,Time,News_src,word_do,word_no,word_study,word_fuxi;
+    private TextView Studyset,Couplet,Fun,News,Text,Time,News_src,word_do,word_no,word_study,word_fuxi,diyiword,dierword;
     private Button Words,Study,Game1,Game2,Game3;
     private ImageView Image;
     private AppUpdater mAppUpdater;
     private ProgressBar progressBar;
+    private Typeface tf;
+    private LinearLayout mLinearLayout;//对应于主布局中用来添加子布局的View
+    private View mGridView;// 子Layout要以view的形式加入到主Layout
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -189,6 +195,29 @@ public class Main extends Fragment {
         word_fuxi =(TextView) view.findViewById(R.id.word_fuxi);
         word_study = (TextView)view.findViewById(R.id.word_study);
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar_healthy);
+        diyiword = (TextView) view.findViewById(R.id.diyi_word);
+        dierword = (TextView) view.findViewById(R.id.dierword);
+
+        mLinearLayout = (LinearLayout) view.findViewById(R.id.study_words);
+
+        AssetManager mgr = getActivity().getAssets();
+        tf = Typeface.createFromAsset(mgr, "fonts/kaiti_GB2312.ttf");
+
+        dierword.setTypeface(tf, Typeface.BOLD);
+        diyiword.setTypeface(tf, Typeface.BOLD);
+
+        char left_str[] = "成语文化".toCharArray();//利用toCharArray方法转换
+
+        for (int j = 0; j < left_str.length; j++) {
+            System.out.println(left_str[j]);
+            mGridView = View.inflate(getContext(), R.layout.fragment_main_study_words, null);
+            TextView txt = mGridView.findViewById(R.id.words_text);
+            txt.setText(String.valueOf(left_str[j]));
+            txt.setTextSize(40);
+            txt.setTypeface(tf);
+            mLinearLayout.addView(mGridView, 140, 140);
+        }
+
 
         //获取Sp对象
         //参数一 文件名   参数二  模式（固定写法）

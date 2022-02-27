@@ -1,6 +1,9 @@
 package cn.ovzv.idioms.navigation.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -41,6 +44,7 @@ public class Main_game2 extends AppCompatActivity implements View.OnTouchListene
     private TextView game2_daan;
     private JSONArray DataJSONArray;
     private String daan;
+    private Typeface tf;
     private ConfirmDialog confirmDialog;
 
 
@@ -189,8 +193,12 @@ public class Main_game2 extends AppCompatActivity implements View.OnTouchListene
                 System.out.println(DataJSONArray);
                 daan = DataJSONArray.get(0).toString();
                 TextView textView = (TextView)view.findViewById(R.id.game2_texts);
-                System.out.println(DataJSONArray.get(1).toString());
+
+                // 楷体
+                AssetManager mgr = getAssets();
+                tf = Typeface.createFromAsset(mgr, "fonts/kaiti_GB2312.ttf");
                 textView.setText(DataJSONArray.get(1).toString());
+                textView.setTypeface(tf, Typeface.BOLD);
             }
 
             @Override

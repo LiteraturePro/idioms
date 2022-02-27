@@ -12,15 +12,15 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/game2_texts"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text=""
                 android:autoLink="all"
                 android:gravity="center"
-                android:textSize="20sp">
+                android:textSize="30sp">
             </TextView>
         </LinearLayout>
         <LinearLayout

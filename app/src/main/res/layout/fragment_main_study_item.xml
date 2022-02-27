@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp">
                 <ImageView
+                    android:id="@+id/shoucang"
                     android:layout_width="20dp"
                     android:layout_marginStart="10dp"
                     android:layout_height="20dp"
@@ -43,17 +44,29 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp">
+                android:layout_height="30dp"
+                android:orientation="horizontal">
                 <TextView
+
+                    android:id="@+id/pinyin"
                     android:layout_width="match_parent"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="【yǎn ěr dào líng】"
+                    android:layout_marginStart="50dp"
                     android:gravity="center"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
                     android:textColor="#000000"
                     android:textStyle="bold">
                 </TextView>
+                <ImageView
+                    android:id="@+id/yuyin"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/fragment_main_words_yuyin">
 
+                </ImageView>
             </LinearLayout>
 
         </LinearLayout>
@@ -63,11 +76,12 @@
             android:background="@drawable/fragment_main_study_bg3_down"
             android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/shiyi1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -78,22 +92,24 @@
 
                 </TextView>
                 <TextView
+                    android:id="@+id/shiyi"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_height="wrap_content"
-                    android:text="      哀鸿哀鸣的鸿雁。比喻啼饥号寒的灾民。比喻在天灾人祸中到处都是流离失所、呻吟呼号的饥民。"
-                    android:textSize="14sp">
+                    android:textSize="16sp">
 
                 </TextView>
 
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/chuchu1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -104,21 +120,23 @@
 
                 </TextView>
                 <TextView
+                    android:id="@+id/chuchu"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_height="wrap_content"
-                    android:text="      哀鸿哀鸣的鸿雁。比喻啼饥号寒的灾民。比喻在天灾人祸中到处都是流离失所、呻吟呼号的饥民。"
-                    android:textSize="14sp">
+                    android:textSize="16sp">
                 </TextView>
 
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/liju1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -129,12 +147,13 @@
 
                 </TextView>
                 <TextView
+                    android:id="@+id/liju"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_height="wrap_content"
-                    android:text="      哀鸿哀鸣的鸿雁。比喻啼饥号寒的灾民。比喻在天灾人祸中到处都是流离失所、呻吟呼号的饥民。"
-                    android:textSize="14sp">
+                    android:textSize="16sp">
 
                 </TextView>
             </LinearLayout>

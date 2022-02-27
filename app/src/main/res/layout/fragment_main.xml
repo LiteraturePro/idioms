@@ -20,16 +20,17 @@
                 android:orientation="vertical"
                 android:background="@drawable/fragment_main_bg1"
                 android:layout_width="match_parent"
-                android:layout_height="250dp">
+                android:layout_height="180dp">
                 <LinearLayout
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="20dp">
                     <TextView
+                        android:id="@+id/diyi_word"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="动画专场">
+                        android:text="博古而通金,挥手在云端">
                     </TextView>
                 </LinearLayout>
                 <LinearLayout
@@ -42,20 +43,19 @@
                         android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:layout_height="match_parent">
-                        <TextView
+                        <LinearLayout
+                            android:id="@+id/study_words"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:text="中国古诗词文化"
                             android:gravity="center"
-                            android:textSize="25sp"
-                            android:textColor="#ffffff"
-                            android:typeface="serif"
-                            android:textStyle="bold">
-                        </TextView>
+                            android:layout_height="80dp"
+                            android:orientation="horizontal">
+
+                        </LinearLayout>
                         <TextView
+                            android:id="@+id/dierword"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="￥9.9 立即抢购"
+                            android:text="博学助君明志,笃行助力致远"
                             android:gravity="center"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
@@ -75,48 +75,48 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp">
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="45dp"
-                        android:layout_marginEnd="45dp"
-                        android:background="@drawable/fragment_main_bg2"
-                        android:layout_width="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_height="30dp">
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/fragment_main_search">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="65dp">-->
+<!--                    <LinearLayout-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_marginStart="45dp"-->
+<!--                        android:layout_marginEnd="45dp"-->
+<!--                        android:background="@drawable/fragment_main_bg2"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_marginBottom="10dp"-->
+<!--                        android:layout_height="30dp">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="40dp"-->
+<!--                            android:layout_marginTop="5dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:layout_marginStart="5dp"-->
+<!--                            android:layout_marginBottom="5dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:src="@drawable/fragment_main_search">-->
 
-                        </ImageView>
-                        <EditText
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+<!--                        </ImageView>-->
+<!--                        <EditText-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent">-->
 
-                        </EditText>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:src="@drawable/fragment_main_code"
-                            android:layout_height="match_parent">
+<!--                        </EditText>-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="40dp"-->
+<!--                            android:layout_marginTop="5dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:layout_marginStart="5dp"-->
+<!--                            android:layout_marginBottom="5dp"-->
+<!--                            android:src="@drawable/fragment_main_code"-->
+<!--                            android:layout_height="match_parent">-->
 
-                        </ImageView>
+<!--                        </ImageView>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
             </LinearLayout>
             <LinearLayout

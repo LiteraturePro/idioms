@@ -633,8 +633,7 @@
                             android:id="@+id/new_img"
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:src="@drawable/fragment_me_cat">
+                            android:layout_height="70dp">
 
                         </ImageView>
                     </LinearLayout>

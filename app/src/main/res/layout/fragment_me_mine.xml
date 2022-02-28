@@ -50,7 +50,7 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/fragment_me_cat" />
+                    app:srcCompat="@drawable/touxiang" />
 
             </LinearLayout>
             <LinearLayout

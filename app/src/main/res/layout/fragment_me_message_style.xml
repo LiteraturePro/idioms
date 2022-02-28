@@ -21,8 +21,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/fragment_me_cat" />
+                android:layout_gravity="center_horizontal" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

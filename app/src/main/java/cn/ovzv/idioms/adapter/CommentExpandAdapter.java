@@ -87,7 +87,7 @@ public class CommentExpandAdapter extends BaseExpandableListAdapter {
         }else {
             groupHolder = (GroupHolder) convertView.getTag();
         }
-        Glide.with(context).load(R.drawable.fragment_me_cat)
+        Glide.with(context).load(R.drawable.touxiang)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.mipmap.ic_launcher)
                 .centerCrop()

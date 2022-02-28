@@ -16,6 +16,15 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
+        
+    # 获取打包秘钥
+    - name: Checkout Android Keystore
+      uses: actions/checkout@v2
+      with:
+        repository: LiteraturePro/idioms_keystore
+        token: ${{ secrets.TOKEN }} # 连接仓库的token,需要单独配置
+        path: keystore # 仓库的根目录名
+        
     - name: Make Gradle executable
       run: chmod +x ./gradlew
     - name: Build Release APK

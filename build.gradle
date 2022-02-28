@@ -17,6 +17,31 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+task upgradeVersion {
+    group 'help'
+    description '构建新版本'
+    doLast {
+        println("---自动升级版本号---\n")
+        def versionProps = new Properties()
+        def versionPropsFile = rootProject.file('version.properties')
+        if (versionPropsFile.exists()) {
+            versionProps.load(new FileInputStream(versionPropsFile))
+        }
+        String oldVersionCode = versionProps['versionCode']
+        String oldVersionName = versionProps['versionName']
+        if (oldVersionCode == null || oldVersionName == null ||
+                oldVersionCode.isEmpty() || oldVersionName.isEmpty()) {
+            println("error:版本号不能为空")
+            return;
+        }
+        versionProps['versionCode'] = String.valueOf(versionProps['versionCode'].toInteger() + 1)
+        String str = versionProps['versionName'].toString()
+        versionProps['versionName'] = str.substring(0, str.lastIndexOf('.') + 1) +
+                (str.substring(str.lastIndexOf('.') + 1).toInteger() + 1)
+
+
+    }
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

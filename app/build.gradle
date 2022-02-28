@@ -9,6 +9,7 @@ if (versionPropsFile.exists()) {
     versionProps.load(new FileInputStream(versionPropsFile))
 }
 
+
 android {
     compileSdk 29
     buildToolsVersion "30.0.3"

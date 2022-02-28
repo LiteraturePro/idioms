@@ -2,16 +2,25 @@ plugins {
     id 'com.android.application'
 }
 
+// 读取version.properties
+def versionProps = new Properties()
+def versionPropsFile = rootProject.file('version.properties')
+if (versionPropsFile.exists()) {
+    versionProps.load(new FileInputStream(versionPropsFile))
+}
+
 android {
     compileSdk 29
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+
+
         applicationId "cn.ovzv.idioms"
         minSdk 21
         targetSdk 29
-        versionCode 1
-        versionName "1.0"
+        versionCode versionProps['versionCode'].toInteger()
+        versionName versionProps['versionName']
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {

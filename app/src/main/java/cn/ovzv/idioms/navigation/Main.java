@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +19,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.king.app.dialog.AppDialog;
 import com.king.app.dialog.AppDialogConfig;
 import com.king.app.updater.AppUpdater;
+import com.king.app.updater.UpdateConfig;
+import com.king.app.updater.callback.UpdateCallback;
+import com.king.app.updater.http.OkHttpManager;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +40,7 @@ import cn.leancloud.LCCloud;
 import cn.leancloud.LCInstallation;
 import cn.leancloud.LCObject;
 import cn.leancloud.LCUser;
+import cn.ovzv.idioms.MainActivity;
 import cn.ovzv.idioms.R;
 import cn.ovzv.idioms.help.GetHttpBitmap;
 import cn.ovzv.idioms.navigation.main.Main_couplet;
@@ -61,9 +68,13 @@ public class Main extends Fragment {
     private ImageView Image;
     private AppUpdater mAppUpdater;
     private ProgressBar progressBar;
+    private Toast toast;
+    private final Object mLock = new Object();
     private Typeface tf;
     private LinearLayout mLinearLayout;//对应于主布局中用来添加子布局的View
     private View mGridView;// 子Layout要以view的形式加入到主Layout
+    private static String TAG = MainActivity.class.getSimpleName();
+    private TextView tvProgress;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -145,23 +156,72 @@ public class Main extends Fragment {
                 // succeed.
                 JSONObject Version_json = (JSONObject) JSONObject.toJSON(object);
 
-                JSONArray Version_DataJSONArray = Version_json.getJSONArray("data");
-
-                if(Version_DataJSONArray.getJSONObject(0).getString("New_Version").equals(Version_DataJSONArray.getJSONObject(0).getString("Old_Version"))){
+                if(Version_json.getString("New_Version").equals(Version_json.getString("Old_Version"))){
 
                 }else{
                     AppDialogConfig config = new AppDialogConfig(getContext(),R.layout.fragment_main_version_dialog);
-                    config.setConfirm("升级")
+                    config.setConfirm("立即升级")
                             .setHideCancel(true)
-                            .setTitle("简单自定义弹框升级")
-                            .setContent("1、新增某某功能、\n2、修改某某问题、\n3、优化某某BUG、")
+                            .setTitle("版本更新啦!")
+                            .setContent(Version_json.getString("Text"))
                             .setOnClickConfirm(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    mAppUpdater = new AppUpdater.Builder()
-                                            .setUrl(Version_DataJSONArray.getJSONObject(0).getString("Apk_Url"))
-                                            .build(getContext());
+//                                    mAppUpdater = new AppUpdater.Builder()
+//                                            .setUrl(Version_json.getString("Apk_Url"))
+//                                            .build(getContext());
+//                                    mAppUpdater.start();
+                                    UpdateConfig configs = new UpdateConfig();
+                                    configs.setUrl(Version_json.getString("Apk_Url"));
+                                    configs.addHeader("token","xxxxxx");
+                                    mAppUpdater = new AppUpdater(getContext(),configs)
+                                            .setHttpManager(OkHttpManager.getInstance())
+                                            .setUpdateCallback(new UpdateCallback() {
+
+                                                @Override
+                                                public void onDownloading(boolean isDownloading) {
+                                                    if(isDownloading){
+                                                        showToast("已经在下载中,请勿重复下载。");
+                                                    }else{
+                                                        View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_progress,null);
+                                                        tvProgress = view.findViewById(R.id.tvProgress);
+                                                        progressBar = view.findViewById(R.id.progressBar);
+                                                        AppDialog.INSTANCE.showDialog(getContext(),view,false);
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onStart(String url) {
+                                                    updateProgress(0,100);
+                                                }
+
+                                                @Override
+                                                public void onProgress(long progress, long total, boolean isChange) {
+                                                    if(isChange){
+                                                        updateProgress(progress,total);
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onFinish(File file) {
+                                                    AppDialog.INSTANCE.dismissDialog();
+                                                    showToast("下载完成");
+                                                }
+
+                                                @Override
+                                                public void onError(Exception e) {
+                                                    AppDialog.INSTANCE.dismissDialog();
+                                                    showToast("下载失败");
+                                                }
+
+                                                @Override
+                                                public void onCancel() {
+                                                    AppDialog.INSTANCE.dismissDialog();
+                                                    showToast("取消下载");
+                                                }
+                                            });
                                     mAppUpdater.start();
+
                                     AppDialog.INSTANCE.dismissDialog();
                                 }
                             });
@@ -409,6 +469,33 @@ public class Main extends Fragment {
         word_fuxi.setText(String.valueOf(sp.getInt("new_words", 20)));
         word_study.setText(String.valueOf(sp.getInt("new_words", 20)));
 
+
+    }
+    //
+
+    public void showToast(String text){
+        if(toast == null){
+            synchronized (mLock){
+                if(toast == null){
+                    toast = Toast.makeText(getContext(),text,Toast.LENGTH_SHORT);
+                }
+            }
+        }
+        toast.setText(text);
+        toast.show();
+    }
+    private void updateProgress(long progress, long total){
+        if(tvProgress == null || progressBar == null){
+            return;
+        }
+        if(progress > 0){
+            int currProgress = (int)(progress * 1.0f / total * 100.0f);
+            tvProgress.setText(getString(R.string.app_updater_progress_notification_content) + currProgress + "%");
+            progressBar.setProgress(currProgress);
+            Log.d(TAG,String.format("onProgress:%d/%d | %d%%",progress,total,currProgress));
+        }else{
+            tvProgress.setText(getString(R.string.app_updater_start_notification_content));
+        }
 
     }
 }

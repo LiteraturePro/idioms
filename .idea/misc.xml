@@ -117,13 +117,20 @@
         <entry key="..\:/Github/idioms/app/src/main/res/layout/navigation/layout/fragment_study.xml" value="0.19895833333333332" />
         <entry key="..\:/Github/idioms/app/src/main/res/layout/simple_spinner_item.xml" value="0.15572916666666667" />
         <entry key="..\:/Github/idioms/app/src/main/res/xml/tts_setting.xml" value="0.18854166666666666" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/background_dialog_xieyi.xml" value="0.183" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/border_input_box.xml" value="0.2075" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/border_input_box2.xml" value="0.143" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/btn_bg_red.xml" value="0.1975" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/fragment_main_bg2.xml" value="0.183" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/fragment_main_bg3.xml" value="0.183" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/fragment_main_bg6.xml" value="0.183" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/fragment_main_fun_bg.xml" value="0.183" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/drawable/fragment_main_update_bg.xml" value="0.183" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/activity_login.xml" value="0.24320652173913043" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/activity_main.xml" value="0.18478260869565216" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/activity_welcome.xml" value="0.24320652173913043" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/dgplayer_layout_min_controller.xml" value="0.24818840579710144" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/layout/dialog_progress.xml" value="0.5724508050089445" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/dogeplayer_item.xml" value="0.14739583333333334" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/footprint_item.xml" value="0.21829710144927536" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_course.xml" value="0.2171875" />
@@ -149,6 +156,7 @@
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_main_study_item.xml" value="0.20364583333333333" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_main_study_words.xml" value="0.22282608695652173" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_main_studyset.xml" value="0.165625" />
+        <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_main_version_dialog.xml" value="0.22826086956521738" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_main_words.xml" value="0.152" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_main_words_fragment1.xml" value="0.18478260869565216" />
         <entry key="..\:/Githubs/idioms/app/src/main/res/layout/fragment_main_words_fragment2.xml" value="0.18478260869565216" />

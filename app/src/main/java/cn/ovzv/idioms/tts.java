@@ -233,8 +233,6 @@ public class tts extends Activity implements OnClickListener {
             // 合成进度
             Log.e("MscSpeechLog_", "percent =" + percent);
             mPercentForBuffering = percent;
-            showTip(String.format(getString(R.string.tts_toast_format),
-                    mPercentForBuffering, mPercentForPlaying));
         }
 
         @Override
@@ -242,8 +240,6 @@ public class tts extends Activity implements OnClickListener {
             // 播放进度
             Log.e("MscSpeechLog_", "percent =" + percent);
             mPercentForPlaying = percent;
-            showTip(String.format(getString(R.string.tts_toast_format),
-                    mPercentForBuffering, mPercentForPlaying));
 
             SpannableStringBuilder style = new SpannableStringBuilder(texts);
             Log.e(TAG, "beginPos = " + beginPos + "  endPos = " + endPos);

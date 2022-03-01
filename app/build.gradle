@@ -51,6 +51,15 @@ android {
     buildFeatures {
         viewBinding true
     }
+    applicationVariants.all {variant ->
+        variant.outputs.all {output ->
+            if (variant.buildType.name == "debug") {
+                output.outputFileName = "idioms_v${android.defaultConfig.versionName}_debug.apk"
+            } else if (variant.buildType.name == "release") {
+                output.outputFileName = "idioms_v${android.defaultConfig.versionName}_release.apk"
+            }
+        }
+    }
 
 }
 

@@ -41,4 +41,10 @@ jobs:
         name: ${{ steps.read_property.outputs.value }}
         path: app/build/outputs/apk/debug/idioms_v${{ steps.read_property.outputs.value }}_debug.apk
         if-no-files-found: error
+    - uses: actions/download-artifact@v2
+      with:
+        name: ${{ steps.read_property.outputs.value }}
+
+    - name: Display structure of downloaded files
+      run: ls -R
       

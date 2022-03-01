@@ -35,16 +35,38 @@ jobs:
     - name: Do something with your bumped release version
       run: echo ${{ steps.read_property.outputs.value }}
       
-    - name: Upload Apk
+    - name: Upload Apk To Artifact
       uses: actions/upload-artifact@v2
       with: 
         name: ${{ steps.read_property.outputs.value }}
         path: app/build/outputs/apk/debug/idioms_v${{ steps.read_property.outputs.value }}_debug.apk
         if-no-files-found: error
-    - uses: actions/download-artifact@v2
+    - name: Download Apk From Artifact
+      uses: actions/download-artifact@v2
       with:
         name: ${{ steps.read_property.outputs.value }}
-
-    - name: Display structure of downloaded files
-      run: ls -R
+        
+    # 创建release
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.read_property.outputs.value }}
+        release_name: Release V${{ steps.read_property.outputs.value }}
+        draft: false
+        prerelease: false
+        
+    # 上传至release的资源
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传网址，无需改动
+        asset_path: ./idioms_v${{ steps.read_property.outputs.value }}_debug.apk # 上传路径
+        asset_name: idioms_v${{ steps.read_property.outputs.value }}_debug.apk # 资源名
+        asset_content_type: application/vnd.android.package-archiv #资源类型
       

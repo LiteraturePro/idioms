@@ -56,7 +56,7 @@ jobs:
     - run: |
           lean login --region cn-e1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
           lean switch --region cn-e1 --group web ${{secrets.LEANCLOUD_APP_ID}}
-          lean upload idioms_v${{ steps.read_property.outputs.value }}_release.apk
+          lean upload app/build/outputs/apk/release/idioms_v${{ steps.read_property.outputs.value }}_release.apk
           
     - name: Update Version Info
       uses: enflo/curl-action@v1.2

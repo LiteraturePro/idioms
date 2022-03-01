@@ -24,7 +24,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew assembleDebug  && cd ./app && tree
+      run: ./gradlew assembleRelease  && cd ./app && tree
       
     # 获取apk版本号
     - name: Read value from Properties-file
@@ -39,7 +39,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with: 
         name: ${{ steps.read_property.outputs.value }}
-        path: app/build/outputs/apk/debug/idioms_v${{ steps.read_property.outputs.value }}_debug.apk
+        path: app/build/outputs/apk/release/idioms_v${{ steps.read_property.outputs.value }}_release.apk
         if-no-files-found: error
    
    # 从Artifact下载资源
@@ -56,7 +56,7 @@ jobs:
     - run: |
           lean login --region cn-e1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
           lean switch --region cn-e1 --group web ${{secrets.LEANCLOUD_APP_ID}}
-          lean upload idioms_v${{ steps.read_property.outputs.value }}_debug.apk
+          lean upload idioms_v${{ steps.read_property.outputs.value }}_release.apk
           
     - name: Update Version Info
       uses: enflo/curl-action@v1.2
@@ -91,8 +91,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传网址，无需改动
-        asset_path: ./idioms_v${{ steps.read_property.outputs.value }}_debug.apk # 上传路径
-        asset_name: idioms_v${{ steps.read_property.outputs.value }}_debug.apk # 资源名
+        asset_path: ./idioms_v${{ steps.read_property.outputs.value }}_release.apk # 上传路径
+        asset_name: idioms_v${{ steps.read_property.outputs.value }}_release.apk # 资源名
         asset_content_type: application/vnd.android.package-archiv #资源类型
     
     # 存档打包的文件

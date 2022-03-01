@@ -57,6 +57,11 @@ jobs:
           lean login --region cn-e1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
           lean switch --region cn-e1 --group web ${{secrets.LEANCLOUD_APP_ID}}
           lean upload idioms_v${{ steps.read_property.outputs.value }}_debug.apk
+    
+    - name: Delete Release
+      uses: liudonghua123/delete-release-action@v1
+      with:
+        release_name: Release V${{ steps.read_property.outputs.value }}
         
     # 创建release
     - name: Create Release

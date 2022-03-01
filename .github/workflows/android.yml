@@ -19,9 +19,25 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: gradle
-
+    
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew assembleDebug  && cd ./app && tree
+      
+    # 获取apk版本号
+    - name: Read value from Properties-file
+      id: read_property
+      uses: christian-draeger/read-properties@1.0.1
+      with:
+        path: './version.properties'
+        property: 'versionName'
+    - name: Do something with your bumped release version
+      run: echo ${{ steps.read_property.outputs.value }}
+      
+#     - name: Upload Apk
+#       uses: actions/upload-artifact@v2
+#       with: 
+#         name: qd-info
+#         path: ${{ github.workspace }}/app/build/outputs/apk/release/*.apk
       

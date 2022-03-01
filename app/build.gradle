@@ -2,6 +2,13 @@ plugins {
     id 'com.android.application'
 }
 
+// 读取前面配置的keystore.properties
+def keyProps = new Properties()
+def keyPropsFile = rootProject.file('keystore/keystore.properties')
+if (keyPropsFile.exists()) {
+    keyProps.load(new FileInputStream(keyPropsFile))
+}
+
 // 读取version.properties
 def versionProps = new Properties()
 def versionPropsFile = rootProject.file('version.properties')
@@ -28,6 +35,15 @@ android {
             //可以根据需要来自行选择并添加对应cpu类型的.so库。
             //abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a','x86', 'x86_64', 'mips', 'mips64'
             abiFilters  'armeabi-v7a','x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+    // 签名
+    signingConfigs {
+        release {
+            keyAlias keyProps['keyAlias']
+            keyPassword keyProps['keyPassword']
+            storeFile keyProps['storeFile'] ? file(keyProps['storeFile']) : null
+            storePassword keyProps['storePassword']
         }
     }
 

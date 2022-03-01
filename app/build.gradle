@@ -39,6 +39,12 @@ android {
     }
     // 签名
     signingConfigs {
+        debug {
+            keyAlias keyProps['keyAlias']
+            keyPassword keyProps['keyPassword']
+            storeFile keyProps['storeFile'] ? file(keyProps['storeFile']) : null
+            storePassword keyProps['storePassword']
+        }
         release {
             keyAlias keyProps['keyAlias']
             keyPassword keyProps['keyPassword']
@@ -57,6 +63,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

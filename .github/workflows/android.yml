@@ -57,6 +57,11 @@ jobs:
           lean login --region cn-e1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
           lean switch --region cn-e1 --group web ${{secrets.LEANCLOUD_APP_ID}}
           lean upload idioms_v${{ steps.read_property.outputs.value }}_debug.apk
+          
+    - name: Update Version Info
+      uses: enflo/curl-action@v1.2
+      with:
+        curl: -X POST https://idiom.wxiou.cn/version
     
     - name: Delete Release
       uses: dev-drprasad/delete-tag-and-release@v0.2.0

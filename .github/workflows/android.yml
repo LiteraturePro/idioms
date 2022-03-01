@@ -39,6 +39,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with: 
         name: ${{ steps.read_property.outputs.value }}
-        path: app/build/outputs/apk/release/idioms_v1.0.0_debug.apk
+        path: app/build/outputs/apk/debug/idioms_v${{ steps.read_property.outputs.value }}_debug.apk
         if-no-files-found: error
       

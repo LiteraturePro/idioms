@@ -3,6 +3,8 @@ package cn.ovzv.idioms.navigation;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -156,7 +158,8 @@ public class Main extends Fragment {
                 // succeed.
                 JSONObject Version_json = (JSONObject) JSONObject.toJSON(object);
 
-                if(Version_json.getString("New_Version").equals(Version_json.getString("Old_Version"))){
+
+                if(Version_json.getString("Version").equals(packageName(getContext()))){
 
                 }else{
                     AppDialogConfig config = new AppDialogConfig(getContext(),R.layout.fragment_main_version_dialog);
@@ -457,7 +460,18 @@ public class Main extends Fragment {
         });
 
     }
+    public static String packageName(Context context) {
+        PackageManager manager = context.getPackageManager();
+        String name = null;
+        try {
+            PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+            name = info.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
+        return name;
+    }
     @Override
     public void onResume() {
         super.onResume();

@@ -59,9 +59,12 @@ jobs:
           lean upload idioms_v${{ steps.read_property.outputs.value }}_debug.apk
     
     - name: Delete Release
-      uses: liudonghua123/delete-release-action@v1
+      uses: dev-drprasad/delete-tag-and-release@v0.2.0
       with:
-        release_name: Release V${{ steps.read_property.outputs.value }}
+        delete_release: true # default: false
+        tag_name: ${{ steps.read_property.outputs.value }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     # 创建release
     - name: Create Release

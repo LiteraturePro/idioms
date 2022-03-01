@@ -35,9 +35,9 @@ jobs:
     - name: Do something with your bumped release version
       run: echo ${{ steps.read_property.outputs.value }}
       
-#     - name: Upload Apk
-#       uses: actions/upload-artifact@v2
-#       with: 
-#         name: qd-info
-#         path: ${{ github.workspace }}/app/build/outputs/apk/release/*.apk
+    - name: Upload Apk
+      uses: actions/upload-artifact@v2
+      with: 
+        name: ${{ steps.read_property.outputs.value }}
+        path: ${{ github.workspace }}/app/build/outputs/apk/release/*.apk
       

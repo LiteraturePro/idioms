@@ -20,6 +20,7 @@ jobs:
         distribution: 'adopt'
         cache: gradle
     
+    # 设置编译环境
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
@@ -32,19 +33,30 @@ jobs:
       with:
         path: './version.properties'
         property: 'versionName'
-    - name: Do something with your bumped release version
-      run: echo ${{ steps.read_property.outputs.value }}
-      
+    
+    # 上传资源到Artifact
     - name: Upload Apk To Artifact
       uses: actions/upload-artifact@v2
       with: 
         name: ${{ steps.read_property.outputs.value }}
         path: app/build/outputs/apk/debug/idioms_v${{ steps.read_property.outputs.value }}_debug.apk
         if-no-files-found: error
+   
+   # 从Artifact下载资源
     - name: Download Apk From Artifact
       uses: actions/download-artifact@v2
       with:
         name: ${{ steps.read_property.outputs.value }}
+   
+   # 上传文件到 leacloud
+    - name: Upload to leacloud
+      uses: manyuanrong/setup-lean-cli@v1.0.0
+      with:
+          version: '0.29.2'
+    - run: |
+          lean login --region us-w1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
+          lean switch --region us-w1 --group web ${{secrets.LEANCLOUD_APP_ID}}
+          lean upload idioms_v${{ steps.read_property.outputs.value }}_debug.apk
         
     # 创建release
     - name: Create Release
@@ -69,4 +81,11 @@ jobs:
         asset_path: ./idioms_v${{ steps.read_property.outputs.value }}_debug.apk # 上传路径
         asset_name: idioms_v${{ steps.read_property.outputs.value }}_debug.apk # 资源名
         asset_content_type: application/vnd.android.package-archiv #资源类型
+    
+    # 存档打包的文件
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: app/build/outputs #将打包之后的文件全部上传（里面会有混淆的map文件）
       

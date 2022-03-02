@@ -48,9 +48,8 @@ jobs:
       with:
         name: ${{ steps.read_property.outputs.value }}
    
-   
    # 上传文件到 leacloud
-    - name: Upload APK to leacloud
+    - name: Upload to leacloud
       uses: manyuanrong/setup-lean-cli@v1.0.0
       with:
           version: '0.29.2'
@@ -58,24 +57,6 @@ jobs:
           lean login --region cn-e1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
           lean switch --region cn-e1 --group web ${{secrets.LEANCLOUD_APP_ID}}
           lean upload app/build/outputs/apk/release/idioms_v${{ steps.read_property.outputs.value }}_release.apk
-    
-   # 远程下载apk拆分脚本
-    - name: Bsdiff The  Apk
-      run: |
-          wget https://idiom-file.wxiou.cn/vnTevc8KFFKhLzKlUxyuQVTvLawgpTaQl89WB5BQ.apk
-          find ./ -name '*.apk' -exec basename {} > apk.txt \;
-          wget https://lc-gluttony.s3.amazonaws.com/9WTW1sBG7ANz/8hWoLYkcVz2ekQ00pIhP6tpv5BaU6XXg/d.sh
-          bash d.sh
-    
-    # 上传文件到 leacloud
-    - name: Upload patch to leacloud
-      uses: manyuanrong/setup-lean-cli@v1.0.0
-      with:
-          version: '0.29.2'
-    - run: |
-          lean login --region cn-e1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
-          lean switch --region cn-e1 --group web ${{secrets.LEANCLOUD_APP_ID}}
-          lean upload ./idioms_v${{ steps.read_property.outputs.value }}_release.patch
           
     - name: Update Version Info
       uses: enflo/curl-action@v1.2
@@ -114,18 +95,6 @@ jobs:
         asset_name: idioms_v${{ steps.read_property.outputs.value }}_release.apk # 资源名
         asset_content_type: application/vnd.android.package-archiv #资源类型
     
-    # 上传至release的资源
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传网址，无需改动
-        asset_path: ./idioms_v${{ steps.read_property.outputs.value }}_release.patch # 上传路径
-        asset_name: idioms_v${{ steps.read_property.outputs.value }}_release.patch # 资源名
-        asset_content_type: application/vnd.android.package-archiv #资源类型
-        
     # 存档打包的文件
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2

@@ -34,7 +34,10 @@ android {
         ndk {
             //可以根据需要来自行选择并添加对应cpu类型的.so库。
             //abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a','x86', 'x86_64', 'mips', 'mips64'
-            abiFilters  'armeabi-v7a','x86', 'x86_64', 'mips', 'mips64'
+            // 编译 so 文件时使用
+            //abiFilters  'armeabi-v7a','x86', 'x86_64', 'mips', 'mips64'
+            // 运行程序时使用
+            abiFilters  'armeabi-v7a','x86', 'x86_64','mips', 'mips64'
         }
     }
     // 签名
@@ -67,6 +70,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    // 编译 so 文件时使用
+//    externalNativeBuild {
+//        cmake {
+//            path file('src/main/cpp/CMakeLists.txt')
+//        }
+//    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

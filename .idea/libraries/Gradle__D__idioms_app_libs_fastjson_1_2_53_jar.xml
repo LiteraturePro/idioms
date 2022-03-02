@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: D./Githubs/idioms/app/libs/fastjson-1.2.53.jar">
+  <library name="Gradle: D./idioms/app/libs/fastjson-1.2.53.jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/libs/fastjson-1.2.53.jar!/" />
     </CLASSES>

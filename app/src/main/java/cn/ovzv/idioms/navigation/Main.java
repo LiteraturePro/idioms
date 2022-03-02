@@ -3,15 +3,18 @@ package cn.ovzv.idioms.navigation;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.StrictMode;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +33,7 @@ import com.king.app.dialog.AppDialogConfig;
 import com.king.app.updater.AppUpdater;
 import com.king.app.updater.UpdateConfig;
 import com.king.app.updater.callback.UpdateCallback;
+import com.king.app.updater.constant.Constants;
 import com.king.app.updater.http.OkHttpManager;
 
 import org.w3c.dom.Text;
@@ -44,6 +48,8 @@ import cn.leancloud.LCObject;
 import cn.leancloud.LCUser;
 import cn.ovzv.idioms.MainActivity;
 import cn.ovzv.idioms.R;
+import cn.ovzv.idioms.help.ApkUtils;
+import cn.ovzv.idioms.help.BSPatchUtil;
 import cn.ovzv.idioms.help.GetHttpBitmap;
 import cn.ovzv.idioms.navigation.main.Main_couplet;
 import cn.ovzv.idioms.navigation.main.Main_fun;
@@ -77,6 +83,11 @@ public class Main extends Fragment {
     private View mGridView;// 子Layout要以view的形式加入到主Layout
     private static String TAG = MainActivity.class.getSimpleName();
     private TextView tvProgress;
+
+    // Used to load the 'native-lib' library on application startup.
+    static {
+        System.loadLibrary("bspatch");
+    }
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -170,12 +181,11 @@ public class Main extends Fragment {
                             .setOnClickConfirm(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-//                                    mAppUpdater = new AppUpdater.Builder()
-//                                            .setUrl(Version_json.getString("Apk_Url"))
-//                                            .build(getContext());
-//                                    mAppUpdater.start();
                                     UpdateConfig configs = new UpdateConfig();
                                     configs.setUrl(Version_json.getString("Apk_Url"));
+                                    //configs.setUrl("https://lc-gluttony.s3.amazonaws.com/9WTW1sBG7ANz/nztLwGjPfFJhF9n268OHGr9MWNpYxaVi/app_patch.patch");
+                                    configs.setInstallApk(false);
+                                    configs.setFilename("new.patch");
                                     configs.addHeader("token","xxxxxx");
                                     mAppUpdater = new AppUpdater(getContext(),configs)
                                             .setHttpManager(OkHttpManager.getInstance())
@@ -209,6 +219,8 @@ public class Main extends Fragment {
                                                 public void onFinish(File file) {
                                                     AppDialog.INSTANCE.dismissDialog();
                                                     showToast("下载完成");
+                                                    Install_Apk();
+
                                                 }
 
                                                 @Override
@@ -511,5 +523,40 @@ public class Main extends Fragment {
             tvProgress.setText(getString(R.string.app_updater_start_notification_content));
         }
 
+    }
+
+    /**
+     * 获取缓存路径
+     * @param context
+     * @return
+     */
+    private String getExternalFilesDir(Context context) {
+        File[] files = ContextCompat.getExternalFilesDirs(context, Constants.DEFAULT_DIR);
+        if(files!=null && files.length > 0){
+            return files[0].getAbsolutePath();
+        }
+        return context.getExternalFilesDir(Constants.DEFAULT_DIR).getAbsolutePath();
+
+    }
+    private boolean Install_Apk(){
+        String OldApk = getActivity().getApplicationContext().getPackageResourcePath();
+        String patchDir = getExternalFilesDir(getContext()) +"/new.patch";
+        String NewApk = getExternalFilesDir(getContext()) +"/new.apk";
+        Log.d(TAG,"开始合并");
+        int ret = BSPatchUtil.bspatch(OldApk, NewApk,patchDir);
+        Log.d(TAG,"开始完成");
+
+        if (ret == 0) {
+            File mFile = new File(getExternalFilesDir(getContext()),"new.apk");
+            String authority = getContext().getPackageName() + Constants.DEFAULT_FILE_PROVIDER;
+
+            ApkUtils.installApk(getContext(),mFile, authority);
+            //File mFile = new File(path,filename);
+//            if(mFile.exists()) {//文件是否存在)
+//            }
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -38,7 +38,7 @@ jobs:
     - name: Upload Apk To Artifact
       uses: actions/upload-artifact@v2
       with: 
-        name: ${{ steps.read_property.outputs.value }}
+        name: ${{ steps.read_property.outputs.value }}_release.apk
         path: app/build/outputs/apk/release/idioms_v${{ steps.read_property.outputs.value }}_release.apk
         if-no-files-found: error
    
@@ -76,6 +76,14 @@ jobs:
           lean login --region cn-e1 --username ${{secrets.LEANCLOUD_USER}} --password ${{secrets.LEANCLOUD_PASS}}
           lean switch --region cn-e1 --group web ${{secrets.LEANCLOUD_APP_ID}}
           lean upload ./idioms_v${{ steps.read_property.outputs.value }}_release.patch
+    
+    # 上传资源到Artifact
+    - name: Upload Apk To Artifact
+      uses: actions/upload-artifact@v2
+      with: 
+        name: ${{ steps.read_property.outputs.value }}_release.patch
+        path: app/build/outputs/apk/release/idioms_v${{ steps.read_property.outputs.value }}_release.apk
+        if-no-files-found: error
           
     - name: Update Version Info
       uses: enflo/curl-action@v1.2
@@ -112,18 +120,6 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传网址，无需改动
         asset_path: ./idioms_v${{ steps.read_property.outputs.value }}_release.apk # 上传路径
         asset_name: idioms_v${{ steps.read_property.outputs.value }}_release.apk # 资源名
-        asset_content_type: application/vnd.android.package-archiv #资源类型
-    
-    # 上传至release的资源
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传网址，无需改动
-        asset_path: ./idioms_v${{ steps.read_property.outputs.value }}_release.patch # 上传路径
-        asset_name: idioms_v${{ steps.read_property.outputs.value }}_release.patch # 资源名
         asset_content_type: application/vnd.android.package-archiv #资源类型
         
     # 存档打包的文件

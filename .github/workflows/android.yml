@@ -46,7 +46,7 @@ jobs:
     - name: Download Apk From Artifact
       uses: actions/download-artifact@v2
       with:
-        name: ${{ steps.read_property.outputs.value }}
+        name: ${{ steps.read_property.outputs.value }}_release.apk
    
    
    # 上传文件到 leacloud

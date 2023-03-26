@@ -91,7 +91,7 @@ jobs:
         curl: -X POST https://idiom.wxiou.cn/version
     
     - name: Delete Release
-      uses: dev-drprasad/delete-tag-and-release@v0.2.0
+      uses: dev-drprasad/delete-tag-and-release@v0.2.1
       with:
         delete_release: false # default: false
         tag_name: ${{ steps.read_property.outputs.value }}
